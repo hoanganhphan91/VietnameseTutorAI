@@ -96,6 +96,11 @@ if exist node_modules (
 REM Install fresh node modules
 echo Installing Node.js dependencies...
 npm install
+
+REM Create environment file
+echo Creating environment configuration...
+echo NEXT_PUBLIC_API_URL=http://localhost:8000 > .env.local
+echo NEXT_PUBLIC_AI_URL=http://localhost:5000 >> .env.local
 cd ..
 
 echo.

@@ -40,6 +40,11 @@ if not exist node_modules (
     pause
     exit /b 1
 )
+
+REM Create environment file
+echo Creating environment configuration...
+echo NEXT_PUBLIC_API_URL=http://localhost:8000 > .env.local
+echo NEXT_PUBLIC_AI_URL=http://localhost:5000 >> .env.local
 start "Vietnamese Tutor - Frontend" cmd /k "echo Frontend starting on port 3000... && npm run dev"
 
 echo.

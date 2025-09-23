@@ -83,6 +83,13 @@ if [ ! -d "node_modules" ]; then
     npm install
 fi
 
+# Create/update environment file
+echo "Creating environment configuration..."
+cat > .env.local << EOF
+NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_AI_URL=http://localhost:5000
+EOF
+
 # Start frontend in background
 echo "Starting frontend on port 3000..."
 npm run dev &

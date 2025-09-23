@@ -104,6 +104,13 @@ fi
 echo "Installing Node.js dependencies..."
 npm install
 
+# Create environment file
+echo "Creating environment configuration..."
+cat > .env.local << EOF
+NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_AI_URL=http://localhost:5000
+EOF
+
 echo
 echo "==================================="
 echo "✅ Setup completed successfully!"
