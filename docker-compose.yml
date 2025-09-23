@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # Frontend - NextJS
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_AI_URL=http://localhost:5000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+  # Backend - FastAPI
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=mysql+pymysql://user:password@database:3306/vietnamese_tutor
+      - REDIS_URL=redis://redis:6379
+      - AI_SERVICE_URL=http://ai:5000
+    depends_on:
+      - database
+      - redis
+      - ai
+    volumes:
+      - ./backend:/app
+    command: >
+      sh -c "python create_sample_data.py && 
+             uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+
+  # Database - MySQL
+  database:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: vietnamese_tutor
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # Cache - Redis
+  redis:
+    image: redis:alpine
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # AI Service - PhoGPT-4B
+  ai:
+    build:
+      context: ./ai
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - MODEL_NAME=vinai/PhoGPT-4B-Chat
+      - DEVICE=cpu
+    volumes:
+      - ./models:/models
+      - ./ai:/app
+    deploy:
+      resources:
+        limits:
+          memory: 6G
+
+volumes:
+  mysql_data:
+  redis_data:
