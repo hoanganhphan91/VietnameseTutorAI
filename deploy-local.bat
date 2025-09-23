@@ -1,5 +1,7 @@
 @echo off
-echo 🚀 Setting up AI Vietnamese Tutor (Local Development)...
+echo ===================================
+echo   Vietnamese AI Tutor - Full Setup
+echo ===================================
 
 REM Check if Python is installed
 python --version >nul 2>&1
@@ -21,33 +23,90 @@ if errorlevel 1 (
 
 echo ✅ Python and Node.js found
 
-REM Create virtual environment for backend
-echo 📦 Setting up Python virtual environment...
-if not exist backend\venv (
-    cd backend
-    python -m venv venv
-    cd ..
+REM Check if port 8000 is in use
+netstat -an | find "LISTENING" | find ":8000" >nul
+if not errorlevel 1 (
+    echo ❌ Port 8000 is already in use!
+    echo Please stop the process using port 8000 first
+    pause
+    exit /b 1
 )
 
-REM Activate virtual environment and install dependencies
-echo 📥 Installing Python dependencies...
+REM Setup Backend
+echo [1/3] Setting up Backend (FastAPI)...
 cd backend
+
+REM Remove old virtual environment if exists
+if exist venv (
+    echo Removing old virtual environment...
+    rmdir /s /q venv
+)
+
+REM Create fresh virtual environment
+echo Creating Python virtual environment...
+python -m venv venv
+
+REM Activate virtual environment and install dependencies
 call venv\Scripts\activate.bat
+echo Installing/updating backend dependencies...
+pip install --upgrade pip
+pip install email-validator
 pip install -r requirements.txt
+
+REM Create sample data
+if exist create_sample_data.py (
+    echo Creating sample data...
+    python create_sample_data.py || echo Warning: Sample data creation failed, continuing...
+)
 cd ..
 
-REM Install frontend dependencies
-echo 📥 Installing Node.js dependencies...
+REM Setup AI Service
+echo [2/3] Setting up AI Service (PhoGPT-4B)...
+cd ai
+
+REM Remove old virtual environment if exists
+if exist venv (
+    echo Removing old AI virtual environment...
+    rmdir /s /q venv
+)
+
+REM Create fresh virtual environment
+echo Creating Python virtual environment for AI...
+python -m venv venv
+
+call venv\Scripts\activate.bat
+echo Installing/updating AI dependencies...
+pip install --upgrade pip
+pip install -r requirements.txt
+
+REM Create models directory
+if not exist "..\models" mkdir "..\models"
+cd ..
+
+REM Setup Frontend
+echo [3/3] Setting up Frontend (NextJS)...
 cd frontend
+
+REM Remove old node_modules if exists
+if exist node_modules (
+    echo Removing old node_modules...
+    rmdir /s /q node_modules
+)
+
+REM Install fresh node modules
+echo Installing Node.js dependencies...
 npm install
 cd ..
 
-REM Install AI dependencies
-echo 📥 Installing AI dependencies...
-cd ai
-if not exist venv (
-    python -m venv venv
-)
+echo.
+echo ===================================
+echo Setup completed successfully!
+echo ===================================
+echo.
+echo To start all services, run: start-services.bat
+echo To stop all services, run: stop-local.bat
+echo.
+pause
 call venv\Scripts\activate.bat
 pip install -r requirements.txt
 cd ..

@@ -1,7 +1,14 @@
+# AI Model và Machine Learning
 torch>=2.0.0
 transformers>=4.35.0
 accelerate>=0.24.0
+sentencepiece>=0.1.99
+numpy>=1.24.0
+
+# Web Framework cho AI Service  
 flask==3.0.0
 requests==2.31.0
-numpy>=1.24.0
-sentencepiece>=0.1.99
+
+# Optional: Faster inference (uncomment if needed)
+# bitsandbytes>=0.41.0
+# optimum>=1.14.0

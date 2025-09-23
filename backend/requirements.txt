@@ -1,13 +1,23 @@
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-sqlalchemy==2.0.23
-pymysql==1.1.0
-cryptography==41.0.7
-alembic==1.12.1
-redis==5.0.1
-pydantic==2.5.0
+# FastAPI và Web Framework
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+pydantic==2.10.4
+pydantic[email]==2.10.4
 python-multipart==0.0.6
+
+# Database (Updated for Python 3.13 compatibility)
+sqlalchemy==2.0.36
+pymysql==1.1.0
+cryptography==43.0.3
+alembic==1.14.0
+
+# Cache và Session
+redis==5.0.8
+
+# Authentication và Security  
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
-requests==2.31.0
-python-dotenv==1.0.0
+
+# HTTP và Utils
+requests==2.32.3
+python-dotenv==1.0.1
