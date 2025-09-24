@@ -4,6 +4,10 @@ from sqlalchemy.orm import Session
 import requests
 import os
 from typing import List, Optional
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 from database import engine, get_db
 from models import Base, User, Conversation, LearningSession, Lesson

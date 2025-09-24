@@ -13,7 +13,8 @@ app = Flask(__name__)
 # Model configuration
 MODEL_NAME = os.getenv("MODEL_NAME", "vinai/PhoGPT-4B-Chat")
 DEVICE = os.getenv("DEVICE", "cpu")
-MODEL_PATH = "/models"
+# Use local cache directory instead of /models
+MODEL_PATH = os.path.join(os.path.dirname(__file__), ".cache")
 
 # Global variables for model and tokenizer
 tokenizer = None
@@ -25,6 +26,9 @@ def load_model():
     
     try:
         logger.info(f"Loading model: {MODEL_NAME}")
+        
+        # Ensure cache directory exists
+        os.makedirs(MODEL_PATH, exist_ok=True)
         
         # Load tokenizer
         tokenizer = AutoTokenizer.from_pretrained(

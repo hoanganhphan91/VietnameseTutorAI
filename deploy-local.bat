@@ -58,6 +58,12 @@ if exist create_sample_data.py (
     echo Creating sample data...
     python create_sample_data.py || echo Warning: Sample data creation failed, continuing...
 )
+
+REM Create environment file
+echo Creating backend environment configuration...
+echo DATABASE_URL=sqlite:///./vietnamese_tutor.db > .env
+echo AI_SERVICE_URL=http://localhost:5000 >> .env
+echo REDIS_URL=redis://localhost:6379 >> .env
 cd ..
 
 REM Setup AI Service

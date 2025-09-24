@@ -67,6 +67,14 @@ if [ -f "create_sample_data.py" ]; then
     python create_sample_data.py || echo "Warning: Sample data creation failed, continuing..."
 fi
 
+# Create environment file
+echo "Creating backend environment configuration..."
+cat > .env << EOF
+DATABASE_URL=sqlite:///./vietnamese_tutor.db
+AI_SERVICE_URL=http://localhost:5000
+REDIS_URL=redis://localhost:6379
+EOF
+
 echo
 echo "[2/3] Setting up AI Service (PhoGPT-4B)..."
 cd "$SCRIPT_DIR/ai"
