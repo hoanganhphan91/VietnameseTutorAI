@@ -20,6 +20,18 @@ __pycache__/
 */__pycache__/
 *.py[cod]
 *$py.class
+*.pyc
+
+# AI Model Cache (exclude downloaded models from git)
+ai/.cache/
+*/.cache/
+*.cache
+ai/.locks/
+
+# Process IDs
+*.pid
+*.py[cod]
+*$py.class
 *.so
 
 # Environment variables

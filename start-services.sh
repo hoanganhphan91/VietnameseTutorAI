@@ -8,15 +8,12 @@ echo
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Check if port 8000 is in use
-if lsof -i:8000 &> /dev/null; then
-    echo "❌ Port 8000 is already in use!"
-    echo "Finding process using port 8000..."
-    lsof -i:8000
-    echo "Please stop the process or use: sudo lsof -ti:8000 | xargs kill -9"
-    echo "Then run this script again."
-    exit 1
-fi
+# Auto-stop existing services
+echo "Stopping any existing services..."
+lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+lsof -ti:5000 | xargs kill -9 2>/dev/null || true  
+lsof -ti:8000 | xargs kill -9 2>/dev/null || true
+sleep 2
 
 echo "[1/3] Setting up Backend Service (FastAPI)..."
 cd "$SCRIPT_DIR/backend"
@@ -50,35 +47,35 @@ EOF
 
 # Start backend in background
 echo "Starting backend on port 8000..."
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload &
+nohup uvicorn main:app --host 0.0.0.0 --port 8000 --reload > backend.log 2>&1 &
 BACKEND_PID=$!
 echo "Backend PID: $BACKEND_PID"
 sleep 5
 
 echo
-echo "[2/3] Setting up AI Service (PhoGPT-4B)..."
+echo "[2/3] Setting up AI Service (Mock AI for testing)..."
 cd "$SCRIPT_DIR/ai"
 
 # Create virtual environment if not exists
 if [ ! -d "venv" ]; then
-    echo "Creating Python virtual environment for AI service..."
+    echo "Creating Python virtual environment for AI..."
     python3 -m venv venv
 fi
 
 # Activate and install requirements
 source venv/bin/activate
-echo "Installing/updating AI service dependencies..."
+echo "Installing AI dependencies..."
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install flask requests
 
-# Create models directory if not exists
+# Create models directory
 mkdir -p "$SCRIPT_DIR/models"
 
-# Start AI service in background
-echo "Starting AI service on port 5000..."
-python app.py &
+# Start PhoGPT AI service in background
+echo "Starting PhoGPT AI service on port 5000..."
+nohup python phogpt_direct.py > ai.log 2>&1 &
 AI_PID=$!
-echo "AI Service PID: $AI_PID"
+echo "PhoGPT Service PID: $AI_PID"
 sleep 3
 
 echo
@@ -100,7 +97,7 @@ EOF
 
 # Start frontend in background
 echo "Starting frontend on port 3000..."
-npm run dev &
+nohup npm run dev > frontend.log 2>&1 &
 FRONTEND_PID=$!
 echo "Frontend PID: $FRONTEND_PID"
 
