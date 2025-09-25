@@ -23,6 +23,7 @@ import {
   Zap,
   Globe,
 } from "lucide-react";
+import Image from "next/image";
 
 const { Header, Content, Footer } = Layout;
 const { Title, Paragraph, Text } = Typography;
@@ -205,24 +206,29 @@ export default function Home() {
           WebkitBackdropFilter: "blur(20px)",
           borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
           padding: "12px 24px",
+          height: "84px",
         }}
       >
         <Row align="middle" justify="space-between">
           <Col>
-            <Title
-              level={3}
-              style={{ color: "#fff", margin: 0 }}
-              className="text-glow"
+            {/* Logo and Title in a flex container */}
+            <div
+              style={{ display: "flex", alignItems: "center", marginBottom: 4 }}
             >
-              <Sparkles size={22} style={{ marginRight: 8 }} />
-              Vietnamese AI Tutor
-            </Title>
-            <Text
-              style={{ color: "rgba(255, 255, 255, 0.8)" }}
-              className="text-glow"
-            >
-              <Globe size={14} /> Học tiếng Việt với AI
-            </Text>
+              <Image
+                src="/tvo_logo.webp"
+                width={50}
+                alt="Logo"
+                style={{ marginRight: 12 }}
+              />
+              <Title
+                level={3}
+                style={{ color: "#fff", margin: 0 }}
+                className="text-glow"
+              >
+                Vietnamese AI Tutor
+              </Title>
+            </div>
           </Col>
           <Col>
             <Button
