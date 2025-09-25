@@ -3,7 +3,7 @@
 Ứng dụng AI Gia sư Tiếng Việt cho người nước ngoài sử dụng PhoGPT-4B-Chat.
 
 ## Tech Stack
-- **Frontend**: NextJS 14 + TypeScript + Tailwind CSS
+- **Frontend**: NextJS 14 + TypeScript + ANTD
 - **Backend**: FastAPI + Python 3.11
 - **Database**: MySQL 8.0
 - **Cache**: Redis
