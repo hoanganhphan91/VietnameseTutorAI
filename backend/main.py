@@ -1,8 +1,9 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import requests
 import os
+import tempfile
 from typing import List, Optional
 from dotenv import load_dotenv
 
@@ -32,8 +33,9 @@ app.add_middleware(
 )
 
 # Pydantic models (moved to schemas.py)
-# AI Service URL
+# AI Service URLs
 AI_SERVICE_URL = os.getenv("AI_SERVICE_URL", "http://ai:5000")
+WHISPER_SERVICE_URL = os.getenv("WHISPER_SERVICE_URL", "http://localhost:5001")
 
 @app.get("/")
 async def root():
@@ -130,10 +132,168 @@ def process_educational_response(user_message: str, ai_response: str) -> dict:
         "cultural_context": cultural_context
     }
 
-@app.post("/api/pronunciation")
-async def check_pronunciation(audio_data: dict):
+@app.post("/api/voice-chat")
+async def voice_chat(
+    audio: UploadFile = File(...),
+    language: str = Form("vi"),
+    detect_accent: bool = Form(False),
+    db: Session = Depends(get_db)
+):
     """
-    Pronunciation checking endpoint (placeholder for future implementation)
+    Voice chat endpoint - Speech to text, then AI response
+    """
+    try:
+        # Save uploaded audio temporarily
+        with tempfile.NamedTemporaryFile(delete=False, suffix='.wav') as temp_file:
+            content = await audio.read()
+            temp_file.write(content)
+            temp_filename = temp_file.name
+        
+        try:
+            # Call Whisper STT service
+            with open(temp_filename, 'rb') as audio_file:
+                files = {'audio': audio_file}
+                data = {
+                    'language': language,
+                    'detect_accent': str(detect_accent).lower()
+                }
+                
+                stt_response = requests.post(
+                    f"{WHISPER_SERVICE_URL}/transcribe",
+                    files=files,
+                    data=data,
+                    timeout=30
+                )
+            
+            if stt_response.status_code != 200:
+                raise HTTPException(status_code=500, detail="Speech recognition failed")
+            
+            transcription = stt_response.json()
+            transcribed_text = transcription.get("text", "")
+            
+            if not transcribed_text:
+                raise HTTPException(status_code=400, detail="No speech detected")
+            
+            # Call AI service with transcribed text
+            ai_response = requests.post(
+                f"{AI_SERVICE_URL}/chat",
+                json={"message": transcribed_text},
+                timeout=30
+            )
+            
+            if ai_response.status_code != 200:
+                raise HTTPException(status_code=500, detail="AI service error")
+            
+            ai_result = ai_response.json()
+            
+            # Process response
+            processed_response = process_educational_response(transcribed_text, ai_result["response"])
+            
+            return {
+                "transcription": transcription,
+                "ai_response": processed_response["response"],
+                "corrections": processed_response.get("corrections"),
+                "cultural_context": processed_response.get("cultural_context"),
+                "accent_info": transcription.get("accent") if detect_accent else None
+            }
+            
+        finally:
+            # Clean up temp file
+            if os.path.exists(temp_filename):
+                os.unlink(temp_filename)
+    
+    except requests.RequestException as e:
+        raise HTTPException(status_code=500, detail=f"Service communication error: {str(e)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Voice chat error: {str(e)}")
+
+@app.post("/api/pronunciation")
+async def check_pronunciation(
+    audio: UploadFile = File(...),
+    target_text: str = Form(...),
+    db: Session = Depends(get_db)
+):
+    """
+    Pronunciation checking endpoint using Whisper service
+    """
+    try:
+        # Save uploaded audio temporarily  
+        with tempfile.NamedTemporaryFile(delete=False, suffix='.wav') as temp_file:
+            content = await audio.read()
+            temp_file.write(content)
+            temp_filename = temp_file.name
+        
+        try:
+            # Call Whisper pronunciation service
+            with open(temp_filename, 'rb') as audio_file:
+                files = {'audio': audio_file}
+                data = {'target_text': target_text}
+                
+                response = requests.post(
+                    f"{WHISPER_SERVICE_URL}/pronunciation",
+                    files=files,
+                    data=data,
+                    timeout=30
+                )
+            
+            if response.status_code != 200:
+                raise HTTPException(status_code=500, detail="Pronunciation check failed")
+            
+            result = response.json()
+            
+            # Extract pronunciation assessment
+            assessment = result.get("pronunciation_assessment", {})
+            
+            return {
+                "score": assessment.get("score", 0),
+                "feedback": assessment.get("feedback", "No feedback available"),
+                "accuracy": assessment.get("accuracy", "N/A"),
+                "transcribed": result.get("transcription", {}).get("text", ""),
+                "target": target_text,
+                "suggestions": assessment.get("suggestions", []),
+                "error_analysis": assessment.get("error_analysis", {})
+            }
+            
+        finally:
+            # Clean up temp file
+            if os.path.exists(temp_filename):
+                os.unlink(temp_filename)
+    
+    except requests.RequestException as e:
+        raise HTTPException(status_code=500, detail=f"Pronunciation service error: {str(e)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Pronunciation check error: {str(e)}")
+
+@app.post("/api/detect-accent")
+async def detect_accent(text_data: dict, db: Session = Depends(get_db)):
+    """
+    Detect Vietnamese regional accent from text
+    """
+    try:
+        text = text_data.get("text", "")
+        if not text:
+            raise HTTPException(status_code=400, detail="No text provided")
+        
+        response = requests.post(
+            f"{WHISPER_SERVICE_URL}/detect-accent",
+            json={"text": text},
+            timeout=10
+        )
+        
+        if response.status_code != 200:
+            raise HTTPException(status_code=500, detail="Accent detection failed")
+        
+        return response.json()
+    
+    except requests.RequestException as e:
+        raise HTTPException(status_code=500, detail=f"Accent detection service error: {str(e)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Accent detection error: {str(e)}")
+
+@app.post("/api/pronunciation-simple")
+async def check_pronunciation_simple(audio_data: dict):
+    """
+    Simple pronunciation checking endpoint (legacy)
     """
     return {"score": 85, "feedback": "Phát âm tốt! Có thể cải thiện âm 'ng' cuối từ."}
 

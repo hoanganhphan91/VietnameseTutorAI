@@ -1,0 +1,46 @@
+# Whisper Service - Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+venv/
+env/
+
+# Environment files
+.env
+
+# Whisper model cache
+.cache/
+models/
+
+# Audio test files
+*.wav
+*.mp3
+*.mp4
+*.m4a
+*.webm
+test_audio.*
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore

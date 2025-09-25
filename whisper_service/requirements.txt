@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+# Whisper STT Service Requirements
+
+# Core Flask framework
+flask==3.0.0
+flask-cors==4.0.0
+
+# Whisper and audio processing - using faster-whisper (more compatible)
+faster-whisper==1.1.0
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# Audio file handling
+pydub==0.25.1
+numpy>=1.24.0
+
+# HTTP requests and utilities
+requests==2.32.3
+python-dotenv==1.0.1
+python-multipart==0.0.6

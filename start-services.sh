@@ -53,7 +53,37 @@ echo "Backend PID: $BACKEND_PID"
 sleep 5
 
 echo
-echo "[2/3] Setting up AI Service (Mock AI for testing)..."
+echo "[2/4] Setting up Whisper STT Service..."
+cd "$SCRIPT_DIR/whisper_service"
+
+# Create virtual environment if not exists
+if [ ! -d "venv" ]; then
+    echo "Creating Python virtual environment for Whisper..."
+    python3 -m venv venv
+fi
+
+# Activate and install requirements
+source venv/bin/activate
+echo "Installing Whisper dependencies..."
+pip install --upgrade pip
+
+# Check if requirements.txt exists
+if [ ! -f "requirements.txt" ]; then
+    echo "❌ Whisper requirements.txt not found! Please run whisper_service/setup.sh first"
+    exit 1
+fi
+
+pip install -r requirements.txt
+
+# Start Whisper STT service in background
+echo "Starting Whisper STT service on port 5001..."
+nohup python app.py > whisper.log 2>&1 &
+WHISPER_PID=$!
+echo "Whisper Service PID: $WHISPER_PID"
+sleep 5
+
+echo
+echo "[3/4] Setting up AI Service (PhoGPT)..."
 cd "$SCRIPT_DIR/ai"
 
 # Create virtual environment if not exists
@@ -79,7 +109,7 @@ echo "PhoGPT Service PID: $AI_PID"
 sleep 3
 
 echo
-echo "[3/3] Setting up Frontend (NextJS)..."
+echo "[4/4] Setting up Frontend (NextJS)..."
 cd "$SCRIPT_DIR/frontend"
 
 # Install node modules if not exists
@@ -106,12 +136,14 @@ echo "==================================="
 echo "Services are starting up..."
 echo "==================================="
 echo
-echo "🌐 Frontend: http://localhost:3000"
-echo "🔧 Backend:  http://localhost:8000"
-echo "🤖 AI API:   http://localhost:5000"
+echo "🌐 Frontend:     http://localhost:3000"
+echo "🔧 Backend:      http://localhost:8000"
+echo "🤖 AI PhoGPT:    http://localhost:5000"
+echo "🎤 Whisper STT:  http://localhost:5001"
 echo
 echo "Process IDs:"
 echo "Backend:  $BACKEND_PID"
+echo "Whisper:  $WHISPER_PID"
 echo "AI:       $AI_PID"
 echo "Frontend: $FRONTEND_PID"
 echo
@@ -119,7 +151,7 @@ echo "📝 View logs: Use Ctrl+C to stop all services"
 echo "🛑 Or run: ./stop-services.sh"
 echo
 echo "Waiting for services to fully start..."
-sleep 10
+sleep 15
 
 # Check if services are running
 echo "Checking service status..."
@@ -127,6 +159,12 @@ if curl -s http://localhost:8000 >/dev/null; then
     echo "✅ Backend is running"
 else
     echo "❌ Backend failed to start"
+fi
+
+if curl -s http://localhost:5001/health >/dev/null; then
+    echo "✅ Whisper STT is running"
+else
+    echo "❌ Whisper STT failed to start"
 fi
 
 if curl -s http://localhost:5000 >/dev/null; then

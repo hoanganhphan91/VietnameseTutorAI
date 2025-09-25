@@ -26,8 +26,9 @@ kill_port() {
 }
 
 # Stop each service
-echo "Stopping services on ports 3000, 5000, 8000..."
+echo "Stopping services on ports 3000, 5000, 5001, 8000..."
 kill_port 3000 "Frontend (NextJS)"
+kill_port 5001 "Whisper STT Service"
 kill_port 5000 "AI Service (PhoGPT)" 
 kill_port 8000 "Backend (FastAPI)"
 
