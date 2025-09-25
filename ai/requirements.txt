@@ -1,17 +1,3 @@
-# AI Model và Machine Learning - Compatible versions for PhoGPT
-torch==2.0.1
-transformers==4.30.2
-huggingface_hub==0.15.1
-accelerate==0.20.3
-sentencepiece==0.1.99
-numpy==1.24.3
-einops==0.6.1
-protobuf==3.20.3
-
-# Web Framework cho AI Service  
-flask==2.3.2
+flask==2.3.3
+flask-cors==4.0.0
 requests==2.31.0
-
-# Optional: Faster inference (uncomment if needed)
-# bitsandbytes>=0.41.0
-# optimum>=1.14.0

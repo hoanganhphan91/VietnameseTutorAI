@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Mic, MicOff, Send, Volume2, VolumeX, Sparkles } from 'lucide-react'
+import { Mic, MicOff, Send, Volume2, VolumeX, Sparkles, MessageCircle, Zap, Globe } from 'lucide-react'
 
 interface Message {
   type: 'user' | 'ai'
@@ -117,16 +117,26 @@ export default function Home() {
         
         setConversation(prev => [...prev, userMessage])
         
-        // Simple AI response for testing
-        const aiResponse = `Tôi nghe bạn nói: "${data.transcription}". Tôi nhận ra giọng ${
-          data.accent_region === 'north' ? 'miền Bắc' : 
-          data.accent_region === 'central' ? 'miền Trung' : 
-          data.accent_region === 'south' ? 'miền Nam' : 'không xác định'
-        } với độ tin cậy ${Math.round(data.confidence * 100)}%.`
+        // Send transcription to AI service
+        const aiResponse = await fetch('http://localhost:5002/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: data.transcription
+          })
+        })
+        
+        const aiData = await aiResponse.json()
         
         const aiMessage: Message = {
           type: 'ai',
-          content: aiResponse,
+          content: aiData.response || `Tôi nghe bạn nói: "${data.transcription}". Giọng ${
+            data.accent_region === 'north' ? 'miền Bắc' : 
+            data.accent_region === 'central' ? 'miền Trung' : 
+            data.accent_region === 'south' ? 'miền Nam' : 'không xác định'
+          } với độ tin cậy ${Math.round(data.confidence * 100)}%.`,
           timestamp: new Date()
         }
         
@@ -134,7 +144,7 @@ export default function Home() {
         
         // Text-to-speech for AI response (if not muted)
         if (!isMuted) {
-          speakText(aiResponse)
+          speakText(aiMessage.content)
         }
       } else {
         throw new Error(data.error || 'Voice processing failed')
@@ -164,27 +174,41 @@ export default function Home() {
     setConversation(prev => [...prev, userMessage])
     
     try {
-      // Simple echo response for testing
-      const aiResponse = `Bạn đã gửi tin nhắn: "${message}". Đây là phản hồi từ AI tutor.`
+      // Call real AI service instead of hardcoded response
+      const response = await fetch('http://localhost:5002/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: message
+        })
+      })
       
-      const aiMessage: Message = {
-        type: 'ai',
-        content: aiResponse,
-        timestamp: new Date()
-      }
+      const data = await response.json()
       
-      setConversation(prev => [...prev, aiMessage])
-      
-      // Text-to-speech for AI response (if not muted)
-      if (!isMuted) {
-        speakText(aiResponse)
+      if (response.ok) {
+        const aiMessage: Message = {
+          type: 'ai',
+          content: data.response || 'Xin lỗi, tôi không hiểu được câu hỏi của bạn.',
+          timestamp: new Date()
+        }
+        
+        setConversation(prev => [...prev, aiMessage])
+        
+        // Text-to-speech for AI response (if not muted)
+        if (!isMuted) {
+          speakText(aiMessage.content)
+        }
+      } else {
+        throw new Error(data.error || 'AI service error')
       }
       
     } catch (error) {
       console.error('Error:', error)
       setConversation(prev => [...prev, {
         type: 'ai',
-        content: 'Xin lỗi, có lỗi xảy ra. Vui lòng thử lại.',
+        content: 'Xin lỗi, có lỗi xảy ra khi kết nối với AI. Vui lòng thử lại.',
         timestamp: new Date()
       }])
     }
@@ -219,93 +243,210 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      {/* Header - Apple-inspired */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-white/20 shadow-lg">
-        <div className="max-w-4xl mx-auto px-6 py-4">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-4 -right-4 w-72 h-72 bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-8 -left-8 w-96 h-96 bg-gradient-to-tr from-cyan-400/20 to-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+      </div>
+
+      {/* Premium Glass Header */}
+      <header className="sticky top-0 z-50 backdrop-blur-2xl bg-white/60 border-b border-white/30 shadow-2xl shadow-black/5">
+        <div className="max-w-5xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-600 rounded-3xl flex items-center justify-center shadow-lg">
-                <Sparkles className="w-7 h-7 text-white" />
+            <div className="flex items-center space-x-6">
+              <div className="relative">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/30 ring-4 ring-white/50">
+                  <Sparkles className="w-8 h-8 text-white animate-pulse" />
+                </div>
+                <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-lg animate-bounce">
+                  <div className="w-full h-full bg-green-400 rounded-full animate-pulse"></div>
+                </div>
               </div>
-              <div>
-                <h1 className="text-xl font-semibold text-gray-900 tracking-tight">Vietnamese AI Tutor</h1>
-                <p className="text-sm text-gray-500 font-medium">Học tiếng Việt với AI thông minh</p>
+              <div className="space-y-1">
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent tracking-tight">
+                  Vietnamese AI Tutor
+                </h1>
+                <p className="text-sm text-gray-600 font-semibold flex items-center gap-2">
+                  <Globe className="w-4 h-4 text-blue-500" />
+                  Học tiếng Việt với AI thông minh • Powered by OpenAI Whisper
+                </p>
               </div>
             </div>
-            <button
-              onClick={() => setIsMuted(!isMuted)}
-              className="p-3 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-all duration-200 hover:scale-105"
-            >
-              {isMuted ? <VolumeX className="w-5 h-5 text-gray-700" /> : <Volume2 className="w-5 h-5 text-gray-700" />}
-            </button>
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={() => setIsMuted(!isMuted)}
+                className="p-4 rounded-2xl bg-white/70 hover:bg-white/90 transition-all duration-300 hover:scale-110 shadow-xl hover:shadow-2xl ring-1 ring-white/50"
+              >
+                {isMuted ? (
+                  <VolumeX className="w-6 h-6 text-red-500" />
+                ) : (
+                  <Volume2 className="w-6 h-6 text-blue-600" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Chat Container */}
-      <main className="max-w-4xl mx-auto px-6 py-8 pb-40">
+      {/* Main Content */}
+      <main className="max-w-5xl mx-auto px-8 py-12 pb-44 relative">
         {conversation.length === 0 ? (
-          <div className="text-center py-24">
-            <div className="w-24 h-24 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-600 rounded-full mx-auto mb-8 flex items-center justify-center shadow-2xl">
-              <Sparkles className="w-12 h-12 text-white" />
-            </div>
-            <h2 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">Xin chào! 👋</h2>
-            <p className="text-gray-600 text-lg mb-8 max-w-md mx-auto leading-relaxed">
-              Tôi là trợ lý AI giúp bạn học tiếng Việt. Hãy nói chuyện với tôi!
-            </p>
-            <div className="flex justify-center space-x-6">
-              <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-white/50">
-                <Mic className="w-8 h-8 text-blue-600 mb-3 mx-auto" />
-                <p className="text-sm text-gray-700 font-medium">Nhấn giữ để nói</p>
+          <div className="text-center py-20">
+            {/* Hero Section */}
+            <div className="relative mb-12">
+              <div className="w-32 h-32 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 rounded-3xl mx-auto mb-8 flex items-center justify-center shadow-2xl shadow-blue-500/30 ring-8 ring-white/30 backdrop-blur-xl">
+                <Sparkles className="w-16 h-16 text-white animate-spin-slow" />
               </div>
-              <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-white/50">
-                <Send className="w-8 h-8 text-purple-600 mb-3 mx-auto" />
-                <p className="text-sm text-gray-700 font-medium">Gõ tin nhắn</p>
+              <div className="absolute top-8 left-1/2 -translate-x-1/2 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+            </div>
+
+            <h2 className="text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent mb-6 tracking-tight">
+              Xin chào! 👋
+            </h2>
+            <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
+              Tôi là trợ lý AI giúp bạn học tiếng Việt với công nghệ nhận diện giọng nói hiện đại. 
+              <br className="hidden sm:block" />
+              Hãy bắt đầu cuộc trò chuyện!
+            </p>
+
+            {/* Feature Cards */}
+            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
+              <div className="group bg-white/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 border border-white/50 hover:border-blue-200/50">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mb-6 mx-auto flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+                  <Mic className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Voice Recognition</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Nhấn giữ nút mic để ghi âm và nhận diện giọng nói các miền
+                </p>
+              </div>
+
+              <div className="group bg-white/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 border border-white/50 hover:border-purple-200/50">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl mb-6 mx-auto flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+                  <MessageCircle className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Smart Chat</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Trò chuyện thông minh với AI để luyện tập tiếng Việt
+                </p>
+              </div>
+
+              <div className="group bg-white/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 border border-white/50 hover:border-indigo-200/50">
+                <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl mb-6 mx-auto flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+                  <Zap className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Accent Detection</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Tự động nhận diện giọng Bắc, Trung, Nam với độ chính xác cao
+                </p>
+              </div>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="flex justify-center items-center gap-6">
+              <div className="bg-blue-50 rounded-2xl px-6 py-3 border border-blue-200/50">
+                <span className="text-blue-700 font-semibold text-sm">🎤 Nhấn giữ để nói</span>
+              </div>
+              <div className="bg-purple-50 rounded-2xl px-6 py-3 border border-purple-200/50">
+                <span className="text-purple-700 font-semibold text-sm">⌨️ Hoặc gõ tin nhắn</span>
               </div>
             </div>
           </div>
         ) : (
-          <div className="space-y-6">
+          <div className="space-y-8">
             {conversation.map((msg, index) => (
-              <div key={index} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-sm sm:max-w-md ${
+              <div key={index} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in-up`}>
+                <div className={`relative max-w-lg ${
                   msg.type === 'user' 
-                    ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-[28px] rounded-br-[12px] shadow-lg' 
-                    : 'bg-white/95 backdrop-blur-sm text-gray-800 rounded-[28px] rounded-bl-[12px] shadow-xl border border-white/50'
-                } px-6 py-4`}>
-                  <p className="text-sm leading-relaxed font-medium">{msg.content}</p>
+                    ? 'bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 text-white shadow-2xl shadow-blue-500/25' 
+                    : 'bg-white/95 backdrop-blur-xl text-gray-800 shadow-2xl shadow-black/10 border border-white/50'
+                } rounded-3xl ${msg.type === 'user' ? 'rounded-br-lg' : 'rounded-bl-lg'} px-8 py-6 transform hover:scale-[1.02] transition-all duration-300`}>
                   
-                  {/* Accent Detection Results - Apple style */}
+                  {/* Message Avatar */}
+                  <div className={`absolute -top-3 ${msg.type === 'user' ? '-right-3' : '-left-3'} w-8 h-8 rounded-full ${
+                    msg.type === 'user' 
+                      ? 'bg-gradient-to-br from-blue-400 to-purple-500 ring-4 ring-white shadow-lg' 
+                      : 'bg-gradient-to-br from-emerald-400 to-cyan-500 ring-4 ring-white shadow-lg'
+                  } flex items-center justify-center`}>
+                    {msg.type === 'user' ? (
+                      <span className="text-white text-xs font-bold">👤</span>
+                    ) : (
+                      <Sparkles className="w-4 h-4 text-white animate-pulse" />
+                    )}
+                  </div>
+
+                  <div className={`${msg.type === 'user' ? 'text-white' : 'text-gray-800'}`}>
+                    <p className="text-base leading-relaxed font-medium mb-2">{msg.content}</p>
+                  </div>
+                  
+                  {/* Enhanced Accent Detection Results */}
                   {msg.accent && msg.confidence && (
-                    <div className="mt-4 pt-4 border-t border-blue-300/40">
-                      <div className="flex items-center justify-between text-xs">
-                        <span className="text-blue-100 font-medium">{getAccentFlag(msg.accent)}</span>
-                        <span className="text-blue-100 font-medium">Độ tin cậy: {Math.round(msg.confidence * 100)}%</span>
+                    <div className={`mt-6 pt-4 border-t ${msg.type === 'user' ? 'border-white/20' : 'border-gray-200/50'}`}>
+                      <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-4 py-3">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                            <span className={`text-sm font-bold ${msg.type === 'user' ? 'text-white/90' : 'text-gray-600'}`}>
+                              Accent Detected
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-sm">
+                          <span className={`font-semibold ${msg.type === 'user' ? 'text-white' : 'text-gray-700'}`}>
+                            {getAccentFlag(msg.accent)}
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <div className={`w-12 h-2 bg-white/20 rounded-full overflow-hidden`}>
+                              <div 
+                                className={`h-full bg-gradient-to-r ${msg.confidence > 0.8 ? 'from-emerald-400 to-green-500' : msg.confidence > 0.6 ? 'from-yellow-400 to-orange-500' : 'from-red-400 to-red-500'} transition-all duration-1000`}
+                                style={{ width: `${Math.round(msg.confidence * 100)}%` }}
+                              ></div>
+                            </div>
+                            <span className={`text-xs font-bold ${msg.type === 'user' ? 'text-white' : 'text-gray-600'}`}>
+                              {Math.round(msg.confidence * 100)}%
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )}
                   
-                  <p className="text-xs mt-3 opacity-70 font-medium">
-                    {msg.timestamp.toLocaleTimeString('vi-VN', { 
-                      hour: '2-digit', 
-                      minute: '2-digit' 
-                    })}
-                  </p>
+                  <div className="flex items-center justify-between mt-4 pt-2">
+                    <p className={`text-xs font-medium ${msg.type === 'user' ? 'text-white/70' : 'text-gray-500'}`}>
+                      {msg.timestamp.toLocaleTimeString('vi-VN', { 
+                        hour: '2-digit', 
+                        minute: '2-digit' 
+                      })}
+                    </p>
+                    {msg.type === 'ai' && (
+                      <div className="flex items-center gap-1">
+                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping"></div>
+                        <span className="text-xs text-emerald-600 font-semibold">AI</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
             
             {loading && (
-              <div className="flex justify-start">
-                <div className="bg-white/95 backdrop-blur-sm rounded-[28px] rounded-bl-[12px] shadow-xl border border-white/50 px-6 py-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+              <div className="flex justify-start animate-fade-in">
+                <div className="bg-white/95 backdrop-blur-xl rounded-3xl rounded-bl-lg shadow-2xl shadow-black/10 border border-white/50 px-8 py-6 max-w-xs">
+                  <div className="flex items-center space-x-4">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce"></div>
+                      <div className="w-3 h-3 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-3 h-3 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
-                    <span className="text-sm text-gray-600 font-medium">AI đang suy nghĩ...</span>
+                    <div className="text-gray-600">
+                      <p className="text-sm font-semibold">AI đang suy nghĩ</p>
+                      <div className="text-xs text-gray-500 flex items-center gap-1 mt-1">
+                        <Sparkles className="w-3 h-3 animate-spin" />
+                        <span>Đang xử lý...</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

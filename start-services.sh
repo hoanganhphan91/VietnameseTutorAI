@@ -13,6 +13,7 @@ echo "Stopping any existing services..."
 lsof -ti:3000 | xargs kill -9 2>/dev/null || true
 lsof -ti:5000 | xargs kill -9 2>/dev/null || true  
 lsof -ti:5001 | xargs kill -9 2>/dev/null || true
+lsof -ti:5002 | xargs kill -9 2>/dev/null || true
 lsof -ti:8000 | xargs kill -9 2>/dev/null || true
 sleep 2
 
@@ -42,7 +43,7 @@ fi
 echo "Creating backend environment configuration..."
 cat > .env << EOF
 DATABASE_URL=sqlite:///./vietnamese_tutor.db
-AI_SERVICE_URL=http://localhost:5000
+AI_SERVICE_URL=http://localhost:5002
 REDIS_URL=redis://localhost:6379
 EOF
 
@@ -97,16 +98,16 @@ fi
 source venv/bin/activate
 echo "Installing AI dependencies..."
 pip install --upgrade pip
-pip install flask requests
+pip install flask flask-cors requests
 
-# Create models directory
-mkdir -p "$SCRIPT_DIR/models"
+# Create models directory (not needed for rule-based AI)
+# mkdir -p "$SCRIPT_DIR/models"
 
-# Start PhoGPT AI service in background
-echo "Starting PhoGPT AI service on port 5000..."
-nohup python phogpt_direct.py > ai.log 2>&1 &
+# Start AI service in background
+echo "Starting Vietnamese AI Tutor service on port 5002..."
+nohup python app.py > ai.log 2>&1 &
 AI_PID=$!
-echo "PhoGPT Service PID: $AI_PID"
+echo "AI Service PID: $AI_PID"
 sleep 3
 
 echo
@@ -123,7 +124,7 @@ fi
 echo "Creating environment configuration..."
 cat > .env.local << EOF
 NEXT_PUBLIC_API_URL=http://localhost:8000
-NEXT_PUBLIC_AI_URL=http://localhost:5000
+NEXT_PUBLIC_AI_URL=http://localhost:5002
 EOF
 
 # Start frontend in background
@@ -139,7 +140,7 @@ echo "==================================="
 echo
 echo "🌐 Frontend:     http://localhost:3000"
 echo "🔧 Backend:      http://localhost:8000"
-echo "🤖 AI PhoGPT:    http://localhost:5000"
+echo "🤖 AI Service:   http://localhost:5002"
 echo "🎤 Whisper STT:  http://localhost:5001"
 echo
 echo "Process IDs:"
@@ -168,7 +169,7 @@ else
     echo "❌ Whisper STT failed to start"
 fi
 
-if curl -s http://localhost:5000 >/dev/null; then
+if curl -s http://localhost:5002 >/dev/null; then
     echo "✅ AI Service is running"
 else
     echo "❌ AI Service failed to start"
@@ -189,8 +190,8 @@ cleanup() {
     echo "Stopping all services..."
     kill $BACKEND_PID $WHISPER_PID $AI_PID $FRONTEND_PID 2>/dev/null
     lsof -ti:3000 | xargs kill -9 2>/dev/null || true
-    lsof -ti:5000 | xargs kill -9 2>/dev/null || true  
-    lsof -ti:5001 | xargs kill -9 2>/dev/null || true
+    lsof -ti:5001 | xargs kill -9 2>/dev/null || true  
+    lsof -ti:5002 | xargs kill -9 2>/dev/null || true
     lsof -ti:8000 | xargs kill -9 2>/dev/null || true
     echo "All services stopped."
     exit 0
