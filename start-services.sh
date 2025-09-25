@@ -12,6 +12,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "Stopping any existing services..."
 lsof -ti:3000 | xargs kill -9 2>/dev/null || true
 lsof -ti:5000 | xargs kill -9 2>/dev/null || true  
+lsof -ti:5001 | xargs kill -9 2>/dev/null || true
 lsof -ti:8000 | xargs kill -9 2>/dev/null || true
 sleep 2
 
@@ -75,9 +76,9 @@ fi
 
 pip install -r requirements.txt
 
-# Start Whisper STT service in background
+# Start Whisper STT service in background using the working app_simple.py
 echo "Starting Whisper STT service on port 5001..."
-nohup python app.py > whisper.log 2>&1 &
+nohup python app_simple.py > whisper.log 2>&1 &
 WHISPER_PID=$!
 echo "Whisper Service PID: $WHISPER_PID"
 sleep 5
@@ -186,7 +187,11 @@ echo "Press Ctrl+C to stop all services..."
 cleanup() {
     echo
     echo "Stopping all services..."
-    kill $BACKEND_PID $AI_PID $FRONTEND_PID 2>/dev/null
+    kill $BACKEND_PID $WHISPER_PID $AI_PID $FRONTEND_PID 2>/dev/null
+    lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+    lsof -ti:5000 | xargs kill -9 2>/dev/null || true  
+    lsof -ti:5001 | xargs kill -9 2>/dev/null || true
+    lsof -ti:8000 | xargs kill -9 2>/dev/null || true
     echo "All services stopped."
     exit 0
 }
