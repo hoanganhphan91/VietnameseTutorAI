@@ -215,12 +215,7 @@ export default function Home() {
             <div
               style={{ display: "flex", alignItems: "center", marginBottom: 4 }}
             >
-              <Image
-                src="/tvo_logo.webp"
-                width={50}
-                alt="Logo"
-                style={{ marginRight: 12 }}
-              />
+              <Image src="/tvo_logo.webp" width={50} height={40} alt="Logo" />
               <Title
                 level={3}
                 style={{ color: "#fff", margin: 0 }}
