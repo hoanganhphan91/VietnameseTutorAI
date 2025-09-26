@@ -5,6 +5,9 @@ import logging
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
+# Force CPU to avoid issues
+os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -12,94 +15,69 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 CORS(app)
 
-# Vietnamese GPT model - pure AI generation, no rules
-MODEL_NAME = "NlpHUST/gpt2-vietnamese"
+# Simple reliable model
+MODEL_NAME = "microsoft/DialoGPT-small"  # Smaller, more stable
 CACHE_DIR = "./.cache"
 
-print("[AI] Loading Vietnamese model...")
-try:
-    tokenizer = AutoTokenizer.from_pretrained(
-        MODEL_NAME,
-        cache_dir=CACHE_DIR
-    )
-    model = AutoModelForCausalLM.from_pretrained(
-        MODEL_NAME,
-        cache_dir=CACHE_DIR,
-        torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32
-    )
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-    print(f"[AI] Model {MODEL_NAME} loaded successfully!")
-except Exception as e:
-    print(f"[AI] Error loading Vietnamese model: {e}")
-    # Fallback to standard GPT2
-    MODEL_NAME = "gpt2"
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR)
-    model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR)
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-    print(f"[AI] Fallback to {MODEL_NAME}")
+print("[AI] Loading DialoGPT-small...")
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR)
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR)
 
-def pure_ai_generate(user_input):
-    """Pure AI generation without any rule-based logic"""
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
+
+print("[AI] Model loaded!")
+
+def simple_generate(user_input):
+    """Simple AI generation - no tricks, just let the model talk"""
     try:
-        print(f"[AI DEBUG] Input: {user_input}")
+        print(f"[DEBUG] Input: '{user_input}'")
         
-        # Simple and natural teacher prompt
-        teacher_prompt = f"Là giáo viên dạy tiếng Việt cho người nước ngoài, tôi giải thích về '{user_input}': "
+        # Encode user input
+        inputs = tokenizer.encode(user_input + tokenizer.eos_token, return_tensors="pt")
         
-        inputs = tokenizer(teacher_prompt, return_tensors="pt", padding=True, truncation=True, max_length=400)
-        
-        print(f"[AI DEBUG] Input shape: {inputs['input_ids'].shape}")
-        
+        # Generate response 
         with torch.no_grad():
             outputs = model.generate(
-                input_ids=inputs["input_ids"],
-                attention_mask=inputs["attention_mask"],
-                max_new_tokens=100,
+                inputs,
+                max_length=inputs.shape[1] + 50,  # Add 50 tokens max
                 do_sample=True,
                 top_p=0.9,
                 temperature=0.8,
-                repetition_penalty=1.2,
-                no_repeat_ngram_size=3,
-                pad_token_id=tokenizer.eos_token_id
+                pad_token_id=tokenizer.eos_token_id,
+                eos_token_id=tokenizer.eos_token_id
             )
         
-        # Decode full response
+        # Decode and extract new part
         full_response = tokenizer.decode(outputs[0], skip_special_tokens=True)
-        print(f"[AI DEBUG] Full response: {repr(full_response)}")
         
-        # Extract the generated explanation (after the prompt)
-        if teacher_prompt in full_response:
-            generated = full_response.replace(teacher_prompt, "").strip()
+        # Get only the new generated part
+        if full_response.startswith(user_input):
+            response = full_response[len(user_input):].strip()
         else:
-            generated = full_response.strip()
+            response = full_response
+            
+        print(f"[DEBUG] Generated: '{response}'")
         
-        print(f"[AI DEBUG] Generated part: {repr(generated)}")
-        
-        # If nothing generated or too short, return a fallback teacher response
-        if not generated or len(generated) < 5:
-            return f"Như một giáo viên tiếng Việt, tôi có thể giải thích rằng: {full_response}"
-        
-        return generated
+        if not response or len(response) < 3:
+            return f"Tôi hiểu bạn nói về '{user_input}'. Đây là chủ đề thú vị!"
+            
+        return response
         
     except Exception as e:
-        print(f"[AI DEBUG] Generation failed: {e}")
-        return f"AI Error: {str(e)}"
+        print(f"[ERROR] Generation failed: {e}")
+        return f"Về '{user_input}': Xin lỗi, tôi gặp lỗi khi xử lý câu hỏi này."
 
 @app.route('/', methods=['GET'])
 def health_check():
-    """Health check endpoint"""
     return jsonify({
-        "status": "running",
-        "service": "Pure AI Vietnamese Tutor",
-        "model": MODEL_NAME,
-        "version": "4.0-pure-ai"
+        "status": "running", 
+        "service": "Simple AI Tutor",
+        "model": MODEL_NAME
     })
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    """Pure AI chat endpoint - no rule-based responses"""
     try:
         data = request.get_json()
         if not data or 'message' not in data:
@@ -111,26 +89,21 @@ def chat():
         
         logger.info(f"User: {user_message}")
         
-        # Pure AI generation
-        ai_response = pure_ai_generate(user_message)
+        # Simple AI generation
+        ai_response = simple_generate(user_message)
         
         logger.info(f"AI: {ai_response}")
         
         return jsonify({
             "response": ai_response,
             "model": MODEL_NAME,
-            "response_type": "pure_ai_generation"
+            "response_type": "simple_ai"
         })
         
     except Exception as e:
-        logger.error(f"Error in chat endpoint: {str(e)}")
+        logger.error(f"Error: {str(e)}")
         return jsonify({"error": "Internal server error"}), 500
 
-@app.route('/health', methods=['GET'])
-def health():
-    """Health endpoint for service monitoring"""
-    return jsonify({"status": "healthy", "service": "Pure AI Vietnamese Tutor"})
-
 if __name__ == '__main__':
-    logger.info("Starting Pure AI Vietnamese Tutor Service...")
+    logger.info("Starting Simple AI Service...")
     app.run(host='0.0.0.0', port=5002, debug=False)
