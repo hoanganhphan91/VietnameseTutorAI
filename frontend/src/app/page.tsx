@@ -25,6 +25,7 @@ import {
   Globe,
 } from "lucide-react";
 import Image from "next/image";
+import { relative } from "path";
 
 const { Header, Content, Footer } = Layout;
 const { Title, Paragraph, Text } = Typography;
@@ -524,11 +525,17 @@ export default function Home() {
                   className="glass-button"
                   type="primary"
                   shape="circle"
-                  icon={<Send />}
+                  icon={
+                    <Send
+                      size={15}
+                      style={{ position: "relative", left: "-2px" }}
+                    />
+                  }
                   style={{
                     background: "rgba(152, 27, 41, 0.8)",
                     border: "1px solid rgba(249, 249, 249, 0.3)",
                     color: "#f9f9f9",
+                    height: "32.2px",
                   }}
                 />
               }
