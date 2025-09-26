@@ -1,4 +1,72 @@
-from flask import Flask, request, jsonify
+#!/usr/bin/env python3
+"""
+Simple approach: Just update the Flask app to use our data as context
+No training needed - use the existing model with our conversation examples
+"""
+
+import json
+import random
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+
+def load_teacher_examples():
+    """Load our teacher examples as context"""
+    examples = []
+    
+    with open('premium_teacher_data.txt', 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        
+        if line.startswith('Học viên:'):
+            student = line.replace('Học viên:', '').strip()
+            
+            i += 1
+            if i < len(lines) and lines[i].strip().startswith('Giáo viên:'):
+                teacher = lines[i].strip().replace('Giáo viên:', '').strip()
+                
+                if student and teacher:
+                    examples.append({
+                        'student': student,
+                        'teacher': teacher
+                    })
+        
+        i += 1
+    
+    return examples
+
+def find_similar_example(user_input, examples):
+    """Find most relevant example based on keywords"""
+    user_lower = user_input.lower()
+    
+    # Simple keyword matching
+    keywords = {
+        'xin chào': ['xin chào', 'chào', 'hello'],
+        'phát âm': ['phát âm', 'thanh điệu', 'âm'],
+        'từ vựng': ['từ vựng', 'vocabulary', 'từ'],
+        'xưng hô': ['anh', 'chị', 'em', 'xưng hô'],
+        'động từ': ['động từ', 'verb', 'chia động từ'],
+        'văn hóa': ['văn hóa', 'culture', 'truyền thống'],
+        'đọc sách': ['đọc', 'sách', 'reading'],
+        'nói': ['nói', 'speaking', 'ngại ngùng']
+    }
+    
+    for category, words in keywords.items():
+        if any(word in user_lower for word in words):
+            # Find examples related to this category
+            relevant = [ex for ex in examples if any(word in ex['student'].lower() for word in words)]
+            if relevant:
+                return random.choice(relevant)['teacher']
+    
+    # If no specific match, return a general response
+    return random.choice(examples)['teacher'] if examples else "Cô hiểu rồi. Hãy nói rõ hơn về điều em muốn học nhé!"
+
+def create_smart_app():
+    """Create updated app.py with context-aware responses"""
+    
+    app_code = '''from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
 import logging
@@ -133,3 +201,47 @@ def health():
 if __name__ == '__main__':
     logger.info("Starting Smart Vietnamese Tutor Service...")
     app.run(host='0.0.0.0', port=5002, debug=False)
+'''
+    
+    with open('app_smart.py', 'w', encoding='utf-8') as f:
+        f.write(app_code)
+    
+    print("✅ Created smart app with contextual responses")
+
+def test_smart_responses():
+    """Test the smart response system"""
+    examples = load_teacher_examples()
+    print(f"Loaded {len(examples)} examples")
+    
+    test_inputs = [
+        "Xin chào cô",
+        "Em muốn học phát âm",
+        "Làm sao để nhớ từ vựng",
+        "Khi nào dùng anh chị em",
+        "Tôi muốn hiểu văn hóa Việt Nam"
+    ]
+    
+    for inp in test_inputs:
+        response = find_similar_example(inp, examples)
+        print(f"\\nInput: {inp}")
+        print(f"Response: {response}")
+
+if __name__ == "__main__":
+    print("🎓 Creating Smart Vietnamese Teacher (No Training Required)")
+    
+    # Load and test examples
+    examples = load_teacher_examples()
+    print(f"Loaded {len(examples)} conversation examples")
+    
+    if examples:
+        print("\\n🧪 Testing smart responses...")
+        test_smart_responses()
+        
+        print("\\n💡 Creating smart Flask app...")
+        create_smart_app()
+        
+        print("\\n✅ Done! Now you can:")
+        print("1. Run: python3 app_smart.py")
+        print("2. Test the smart responses without any training!")
+    else:
+        print("❌ No examples loaded")
