@@ -153,7 +153,7 @@ echo "📝 View logs: Use Ctrl+C to stop all services"
 echo "🛑 Or run: ./stop-services.sh"
 echo
 echo "Waiting for services to fully start..."
-sleep 15
+sleep 120
 
 # Check if services are running
 echo "Checking service status..."
