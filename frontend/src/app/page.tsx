@@ -1,3 +1,4 @@
+// page.tsx
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -201,7 +202,7 @@ export default function Home() {
       <Header
         className="glass-header"
         style={{
-          background: "rgba(255, 255, 255, 0.15)",
+          background: "rgba(152, 27, 41, 0.9)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
           borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
@@ -215,10 +216,16 @@ export default function Home() {
             <div
               style={{ display: "flex", alignItems: "center", marginBottom: 4 }}
             >
-              <Image src="/tvo_logo.webp" width={50} height={40} alt="Logo" />
+              <Image
+                src="/logo-tvo.webp"
+                width={50}
+                height={40}
+                alt="Logo"
+                style={{ marginRight: 12 }}
+              />
               <Title
                 level={3}
-                style={{ color: "#fff", margin: 0 }}
+                style={{ color: "#f9f9f9", margin: 0 }}
                 className="text-glow"
               >
                 Vietnamese AI Tutor
@@ -236,10 +243,10 @@ export default function Home() {
               icon={isMuted ? <VolumeX /> : <Volume2 />}
               style={{
                 background: isMuted
-                  ? "rgba(255, 77, 79, 0.8)"
-                  : "rgba(255, 255, 255, 0.2)",
-                border: "1px solid rgba(255, 255, 255, 0.3)",
-                color: "#fff",
+                  ? "rgba(152, 27, 41, 0.8)"
+                  : "rgba(249, 249, 249, 0.2)",
+                border: "1px solid rgba(249, 249, 249, 0.3)",
+                color: "#f9f9f9",
               }}
             />
           </Col>
@@ -256,11 +263,11 @@ export default function Home() {
               style={{ textAlign: "center", marginTop: 80 }}
               className="fade-in"
             >
-              <Title style={{ color: "#fff" }} className="text-glow">
+              <Title style={{ color: "#f9f9f9" }} className="text-glow">
                 Xin chào! 👋
               </Title>
               <Paragraph
-                style={{ color: "rgba(255, 255, 255, 0.9)" }}
+                style={{ color: "rgba(249, 249, 249, 0.9)" }}
                 className="text-glow"
               >
                 Tôi là trợ lý AI giúp bạn học tiếng Việt. Hãy bắt đầu trò
@@ -275,20 +282,20 @@ export default function Home() {
                   style={{
                     textAlign: "center",
                     borderRadius: 16,
-                    background: "rgba(255, 255, 255, 0.15)",
-                    border: "1px solid rgba(255, 255, 255, 0.2)",
-                    color: "#fff",
+                    background: "rgba(94, 94, 94, 0.15)",
+                    border: "1px solid rgba(249, 249, 249, 0.2)",
+                    color: "#f9f9f9",
                   }}
                 >
-                  <Mic size={36} color="#fff" className="float-animation" />
+                  <Mic size={36} color="#f9f9f9" className="float-animation" />
                   <Title
                     level={5}
-                    style={{ marginTop: 12, color: "#fff" }}
+                    style={{ marginTop: 12, color: "#f9f9f9" }}
                     className="text-glow"
                   >
                     Voice Recognition
                   </Title>
-                  <Text style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                  <Text style={{ color: "rgba(249, 249, 249, 0.8)" }}>
                     Nhấn giữ mic để ghi âm và nhận diện giọng.
                   </Text>
                 </Card>
@@ -300,25 +307,25 @@ export default function Home() {
                   style={{
                     textAlign: "center",
                     borderRadius: 16,
-                    background: "rgba(255, 255, 255, 0.15)",
-                    border: "1px solid rgba(255, 255, 255, 0.2)",
-                    color: "#fff",
+                    background: "rgba(94, 94, 94, 0.15)",
+                    border: "1px solid rgba(249, 249, 249, 0.2)",
+                    color: "#f9f9f9",
                   }}
                 >
                   <MessageCircle
                     size={36}
-                    color="#fff"
+                    color="#f9f9f9"
                     className="float-animation"
                     style={{ animationDelay: "0.2s" }}
                   />
                   <Title
                     level={5}
-                    style={{ marginTop: 12, color: "#fff" }}
+                    style={{ marginTop: 12, color: "#f9f9f9" }}
                     className="text-glow"
                   >
                     Smart Chat
                   </Title>
-                  <Text style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                  <Text style={{ color: "rgba(249, 249, 249, 0.8)" }}>
                     Trò chuyện thông minh với AI.
                   </Text>
                 </Card>
@@ -330,25 +337,25 @@ export default function Home() {
                   style={{
                     textAlign: "center",
                     borderRadius: 16,
-                    background: "rgba(255, 255, 255, 0.15)",
-                    border: "1px solid rgba(255, 255, 255, 0.2)",
-                    color: "#fff",
+                    background: "rgba(94, 94, 94, 0.15)",
+                    border: "1px solid rgba(249, 249, 249, 0.2)",
+                    color: "#f9f9f9",
                   }}
                 >
                   <Zap
                     size={36}
-                    color="#fff"
+                    color="#f9f9f9"
                     className="float-animation"
                     style={{ animationDelay: "0.4s" }}
                   />
                   <Title
                     level={5}
-                    style={{ marginTop: 12, color: "#fff" }}
+                    style={{ marginTop: 12, color: "#f9f9f9" }}
                     className="text-glow"
                   >
                     Accent Detection
                   </Title>
-                  <Text style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                  <Text style={{ color: "rgba(249, 249, 249, 0.8)" }}>
                     Tự động nhận diện giọng Bắc, Trung, Nam.
                   </Text>
                 </Card>
@@ -361,9 +368,9 @@ export default function Home() {
             style={{
               borderRadius: 20,
               padding: 24,
-              background: "rgba(255, 255, 255, 0.15)",
+              background: "rgba(94, 94, 94, 0.15)",
               backdropFilter: "blur(20px)",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
+              border: "1px solid rgba(249, 249, 249, 0.2)",
               maxHeight: "60vh",
               overflowY: "auto",
             }}
@@ -383,7 +390,7 @@ export default function Home() {
                 {msg.type === "ai" && (
                   <Avatar
                     style={{
-                      backgroundColor: "rgba(22, 119, 255, 0.8)",
+                      backgroundColor: "rgba(152, 27, 41, 0.8)",
                       marginRight: 12,
                       backdropFilter: "blur(10px)",
                     }}
@@ -397,10 +404,10 @@ export default function Home() {
                     borderRadius: 20,
                     background:
                       msg.type === "user"
-                        ? "linear-gradient(135deg, rgba(22, 119, 255, 0.8), rgba(105, 192, 255, 0.8))"
-                        : "rgba(255, 255, 255, 0.25)",
-                    color: msg.type === "user" ? "#fff" : "#fff",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                        ? "linear-gradient(135deg, rgba(152, 27, 41, 0.8), rgba(180, 60, 75, 0.8))"
+                        : "rgba(94, 94, 94, 0.25)",
+                    color: "#f9f9f9",
+                    border: "1px solid rgba(249, 249, 249, 0.3)",
                     backdropFilter: "blur(10px)",
                     boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
                   }}
@@ -412,10 +419,7 @@ export default function Home() {
                   <Text
                     style={{
                       fontSize: 11,
-                      color:
-                        msg.type === "user"
-                          ? "rgba(255, 255, 255, 0.7)"
-                          : "rgba(255, 255, 255, 0.6)",
+                      color: "rgba(249, 249, 249, 0.7)",
                     }}
                   >
                     {msg.timestamp.toLocaleTimeString("vi-VN", {
@@ -427,7 +431,7 @@ export default function Home() {
                 {msg.type === "user" && (
                   <Avatar
                     style={{
-                      backgroundColor: "rgba(82, 196, 26, 0.8)",
+                      backgroundColor: "rgba(94, 94, 94, 0.8)",
                       marginLeft: 12,
                       backdropFilter: "blur(10px)",
                     }}
@@ -468,9 +472,9 @@ export default function Home() {
             showIcon
             style={{
               marginBottom: 12,
-              background: "rgba(255, 229, 143, 0.2)",
-              border: "1px solid rgba(255, 215, 0, 0.3)",
-              color: "#fff",
+              background: "rgba(152, 27, 41, 0.2)",
+              border: "1px solid rgba(152, 27, 41, 0.3)",
+              color: "#f9f9f9",
               borderRadius: 12,
             }}
           />
@@ -480,11 +484,11 @@ export default function Home() {
           align="middle"
           className="glass-effect"
           style={{
-            background: "rgba(255, 255, 255, 0.15)",
+            background: "rgba(94, 94, 94, 0.15)",
             borderRadius: 24,
             padding: "8px 16px",
             backdropFilter: "blur(20px)",
-            border: "1px solid rgba(255, 255, 255, 0.2)",
+            border: "1px solid rgba(249, 249, 249, 0.2)",
             boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
           }}
         >
@@ -502,10 +506,10 @@ export default function Home() {
               disabled={loading}
               style={{
                 background: isRecording
-                  ? "rgba(255, 77, 79, 0.8)"
-                  : "rgba(255, 255, 255, 0.2)",
-                border: "1px solid rgba(255, 255, 255, 0.3)",
-                color: "#fff",
+                  ? "rgba(152, 27, 41, 0.8)"
+                  : "rgba(249, 249, 249, 0.2)",
+                border: "1px solid rgba(249, 249, 249, 0.3)",
+                color: "#f9f9f9",
               }}
             />
           </Col>
@@ -519,11 +523,12 @@ export default function Home() {
                 <Button
                   className="glass-button"
                   type="primary"
+                  shape="circle"
                   icon={<Send />}
                   style={{
-                    background: "rgba(22, 119, 255, 0.8)",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
-                    color: "#fff",
+                    background: "rgba(152, 27, 41, 0.8)",
+                    border: "1px solid rgba(249, 249, 249, 0.3)",
+                    color: "#f9f9f9",
                   }}
                 />
               }
@@ -531,6 +536,8 @@ export default function Home() {
               disabled={loading || isRecording}
               style={{
                 borderRadius: 20,
+                borderTopRightRadius: 0,
+                borderBottomRightRadius: 0,
               }}
             />
           </Col>
