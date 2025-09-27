@@ -116,3 +116,20 @@ htmlcov/
 # Backup files
 *.bak
 *.backup
+
+# Loại trừ thư mục model đã train
+/vietnamese_teacher_trained/
+# Loại trừ cache của transformers
+__pycache__/
+*.pyc
+.cache/
+# Loại trừ checkpoint, log, output
+checkpoint/
+*.ckpt
+*.log
+*.out
+*.tmp
+# Loại trừ các file lớn, dữ liệu train tạm
+*.pt
+*.bin
+*.h5
