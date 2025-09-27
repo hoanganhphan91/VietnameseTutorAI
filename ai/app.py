@@ -74,9 +74,9 @@ class VietnameseTeacherAI:
             with torch.no_grad():
                 outputs = self.model.generate(
                     inputs,
-                    max_length=inputs.size(1) + 150,
-                    num_return_sequences=1,
-                    temperature=0.7,
+                    max_new_tokens=64,
+                    temperature=0.8,
+                    repetition_penalty=1.2,
                     pad_token_id=self.tokenizer.eos_token_id,
                     do_sample=True,
                     top_p=0.9

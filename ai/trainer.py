@@ -56,7 +56,7 @@ class VietnameseTeacherTrainer:
         print(f"✅ Tokenizer vocab size: {len(self.tokenizer):,}")
         
     def parse_conversations(self, data_file="premium_teacher_data.txt"):
-        """Parse Vietnamese teacher conversations from data file"""
+        """FIXED: Parse Vietnamese teacher conversations with better format"""
         print(f"📖 Parsing conversations from {data_file}...")
         
         conversations = []
@@ -65,35 +65,46 @@ class VietnameseTeacherTrainer:
             with open(data_file, 'r', encoding='utf-8') as f:
                 content = f.read().strip()
             
-            # Split by double newlines to get conversation pairs
-            pairs = content.split('\n\n')
+            # Parse line by line để chính xác hơn
+            lines = content.split('\n')
+            i = 0
             
-            for pair in pairs:
-                if not pair.strip():
-                    continue
+            while i < len(lines):
+                line = lines[i].strip()
+                
+                # Tìm câu hỏi của học sinh
+                if line.startswith('Học viên:') or line.startswith('Học sinh:'):
+                    student_question = line.split(':', 1)[1].strip()
                     
-                lines = [line.strip() for line in pair.strip().split('\n') if line.strip()]
-                
-                # Look for student-teacher pairs
-                student_line = None
-                teacher_line = None
-                
-                for line in lines:
-                    if line.startswith('Học viên:') or line.startswith('Học sinh:'):
-                        student_line = line.split(':', 1)[1].strip()
-                    elif line.startswith('Giáo viên:'):
-                        teacher_line = line.split(':', 1)[1].strip()
-                
-                # If we have both student and teacher lines, add the conversation
-                if student_line and teacher_line:
-                    conversation_text = f"<|startoftext|>Học sinh: {student_line}\nGiáo viên: {teacher_line}<|endoftext|>"
-                    conversations.append(conversation_text)
-                    
-                    # Debug: Print first few conversations
-                    if len(conversations) <= 3:
-                        print(f"Sample {len(conversations)}: {conversation_text[:100]}...")
+                    # Tìm câu trả lời của giáo viên ở dòng tiếp theo
+                    if i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        if next_line.startswith('Giáo viên:'):
+                            teacher_answer = next_line.split(':', 1)[1].strip()
+                            
+                            if student_question and teacher_answer:
+                                # Format conversation ĐÚNG cho GPT-2 Vietnamese
+                                conversation_text = f"Học sinh: {student_question}\\nGiáo viên: {teacher_answer}"
+                                conversations.append(conversation_text)
+                                
+                                # Debug: Show sample
+                                if len(conversations) <= 3:
+                                    print(f"✅ Conversation {len(conversations)}: {student_question[:50]}... → {teacher_answer[:50]}...")
+                            
+                            i += 2  # Skip cả 2 dòng
+                        else:
+                            i += 1
+                    else:
+                        i += 1
+                else:
+                    i += 1
             
-            print(f"✅ Parsed {len(conversations)} conversations")
+            print(f"✅ Successfully parsed {len(conversations)} high-quality conversations")
+            
+            # Show final sample
+            if conversations:
+                print(f"Final format sample: {conversations[0][:100]}...")
+            
             return conversations
             
         except Exception as e:
@@ -101,35 +112,38 @@ class VietnameseTeacherTrainer:
             return []
     
     def prepare_dataset(self, conversations):
-        """Prepare dataset with proper tokenization"""
-        print("🔧 Preparing dataset...")
+        """Prepare dataset with FIXED tokenization"""
+        print("🔧 Preparing dataset with PROPER tokenization...")
         
         def tokenize_function(examples):
-            # Tokenize each conversation
+            # Tokenize với attention mask và padding đúng
             tokenized = self.tokenizer(
                 examples['text'],
                 truncation=True,
-                max_length=512,
-                padding='max_length',
-                return_tensors='pt'
+                max_length=256,
+                padding='max_length',  # QUAN TRỌNG: padding để mọi sample cùng chiều dài
+                return_attention_mask=True,
+                add_special_tokens=False
             )
-            
-            # For causal language modeling, labels = input_ids
-            tokenized['labels'] = tokenized['input_ids'].clone()
-            
+            # labels phải là tensor cùng chiều dài với input_ids
+            tokenized['labels'] = tokenized['input_ids']
             return tokenized
         
         # Create dataset from conversations
         dataset = Dataset.from_dict({'text': conversations})
         
+        print(f"Sample conversation format: {conversations[0][:100]}...")
+        
         # Apply tokenization
         tokenized_dataset = dataset.map(
             tokenize_function,
             batched=True,
-            remove_columns=['text']
+            remove_columns=['text'],
+            desc="Tokenizing conversations"
         )
         
         print(f"✅ Dataset prepared: {len(tokenized_dataset)} samples")
+        print(f"Sample tokenized length: {len(tokenized_dataset[0]['input_ids'])}")
         return tokenized_dataset
     
     def train_model(self, output_dir="./vietnamese_teacher_trained"):
@@ -149,30 +163,32 @@ class VietnameseTeacherTrainer:
             # Prepare dataset
             train_dataset = self.prepare_dataset(conversations)
             
-            # Configure training arguments (optimized for M1 Mac)
+            # FIXED training arguments - loại bỏ conflicting params
             training_args = TrainingArguments(
                 output_dir=output_dir,
                 overwrite_output_dir=True,
-                num_train_epochs=3,
-                per_device_train_batch_size=1,  # Small batch for M1 Mac
-                gradient_accumulation_steps=4,  # Accumulate gradients
-                warmup_steps=10,
-                logging_steps=1,
-                save_steps=50,
-                evaluation_strategy="no",
-                save_strategy="epoch",
+                num_train_epochs=25,  # Tăng số epoch để model học kỹ hơn
+                per_device_train_batch_size=1,  # Batch nhỏ cho 16GB RAM
+                gradient_accumulation_steps=8,  # Tích lũy gradient để mô phỏng batch lớn
+                learning_rate=2e-5,  # Giảm learning rate cho ổn định
+                warmup_steps=20,
+                logging_steps=5,
+                save_steps=25,
+                save_strategy="steps",
                 logging_dir=f"{output_dir}/logs",
                 remove_unused_columns=False,
-                dataloader_pin_memory=False,  # Better for M1 Mac
-                fp16=False,  # Use float32 for M1 Mac
-                report_to=None,  # No wandb logging
+                dataloader_pin_memory=False,
+                dataloader_num_workers=0,
+                fp16=False,
+                report_to=None,
             )
             
-            # Data collator for language modeling
+            # FIXED Data collator với padding đúng
             data_collator = DataCollatorForLanguageModeling(
                 tokenizer=self.tokenizer,
-                mlm=False,  # Not masked language modeling
-                pad_to_multiple_of=None
+                mlm=False,  # Causal LM (not masked)
+                pad_to_multiple_of=8,  # Pad to multiple của 8 để tối ưu
+                return_tensors="pt"  # Return PyTorch tensors
             )
             
             # Initialize trainer
