@@ -1,135 +1,162 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Vietnamese Teacher AI Service
+Flask API server running on port 5003
+"""
+
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
-import logging
-import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
-import json
-import random
-
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)
 
-# Load teacher examples
-TEACHER_EXAMPLES = []
-
-def load_teacher_examples():
-    """Load our teacher conversation examples"""
-    global TEACHER_EXAMPLES
-    
-    try:
-        with open('premium_teacher_data.txt', 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+class VietnameseTeacherAI:
+    def __init__(self):
+        self.model = None
+        self.tokenizer = None
+        self.load_model()
         
-        i = 0
-        while i < len(lines):
-            line = lines[i].strip()
+    def load_model(self):
+        """Load trained model or base model"""
+        trained_model_path = "./vietnamese_teacher_trained"
+        
+        if os.path.exists(trained_model_path) and os.listdir(trained_model_path):
+            print("📦 Loading trained Vietnamese teacher model...")
+            model_path = trained_model_path
+        else:
+            print("📦 Loading base Vietnamese model...")
+            model_path = "NlpHUST/gpt2-vietnamese"
+        
+        try:
+            # Load tokenizer
+            self.tokenizer = AutoTokenizer.from_pretrained(
+                model_path,
+                use_fast=False,
+                trust_remote_code=True
+            )
             
-            if line.startswith('Học viên:'):
-                student = line.replace('Học viên:', '').strip()
+            # Configure special tokens
+            if self.tokenizer.pad_token is None:
+                self.tokenizer.pad_token = self.tokenizer.eos_token
+            
+            # Load model
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_path,
+                torch_dtype=torch.float32,
+                low_cpu_mem_usage=True,
+                trust_remote_code=True
+            )
+            
+            print("✅ Model loaded successfully!")
+            
+        except Exception as e:
+            print(f"❌ Error loading model: {e}")
+            self.model = None
+            self.tokenizer = None
+    
+    def generate_response(self, question):
+        """Generate teacher response for student question"""
+        if self.model is None or self.tokenizer is None:
+            return "Xin lỗi, AI giáo viên hiện tại không khả dụng."
+        
+        try:
+            # Format input as conversation
+            prompt = f"<|startoftext|>Học sinh: {question}\nGiáo viên:"
+            
+            # Tokenize input
+            inputs = self.tokenizer.encode(prompt, return_tensors='pt')
+            
+            # Generate response
+            with torch.no_grad():
+                outputs = self.model.generate(
+                    inputs,
+                    max_length=inputs.size(1) + 150,
+                    num_return_sequences=1,
+                    temperature=0.7,
+                    pad_token_id=self.tokenizer.eos_token_id,
+                    do_sample=True,
+                    top_p=0.9
+                )
+            
+            # Decode response
+            full_response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+            
+            # Extract teacher response
+            if "Giáo viên:" in full_response:
+                teacher_response = full_response.split("Giáo viên:")[-1].strip()
+                # Clean up response
+                if "<|endoftext|>" in teacher_response:
+                    teacher_response = teacher_response.split("<|endoftext|>")[0].strip()
+                return teacher_response
+            else:
+                return "Xin lỗi, tôi không hiểu câu hỏi của em."
                 
-                i += 1
-                if i < len(lines) and lines[i].strip().startswith('Giáo viên:'):
-                    teacher = lines[i].strip().replace('Giáo viên:', '').strip()
-                    
-                    if student and teacher:
-                        TEACHER_EXAMPLES.append({
-                            'student': student,
-                            'teacher': teacher
-                        })
-            
-            i += 1
-        
-        logger.info(f"Loaded {len(TEACHER_EXAMPLES)} teacher examples")
-    except Exception as e:
-        logger.error(f"Error loading teacher examples: {e}")
+        except Exception as e:
+            print(f"Error generating response: {e}")
+            return "Xin lỗi, có lỗi xảy ra khi tạo phản hồi."
 
-def find_best_response(user_input):
-    """Find the best teacher response based on context"""
-    user_lower = user_input.lower()
-    
-    # Keyword categories with responses
-    if any(word in user_lower for word in ['xin chào', 'chào', 'hello']):
-        responses = [ex['teacher'] for ex in TEACHER_EXAMPLES if 'chào' in ex['student'].lower()]
-    elif any(word in user_lower for word in ['phát âm', 'thanh điệu', 'âm']):
-        responses = [ex['teacher'] for ex in TEACHER_EXAMPLES if any(w in ex['student'].lower() for w in ['phát âm', 'thanh'])]
-    elif any(word in user_lower for word in ['từ vựng', 'vocabulary', 'từ']):
-        responses = [ex['teacher'] for ex in TEACHER_EXAMPLES if 'từ vựng' in ex['student'].lower()]
-    elif any(word in user_lower for word in ['anh', 'chị', 'em', 'xưng hô']):
-        responses = [ex['teacher'] for ex in TEACHER_EXAMPLES if any(w in ex['student'].lower() for w in ['anh', 'chị', 'em'])]
-    elif any(word in user_lower for word in ['động từ', 'verb']):
-        responses = [ex['teacher'] for ex in TEACHER_EXAMPLES if 'động từ' in ex['student'].lower()]
-    elif any(word in user_lower for word in ['văn hóa', 'culture']):
-        responses = [ex['teacher'] for ex in TEACHER_EXAMPLES if 'văn hóa' in ex['student'].lower()]
-    elif any(word in user_lower for word in ['đọc', 'sách']):
-        responses = [ex['teacher'] for ex in TEACHER_EXAMPLES if 'đọc' in ex['student'].lower()]
-    elif any(word in user_lower for word in ['nói', 'speaking', 'ngại']):
-        responses = [ex['teacher'] for ex in TEACHER_EXAMPLES if 'nói' in ex['student'].lower()]
-    else:
-        # Default to a random appropriate response
-        responses = [ex['teacher'] for ex in TEACHER_EXAMPLES]
-    
-    if responses:
-        return random.choice(responses)
-    else:
-        return "Cô hiểu rồi! Em có thể nói rõ hơn về điều em muốn học không?"
-
-# Load examples on startup
-load_teacher_examples()
-
-@app.route('/', methods=['GET'])
-def health_check():
-    """Health check endpoint"""
-    return jsonify({
-        "status": "running",
-        "service": "Smart Vietnamese Tutor",
-        "examples_loaded": len(TEACHER_EXAMPLES),
-        "version": "smart-context-v1"
-    })
+# Initialize AI teacher
+vietnamese_teacher = VietnameseTeacherAI()
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    """Smart chat endpoint using context examples"""
+    """Handle chat requests"""
     try:
         data = request.get_json()
+        
         if not data or 'message' not in data:
-            return jsonify({"error": "Message is required"}), 400
+            return jsonify({'error': 'Missing message field'}), 400
         
-        user_message = data['message'].strip()
-        if not user_message:
-            return jsonify({"error": "Message cannot be empty"}), 400
+        user_message = data['message']
         
-        logger.info(f"User: {user_message}")
-        
-        # Find best contextual response
-        response = find_best_response(user_message)
-        
-        logger.info(f"Teacher: {response}")
+        # Generate AI response
+        ai_response = vietnamese_teacher.generate_response(user_message)
         
         return jsonify({
-            "response": response,
-            "model": "context-based-teacher",
-            "response_type": "contextual_match",
-            "examples_available": len(TEACHER_EXAMPLES)
+            'response': ai_response,
+            'status': 'success'
         })
         
     except Exception as e:
-        logger.error(f"Error in chat endpoint: {str(e)}")
-        return jsonify({"error": "Internal server error"}), 500
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/health', methods=['GET'])
 def health():
-    """Health endpoint"""
+    """Health check endpoint"""
+    trained_model_exists = os.path.exists("./vietnamese_teacher_trained")
     return jsonify({
-        "status": "healthy", 
-        "service": "Smart Vietnamese Tutor",
-        "examples": len(TEACHER_EXAMPLES)
+        'status': 'healthy',
+        'model_loaded': vietnamese_teacher.model is not None,
+        'trained_model_available': trained_model_exists
+    })
+
+@app.route('/model-info', methods=['GET'])
+def model_info():
+    """Get model information"""
+    if vietnamese_teacher.model is None:
+        return jsonify({'error': 'Model not loaded'}), 500
+    
+    trained_model_path = "./vietnamese_teacher_trained"
+    model_type = "trained" if os.path.exists(trained_model_path) and os.listdir(trained_model_path) else "base"
+    
+    return jsonify({
+        'model_type': model_type,
+        'model_name': 'NlpHUST/gpt2-vietnamese',
+        'parameters': vietnamese_teacher.model.num_parameters(),
+        'vocab_size': len(vietnamese_teacher.tokenizer)
     })
 
 if __name__ == '__main__':
-    logger.info("Starting Smart Vietnamese Tutor Service...")
+    print("🇻🇳 Vietnamese Teacher AI Service")
+    print("🚀 Starting server on port 5003...")
+    
+    if vietnamese_teacher.model is None:
+        print("⚠️  Warning: Model not loaded properly")
+    else:
+        print("✅ AI Teacher ready to help!")
+    
     app.run(host='0.0.0.0', port=5002, debug=False)
