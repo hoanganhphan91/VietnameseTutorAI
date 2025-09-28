@@ -118,7 +118,8 @@ htmlcov/
 *.backup
 
 # Loại trừ thư mục model đã train
-/vietnamese_teacher_trained/
+ai/vietnamese_teacher_trained/
+ai/.cache/
 # Loại trừ cache của transformers
 __pycache__/
 *.pyc
