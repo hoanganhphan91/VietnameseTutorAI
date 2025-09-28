@@ -65,39 +65,54 @@ class VietnameseTeacherAI:
         
         try:
             # Format input as conversation
-            prompt = f"<|startoftext|>Học sinh: {question}\nGiáo viên:"
-            
+            prompt = f"Học sinh: {question}\nGiáo viên:"
+            print(f"[PROMPT] {prompt}")
+
             # Tokenize input
             inputs = self.tokenizer.encode(prompt, return_tensors='pt')
-            
+            print(f"[INPUT TOKENS] {inputs}")
+
+            # Add attention_mask to avoid inf/nan errors
+            attention_mask = torch.ones_like(inputs)
+
             # Generate response
             with torch.no_grad():
                 outputs = self.model.generate(
                     inputs,
-                    max_new_tokens=64,
-                    temperature=0.8,
+                    attention_mask=attention_mask,
+                    max_new_tokens=150,
+                    temperature=0.5,
                     repetition_penalty=1.2,
                     pad_token_id=self.tokenizer.eos_token_id,
                     do_sample=True,
-                    top_p=0.9
+                    top_p=0.8
                 )
-            
+
             # Decode response
             full_response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-            
+            print(f"[FULL RESPONSE] {full_response}")
+
+            # Log lại prompt và response vào file log
+            with open("./ai_chat_log.txt", "a", encoding="utf-8") as logf:
+                logf.write(f"PROMPT: {prompt}\nRESPONSE: {full_response}\n{'-'*40}\n")
+
             # Extract teacher response
             if "Giáo viên:" in full_response:
                 teacher_response = full_response.split("Giáo viên:")[-1].strip()
                 # Clean up response
                 if "<|endoftext|>" in teacher_response:
                     teacher_response = teacher_response.split("<|endoftext|>")[0].strip()
+                print(f"[TEACHER RESPONSE] {teacher_response}")
                 return teacher_response
             else:
+                print("[TEACHER RESPONSE] Xin lỗi, tôi không hiểu câu hỏi của em.")
                 return "Xin lỗi, tôi không hiểu câu hỏi của em."
                 
         except Exception as e:
-            print(f"Error generating response: {e}")
-            return "Xin lỗi, có lỗi xảy ra khi tạo phản hồi."
+            import traceback
+            print(f"[ERROR] Error generating response: {e}")
+            traceback.print_exc()
+            return f"Xin lỗi, có lỗi xảy ra khi tạo phản hồi: {e}" 
 
 # Initialize AI teacher
 vietnamese_teacher = VietnameseTeacherAI()

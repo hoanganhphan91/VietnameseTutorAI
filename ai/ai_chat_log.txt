@@ -1,0 +1,30 @@
+PROMPT: Học sinh: 6 thanh điệu là những thanh nào ạ?
+Giáo viên:
+RESPONSE: Học sinh: 6 thanh điệu là những thanh nào ạ?
+Giáo viên: Thanh điệu có thể được chia thành ba loại cơ bản, đó là: Thanh điệu ngang (phần), thanh điệu dọc (phần) và thanh điệu chéo (phần). Trong các trường hợp này, thanh điệu ngang được gọi là thanh điệu ngang. Còn thanh điệu dọc được gọi là thanh điệu ngang.
+Ví dụ: "Phồng" là thanh điệu ngang; "phồng" là thanh điệu dọc. Khi đó, chúng ta sẽ dùng những từ như: "phồng", "bớt".
+Khi nói về thanh điệu, người Việt thường sử dụng nhiều từ khác nhau để chỉ các âm tiết. Ví dụ: "phồng", "phồng", "rặc",...
+Ví dụ: "phông" là thanh
+----------------------------------------
+PROMPT: Học sinh: Xin chào cô!
+Giáo viên:
+RESPONSE: Học sinh: Xin chào cô!
+Giáo viên: Chào em, em có thể nói "Tôi không biết". Em nên nói "Tôi chỉ muốn biết" hoặc "Tôi sẽ nói."
+Lời chào: Chào em. Cô sẽ hỏi "Em muốn nói gì?" và "Xin chào", "Tôi muốn biết". Khi bắt đầu câu chuyện, hãy dùng từ "tôi" và "tôi sẽ nói gì?" để nhấn mạnh vào những ý chính của câu. Ví dụ: "Tôi muốn biết" hoặc "Tôi sẽ nói gì?".
+Lời chào: Chào em. Cô sẽ hỏi "Em muốn nói gì?" và "Xin chào", "Tôi muốn biết". Khi bắt đầu câu chuyện, hãy dùng từ "tôi" và "tôi sẽ nói gì?" để nhấn mạnh vào những ý chính của
+----------------------------------------
+PROMPT: Học sinh: Cô ơi, em muốn học cách phát âm đúng.
+Giáo viên:
+RESPONSE: Học sinh: Cô ơi, em muốn học cách phát âm đúng.
+Giáo viên: Nếu bạn không biết phát âm đúng thì có thể nói "xin chào", "chào anh" hoặc "cám ơn".
+Lời khuyên: Hãy nghe một câu tiếng Anh và nói "Xin chào" hoặc "cảm ơn" khi cần thiết. Ví dụ như "Cảm ơn vì đã giúp đỡ tôi".
+Bạn hãy đặt ra những từ đơn giản nhất trong cuộc sống hàng ngày để giao tiếp với người khác. Ví dụ: "Tôi sẽ rất vui nếu được gặp anh/chị".
+Giáo viên: Bạn có thể hỏi "Anh/chị có thể cho em biết về các công việc của anh/chị không?" hoặc "Anh/chị có thể giới thiệu về mình?".
+Nếu bạn cảm thấy chưa chắc chắn về cách dùng từ,
+----------------------------------------
+PROMPT: Học sinh: Tôi muốn học cách phát âm đúng
+Giáo viên:
+RESPONSE: Học sinh: Tôi muốn học cách phát âm đúng
+Giáo viên: Nếu bạn không thể nói được, hãy đặt câu hỏi. Ví dụ: "Tôi đang nói về một từ". Hãy thử lặp lại nhiều lần và bắt đầu bằng những từ mới. Khi đã quen với các động từ, bạn có thể dùng nó để thay thế cho chúng. Ví dụ: "I'm in the morning" hoặc "I am in the sun".
+Một số người có thói quen đọc to hơn khi họ đang ở trong phòng. Điều này là rất nguy hiểm vì đôi khi bạn sẽ nghe thấy tiếng ồn ào xung quanh. Thay vào đó, hãy tập trung vào những gì đang xảy ra trước mắt bạn. Ví dụ: "I have been doing a lot of time for my sleep." (Tạm dịch: "Tôi đã
+----------------------------------------

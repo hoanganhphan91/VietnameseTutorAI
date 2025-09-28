@@ -160,6 +160,11 @@ class VietnameseTeacherTrainer:
                 print("❌ No conversations found!")
                 return False
             
+            # Log 5 mẫu hội thoại đã convert để kiểm tra format
+            print("🔎 Kiểm tra 5 mẫu hội thoại đã convert:")
+            for idx, conv in enumerate(conversations[:5]):
+                print(f"Mẫu {idx+1}: {conv}")
+
             # Prepare dataset
             train_dataset = self.prepare_dataset(conversations)
             
@@ -167,12 +172,12 @@ class VietnameseTeacherTrainer:
             training_args = TrainingArguments(
                 output_dir=output_dir,
                 overwrite_output_dir=True,
-                num_train_epochs=25,  # Tăng số epoch để model học kỹ hơn
-                per_device_train_batch_size=1,  # Batch nhỏ cho 16GB RAM
-                gradient_accumulation_steps=8,  # Tích lũy gradient để mô phỏng batch lớn
-                learning_rate=2e-5,  # Giảm learning rate cho ổn định
+                num_train_epochs=20,  # Giảm số epoch để tránh overfit dữ liệu nhỏ
+                per_device_train_batch_size=2,  # Tăng batch size nếu RAM đủ
+                gradient_accumulation_steps=4,  # Giảm tích lũy gradient cho batch lớn hơn
+                learning_rate=1e-5,  # Giữ learning rate ổn định
                 warmup_steps=20,
-                logging_steps=5,
+                logging_steps=1,
                 save_steps=25,
                 save_strategy="steps",
                 logging_dir=f"{output_dir}/logs",
