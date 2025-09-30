@@ -7,8 +7,7 @@ Optimized for M1 Mac with correct tokenization and data handling
 
 from transformers import (
     AutoTokenizer, 
-    AutoModelForCausalLM, 
-    BloomTokenizerFast,
+    AutoModelForCausalLM,
     Trainer, 
     TrainingArguments,
     DataCollatorForLanguageModeling
@@ -29,10 +28,10 @@ class VietnameseTeacherTrainer:
         print(f"📦 Loading {self.model_name}...")
         
         # Load tokenizer first
-        self.tokenizer = BloomTokenizerFast.from_pretrained(
+        self.tokenizer = AutoTokenizer.from_pretrained(
             self.model_name,
             use_fast=False,  # Use slow tokenizer for better compatibility
-            trust_remote_code=True,
+            trust_remote_code=False,
             use_flash_attention_2=False  # Disable flash attention for M1 Mac compatibility
         )
         
@@ -48,7 +47,7 @@ class VietnameseTeacherTrainer:
             self.model_name,
             torch_dtype=torch.float32,  # Use float32 for M1 Mac compatibility
             low_cpu_mem_usage=True,
-            trust_remote_code=True
+            trust_remote_code=False
         )
         
         # Resize embeddings if needed
