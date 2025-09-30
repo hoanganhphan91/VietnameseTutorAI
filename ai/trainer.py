@@ -33,6 +33,7 @@ class VietnameseTeacherTrainer:
             self.model_name,
             use_fast=False,  # Use slow tokenizer for better compatibility
             trust_remote_code=True
+            use_flash_attention_2=False  # Disable flash attention for M1 Mac compatibility
         )
         
         # Configure special tokens
