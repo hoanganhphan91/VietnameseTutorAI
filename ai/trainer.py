@@ -8,6 +8,7 @@ Optimized for M1 Mac with correct tokenization and data handling
 from transformers import (
     AutoTokenizer, 
     AutoModelForCausalLM, 
+    BloomTokenizerFast,
     Trainer, 
     TrainingArguments,
     DataCollatorForLanguageModeling
@@ -28,7 +29,7 @@ class VietnameseTeacherTrainer:
         print(f"📦 Loading {self.model_name}...")
         
         # Load tokenizer first
-        self.tokenizer = AutoTokenizer.from_pretrained(
+        self.tokenizer = BloomTokenizerFast.from_pretrained(
             self.model_name,
             use_fast=False,  # Use slow tokenizer for better compatibility
             trust_remote_code=True
