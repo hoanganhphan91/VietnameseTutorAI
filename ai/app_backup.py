@@ -25,7 +25,7 @@ try:
     model = AutoModelForCausalLM.from_pretrained(
         MODEL_NAME,
         cache_dir=CACHE_DIR,
-        torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32
+        dtype=torch.float16 if torch.cuda.is_available() else torch.float32
     )
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token

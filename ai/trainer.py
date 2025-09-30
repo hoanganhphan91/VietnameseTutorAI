@@ -46,7 +46,7 @@ class VietnameseTeacherTrainer:
         # Load model
         self.model = AutoModelForCausalLM.from_pretrained(
             self.model_name,
-            torch_dtype=torch.float32,  # Use float32 for M1 Mac compatibility
+            dtype=torch.float32,  # Use float32 for M1 Mac compatibility
             low_cpu_mem_usage=True,
             trust_remote_code=False
         )

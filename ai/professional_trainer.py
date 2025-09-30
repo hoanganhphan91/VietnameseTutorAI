@@ -35,7 +35,7 @@ class VietnameseTeacherTrainer:
             
         self.model = AutoModelForCausalLM.from_pretrained(
             self.base_model,
-            torch_dtype=torch.float32
+            dtype=torch.float32
         )
         
         # Resize token embeddings if needed

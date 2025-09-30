@@ -5,7 +5,7 @@ Vietnamese Teacher AI Service
 Flask API server running on port 5003
 """
 
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, BloomTokenizerFast
 import torch
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -33,10 +33,10 @@ class VietnameseTeacherAI:
         
         try:
             # Load tokenizer
-            self.tokenizer = AutoTokenizer.from_pretrained(
+            self.tokenizer = BloomTokenizerFast.from_pretrained(
                 model_path,
                 use_fast=False,
-                trust_remote_code=True
+                trust_remote_code=False
             )
             
             # Configure special tokens
@@ -46,9 +46,9 @@ class VietnameseTeacherAI:
             # Load model
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_path,
-                torch_dtype=torch.float32,
+                dtype=torch.float32,
                 low_cpu_mem_usage=True,
-                trust_remote_code=True
+                trust_remote_code=False
             )
             
             print("✅ Model loaded successfully!")

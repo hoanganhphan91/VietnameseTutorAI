@@ -33,7 +33,7 @@ class VietnameseTeacherTrainer:
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.model_name,
             use_fast=False,  # Use slow tokenizer for better compatibility
-            trust_remote_code=True
+            trust_remote_code=False
         )
         
         # Configure special tokens
@@ -46,9 +46,9 @@ class VietnameseTeacherTrainer:
         # Load model
         self.model = AutoModelForCausalLM.from_pretrained(
             self.model_name,
-            torch_dtype=torch.float32,  # Use float32 for M1 Mac compatibility
+            dtype=torch.float32,  # Use float32 for M1 Mac compatibility
             low_cpu_mem_usage=True,
-            trust_remote_code=True
+            trust_remote_code=False
         )
         
         # Resize token embeddings if needed
@@ -230,7 +230,7 @@ class VietnameseTeacherTrainer:
                 
                 self.model = AutoModelForCausalLM.from_pretrained(
                     "./vietnamese_teacher_trained",
-                    torch_dtype=torch.float32,
+                    dtype=torch.float32,
                     low_cpu_mem_usage=True
                 )
                 

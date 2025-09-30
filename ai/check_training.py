@@ -35,7 +35,7 @@ def test_trained_model():
     try:
         print("\n📦 Loading model...")
         tokenizer = AutoTokenizer.from_pretrained(trained_path, use_fast=False)
-        model = AutoModelForCausalLM.from_pretrained(trained_path, torch_dtype=torch.float32)
+        model = AutoModelForCausalLM.from_pretrained(trained_path, dtype=torch.float32)
         
         print("✅ Model load thành công!")
         

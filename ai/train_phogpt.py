@@ -81,14 +81,14 @@ def fine_tune_phogpt():
     tokenizer = AutoTokenizer.from_pretrained(
         MODEL_NAME,
         cache_dir=CACHE_DIR,
-        trust_remote_code=True
+        trust_remote_code=False
     )
     
     model = AutoModelForCausalLM.from_pretrained(
         MODEL_NAME,
         cache_dir=CACHE_DIR,
-        trust_remote_code=True,
-        torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32
+        trust_remote_code=False,
+        dtype=torch.float16 if torch.cuda.is_available() else torch.float32
     )
     
     # Thêm pad token nếu chưa có
