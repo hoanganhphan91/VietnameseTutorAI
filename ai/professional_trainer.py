@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 class VietnameseTeacherTrainer:
     def __init__(self):
-        self.base_model = "NlpHUST/gpt2-vietnamese"
+        self.base_model = "vinai/PhoGPT-4B-Chat"
         self.output_dir = "./vietnamese-teacher-professional"
         self.device = torch.device("cpu")  # Use CPU for stability
         self.training_info = {}

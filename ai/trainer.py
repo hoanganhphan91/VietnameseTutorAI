@@ -18,7 +18,7 @@ import os
 import json
 
 class VietnameseTeacherTrainer:
-    def __init__(self, model_name="NlpHUST/gpt2-vietnamese"):
+    def __init__(self, model_name="vinai/PhoGPT-4B-Chat"):
         self.model_name = model_name
         self.model = None
         self.tokenizer = None

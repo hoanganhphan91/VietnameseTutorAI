@@ -29,7 +29,7 @@ class VietnameseTeacherAI:
             model_path = trained_model_path
         else:
             print("📦 Loading base Vietnamese model...")
-            model_path = "NlpHUST/gpt2-vietnamese"
+            model_path = "vinai/PhoGPT-4B-Chat"
         
         try:
             # Load tokenizer
