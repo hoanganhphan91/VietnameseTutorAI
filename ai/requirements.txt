@@ -1,3 +1,16 @@
 flask==2.3.3
 flask-cors==4.0.0
 requests==2.31.0
+# Training Requirements cho PhoGPT Fine-tuning
+torch>=2.0.0
+transformers>=4.30.0
+datasets>=2.12.0
+peft>=0.4.0  # For LoRA
+accelerate>=0.20.0
+bitsandbytes>=0.41.0  # For quantization
+scipy>=1.10.0
+scikit-learn>=1.3.0
+
+# Optional: For advanced training
+deepspeed>=0.9.0  # For multi-GPU training  
+wandb>=0.15.0     # For experiment tracking
