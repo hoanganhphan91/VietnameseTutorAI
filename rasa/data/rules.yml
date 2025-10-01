@@ -1,0 +1,127 @@
+version: "3.1"
+
+rules:
+- rule: "Trả lời: Xin chào cô!"
+  steps:
+    - intent: chao_giao_vien
+    - action: utter_chao_giao_vien
+- rule: "Trả lời: Cô ơi, em muốn học cách phát âm đúng."
+  steps:
+    - intent: hoi_phat_am
+    - action: utter_hoi_phat_am
+- rule: "Trả lời: 6 thanh điệu là những thanh nào ạ?"
+  steps:
+    - intent: hoi_thanh_dieu
+    - action: utter_hoi_thanh_dieu
+- rule: "Trả lời: Em thấy khó quá, làm sao nhớ được?"
+  steps:
+    - intent: hoi_cach_nho
+    - action: utter_hoi_cach_nho
+- rule: "Trả lời: Khi nào em nên dùng 'anh', 'chị', 'em'?"
+  steps:
+    - intent: hoi_xung_ho
+    - action: utter_hoi_xung_ho
+- rule: "Trả lời: Còn với người lạ thì sao ạ?"
+  steps:
+    - intent: hoi_xung_ho_nguoi_la
+    - action: utter_hoi_xung_ho_nguoi_la
+- rule: "Trả lời: Tại sao tiếng Việt không chia động từ như tiếng Anh?"
+  steps:
+    - intent: hoi_dong_tu
+    - action: utter_hoi_dong_tu
+- rule: "Trả lời: Cho em ví dụ được không ạ?"
+  steps:
+    - intent: xin_vi_du
+    - action: utter_xin_vi_du
+- rule: "Trả lời: Em muốn học từ vựng nhiều hơn."
+  steps:
+    - intent: hoc_tu_vung
+    - action: utter_hoc_tu_vung
+- rule: "Trả lời: Làm sao để nhớ lâu được từ vựng?"
+  steps:
+    - intent: hoi_nho_tu_vung
+    - action: utter_hoi_nho_tu_vung
+- rule: "Trả lời: Văn hóa Việt Nam có gì đặc biệt?"
+  steps:
+    - intent: hoi_van_hoa
+    - action: utter_hoi_van_hoa
+- rule: "Trả lời: Em nên đọc sách gì để cải thiện tiếng Việt?"
+  steps:
+    - intent: hoi_sach
+    - action: utter_hoi_sach
+- rule: "Trả lời: Em cảm thấy nói tiếng Việt còn ngại ngùng."
+  steps:
+    - intent: chia_se_ngai_ngu
+    - action: utter_chia_se_ngai_ngu
+- rule: "Trả lời: Cảm ơn cô đã dạy em nhiều thứ hay!"
+  steps:
+    - intent: cam_on
+    - action: utter_cam_on
+- rule: "Trả lời: Cô ơi, em khó phát âm các nguyên âm đôi."
+  steps:
+    - intent: hoi_nguyen_am_doi
+    - action: utter_hoi_nguyen_am_doi
+- rule: "Trả lời: Em hay nhầm 'ua' với 'ưa'."
+  steps:
+    - intent: hoi_nham_ua_ua
+    - action: utter_hoi_nham_ua_ua
+- rule: "Trả lời: À, em thấy khác rồi!"
+  steps:
+    - intent: xac_nhan_hieu
+    - action: utter_xac_nhan_hieu
+- rule: "Trả lời: Cô ơi, em không phân biệt được dấu hỏi và dấu ngã."
+  steps:
+    - intent: hoi_dau_hoi_nga
+    - action: utter_hoi_dau_hoi_nga
+- rule: "Trả lời: Khó quá cô ạ."
+  steps:
+    - intent: than_kho
+    - action: utter_than_kho
+- rule: "Trả lời: Làm sao để nói câu phủ định ạ?"
+  steps:
+    - intent: hoi_cau_phu_dinh
+    - action: utter_hoi_cau_phu_dinh
+- rule: "Trả lời: Còn trong quá khứ thì sao ạ?"
+  steps:
+    - intent: hoi_ve_qua_khu
+    - action: utter_hoi_ve_qua_khu
+- rule: "Trả lời: Em muốn học từ vựng về đồ ăn."
+  steps:
+    - intent: tu_vung_do_an
+    - action: utter_tu_vung_do_an
+- rule: "Trả lời: Làm sao để nhớ nhanh ạ?"
+  steps:
+    - intent: hoi_meo_nho_nhanh
+    - action: utter_hoi_meo_nho_nhanh
+- rule: "Trả lời: Ở Việt Nam khi gặp nhau, người ta chào thế nào ạ?"
+  steps:
+    - intent: hoi_chao_hoi
+    - action: utter_hoi_chao_hoi
+- rule: "Trả lời: Nếu em quên chào thì có sao không?"
+  steps:
+    - intent: hoi_quen_chao
+    - action: utter_hoi_quen_chao
+- rule: "Trả lời: Em thấy người Việt nói nhanh, em nghe không kịp."
+  steps:
+    - intent: than_nghe_khong_kip
+    - action: utter_than_nghe_khong_kip
+- rule: "Trả lời: Có nên bật phụ đề không ạ?"
+  steps:
+    - intent: hoi_phu_de
+    - action: utter_hoi_phu_de
+- rule: "Trả lời: Cô ơi, em thấy mọi người hay nói 'anh ơi', 'chị ơi'. Nghĩa là gì ạ?"
+  steps:
+    - intent: hoi_anh_oi_chi_oi
+    - action: utter_hoi_anh_oi_chi_oi
+- rule: "Trả lời: Em có thể nói 'bạn ơi' không?"
+  steps:
+    - intent: hoi_ban_oi
+    - action: utter_hoi_ban_oi
+- rule: "Trả lời: Cô ơi, nói giờ giấc trong tiếng Việt thế nào ạ?"
+  steps:
+    - intent: hoi_gio_giac
+    - action: utter_hoi_gio_giac
+- rule: "Trả lời: Có khác nhau giữa nói và viết không ạ?"
+  steps:
+    - intent: hoi_noi_viet
+    - action: utter_hoi_noi_viet

@@ -1,0 +1,143 @@
+version: "3.1"
+
+stories:
+# Chủ đề: Chào hỏi và bắt đầu buổi học
+- story: Chào hỏi và khởi động buổi học
+  steps:
+  - intent: chao_giao_vien   # Học viên chào giáo viên
+  - action: utter_chao_giao_vien
+  - intent: chia_se_ngai_ngu  # Học viên chia sẻ cảm giác ngại ngùng khi nói tiếng Việt
+  - action: utter_chia_se_ngai_ngu
+  - intent: cam_on  # Học viên cảm ơn giáo viên
+  - action: utter_cam_on
+
+# Chủ đề: Luyện phát âm và sửa lỗi
+- story: Luyện phát âm và sửa lỗi
+  steps:
+  - intent: hoi_phat_am   # Học viên hỏi về cách phát âm đúng
+  - action: utter_hoi_phat_am
+  - intent: hoi_nguyen_am_doi  # Học viên hỏi về nguyên âm đôi
+  - action: utter_hoi_nguyen_am_doi
+  - intent: hoi_nham_ua_ua  # Học viên hỏi về nhầm lẫn "ua" và "ưa"
+  - action: utter_hoi_nham_ua_ua
+  - intent: hoi_dau_hoi_nga  # Học viên hỏi về dấu hỏi và dấu ngã
+  - action: utter_hoi_dau_hoi_nga
+  - intent: xac_nhan_hieu  # Học viên xác nhận đã hiểu
+  - action: utter_xac_nhan_hieu
+
+# Chủ đề: Học từ vựng và luyện nhớ lâu
+- story: Học từ vựng hiệu quả
+  steps:
+  - intent: hoc_tu_vung   # Học viên muốn học thêm từ vựng
+  - action: utter_hoc_tu_vung
+  - intent: hoi_nho_tu_vung  # Học viên hỏi cách nhớ lâu từ vựng
+  - action: utter_hoi_nho_tu_vung
+  - intent: hoi_meo_nho_nhanh  # Học viên hỏi mẹo nhớ nhanh
+  - action: utter_hoi_meo_nho_nhanh
+  - intent: xin_vi_du   # Học viên xin ví dụ
+  - action: utter_xin_vi_du
+
+# Chủ đề: Văn hóa, sách và động lực học
+- story: Khám phá văn hóa và động lực
+  steps:
+  - intent: hoi_van_hoa  # Học viên hỏi về văn hóa Việt Nam
+  - action: utter_hoi_van_hoa
+  - intent: hoi_sach  # Học viên hỏi về sách nên đọc
+  - action: utter_hoi_sach
+  - intent: than_kho  # Học viên than khó
+  - action: utter_than_kho
+  - intent: cam_on  # Học viên cảm ơn giáo viên
+  - action: utter_cam_on
+
+# Chủ đề: Luyện nghe, nói và xưng hô
+- story: Luyện nghe nói và giao tiếp
+  steps:
+  - intent: than_nghe_khong_kip  # Học viên than nghe không kịp
+  - action: utter_than_nghe_khong_kip
+  - intent: hoi_phu_de  # Học viên hỏi về phụ đề
+  - action: utter_hoi_phu_de
+  - intent: hoi_xung_ho   # Học viên hỏi về xưng hô
+  - action: utter_hoi_xung_ho
+  - intent: hoi_xung_ho_nguoi_la   # Học viên hỏi về xưng hô với người lạ
+  - action: utter_hoi_xung_ho_nguoi_la
+  - intent: hoi_anh_oi_chi_oi  # Học viên hỏi về "anh ơi", "chị ơi"
+  - action: utter_hoi_anh_oi_chi_oi
+  - intent: hoi_ban_oi  # Học viên hỏi về "bạn ơi"
+  - action: utter_hoi_ban_oi
+
+# Chủ đề: Thực hành ngữ pháp và ví dụ
+- story: Thực hành ngữ pháp tiếng Việt
+  steps:
+  - intent: hoi_dong_tu   # Học viên hỏi về động từ
+  - action: utter_hoi_dong_tu
+  - intent: hoi_cau_phu_dinh  # Học viên hỏi về câu phủ định
+  - action: utter_hoi_cau_phu_dinh
+  - intent: hoi_ve_qua_khu  # Học viên hỏi về quá khứ
+  - action: utter_hoi_ve_qua_khu
+  - intent: xin_vi_du   # Học viên xin ví dụ
+  - action: utter_xin_vi_du
+  - intent: hoi_gio_giac  # Học viên hỏi về nói giờ giấc
+  - action: utter_hoi_gio_giac
+
+
+# Chủ đề: Giao tiếp đời thường và xử lý tình huống
+- story: Giao tiếp đời thường
+  steps:
+  - intent: hoi_chao_hoi  # Học viên hỏi về chào hỏi ở Việt Nam
+  - action: utter_hoi_chao_hoi
+  - intent: hoi_quen_chao  # Học viên hỏi nếu quên chào
+  - action: utter_hoi_quen_chao
+  - intent: hoi_noi_viet  # Học viên hỏi về khác biệt nói và viết
+  - action: utter_hoi_noi_viet
+
+# Story phức tạp: Học viên chuyển chủ đề, xác nhận, hỏi lại
+- story: Học viên chuyển chủ đề và xác nhận
+  steps:
+  - intent: chao_giao_vien
+  - action: utter_chao_giao_vien
+  - intent: hoi_phat_am
+  - action: utter_hoi_phat_am
+  - intent: hoi_nguyen_am_doi
+  - action: utter_hoi_nguyen_am_doi
+  - intent: xac_nhan_hieu
+  - action: utter_xac_nhan_hieu
+  - intent: hoi_van_hoa
+  - action: utter_hoi_van_hoa
+  - intent: cam_on
+  - action: utter_cam_on
+
+# Story phức tạp: Học viên hỏi liên tiếp nhiều chủ đề, quay lại chủ đề cũ
+- story: Học viên hỏi nhiều chủ đề và quay lại
+  steps:
+  - intent: hoc_tu_vung
+  - action: utter_hoc_tu_vung
+  - intent: hoi_meo_nho_nhanh
+  - action: utter_hoi_meo_nho_nhanh
+  - intent: xin_vi_du
+  - action: utter_xin_vi_du
+  - intent: hoi_dong_tu
+  - action: utter_hoi_dong_tu
+  - intent: hoi_cau_phu_dinh
+  - action: utter_hoi_cau_phu_dinh
+  - intent: xin_vi_du
+  - action: utter_xin_vi_du
+  - intent: cam_on
+  - action: utter_cam_on
+
+# Story phức tạp: Học viên xác nhận, hỏi lại, chuyển chủ đề, kết thúc tự nhiên
+- story: Học viên xác nhận, hỏi lại và kết thúc tự nhiên
+  steps:
+  - intent: hoi_xung_ho
+  - action: utter_hoi_xung_ho
+  - intent: hoi_xung_ho_nguoi_la
+  - action: utter_hoi_xung_ho_nguoi_la
+  - intent: hoi_anh_oi_chi_oi
+  - action: utter_hoi_anh_oi_chi_oi
+  - intent: hoi_ban_oi
+  - action: utter_hoi_ban_oi
+  - intent: xac_nhan_hieu
+  - action: utter_xac_nhan_hieu
+  - intent: hoi_gio_giac
+  - action: utter_hoi_gio_giac
+  - intent: cam_on
+  - action: utter_cam_on

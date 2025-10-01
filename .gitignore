@@ -108,7 +108,7 @@ coverage/
 # yarn.lock
 
 # Docker volumes
-data/
+# data/ (removed to allow versioning of rasa/data for Rasa training files)
 
 # Local configuration
 config/local.py

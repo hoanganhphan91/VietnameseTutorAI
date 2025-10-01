@@ -1,0 +1,2296 @@
+version: "3.1"
+nlu:
+  - intent: chao_giao_vien
+    examples: |
+      - Xin chào cô!
+      - Xin chào
+      - Chào cô
+      - Chào thầy
+      - Chào bạn
+      - Em chào cô
+      - Em chào thầy
+      - Hello cô
+      - Hello
+      - Chào mọi người
+      - chào
+      - chào ạ
+      - chào cô ạ
+      - chào thầy ạ
+      - chào bạn ạ
+      - chào mn
+      - chào mọi ng
+      - chào c
+      - chào t
+      - chào b
+      - chào cô giáo
+      - chào thầy giáo
+      - chào lớp
+      - chào lớp mình
+      - chào cả lớp
+      - chào cả nhà
+      - chào cả team
+      - chào team
+      - chào mọi người nhé
+      - chào nhé
+      - chào nha
+      - chào nhe
+      - chào nà
+      - chào nhen
+      - chào c nhé
+      - chào t nhé
+      - chào b nhé
+      - chào cô nè
+      - chào thầy nè
+      - chào bạn nè
+      - chào mn nè
+      - chào cô ơi
+      - chào thầy ơi
+      - chào bạn ơi
+      - chào mn ơi
+      - chào cô ui
+      - chào thầy ui
+      - chào bạn ui
+      - chào mn ui
+      - chào cô ơi ạ
+      - chào thầy ơi ạ
+      - chào bạn ơi ạ
+      - chào mn ơi ạ
+      - chào cô giáo ơi
+      - chào thầy giáo ơi
+      - chào lớp ơi
+      - chào lớp mình ơi
+      - chào cả lớp ơi
+      - chào cả nhà ơi
+      - chào cả team ơi
+      - chào team ơi
+      - chào mọi người ơi
+      - chào mọi người ạ
+      - chào mọi người nha
+      - chào mọi người nhé
+      - chào mọi người nè
+      - chào mọi người nhen
+      - chào mọi người nà
+      - chào mọi người nhe
+      - chào mọi người ui
+      - chào mọi người ơi ạ
+      - chào mọi người ạ ơi
+      - chào mọi người ạ nha
+      - chào mọi người ạ nhé
+      - chào mọi người ạ nè
+      - chào mọi người ạ nhen
+      - chào mọi người ạ nà
+      - chào mọi người ạ nhe
+      - chào mọi người ạ ui
+      - chào mọi người ạ ơi ạ
+      - chào mọi người ạ ơi nha
+      - chào mọi người ạ ơi nhé
+      - chào mọi người ạ ơi nè
+      - chào mọi người ạ ơi nhen
+      - chào mọi người ạ ơi nà
+      - chào mọi người ạ ơi nhe
+      - chào mọi người ạ ơi ui
+      - chào mọi người ạ ơi ạ
+      - chào mọi người ạ ơi nha
+      - chào mọi người ạ ơi nhé
+      - chào mọi người ạ ơi nè
+      - chào mọi người ạ ơi nhen
+      - chào mọi người ạ ơi nà
+      - chào mọi người ạ ơi nhe
+      - chào mọi người ạ ơi ui
+      - chao
+      - chao co
+      - chao thay
+      - chao ban
+      - chao mn
+      - chao moi nguoi
+      - chao co giao
+      - chao thay giao
+      - chao lop
+      - chao ca lop
+      - chao ca nha
+      - chao ca team
+      - chao team
+      - chao moi nguoi nhe
+      - chao nhe
+      - chao nha
+      - chao nhen
+      - chao co oi
+      - chao thay oi
+      - chao ban oi
+      - chao mn oi
+      - chao co giao oi
+      - chao thay giao oi
+      - chao lop oi
+      - chao ca lop oi
+      - chao ca nha oi
+      - chao ca team oi
+      - chao team oi
+      - chao moi nguoi oi
+      - chao moi nguoi a
+      - chao moi nguoi nha
+      - chao moi nguoi nhe
+      - chao moi nguoi nhen
+      - chao moi nguoi ui
+      - chao moi nguoi oi a
+      - chao moi nguoi oi nha
+      - chao moi nguoi oi nhe
+      - chao moi nguoi oi nhen
+      - chao moi nguoi oi ui
+  - intent: hoi_phat_am
+    examples: |
+      - Cô ơi, em muốn học cách phát âm đúng.
+      - Làm sao để phát âm tiếng Việt chuẩn ạ?
+      - Em phát âm chưa tốt, cô giúp em với.
+      - Em muốn luyện phát âm đúng hơn.
+      - Cô chỉ em cách phát âm chuẩn với.
+      - Em phát âm sai nhiều quá, phải làm sao cô?
+      - Cô có mẹo nào để phát âm chuẩn không ạ?
+      - Em không tự tin khi phát âm tiếng Việt.
+      - Làm sao để sửa lỗi phát âm?
+      - Em muốn nói tiếng Việt giống người bản xứ.
+      - Cô hướng dẫn em luyện phát âm với.
+      - Em bị nhầm lẫn khi phát âm các từ khó.
+      - Cô ơi, phát âm tiếng Việt có khó không?
+      - Em cần luyện tập phát âm như thế nào?
+      - Cô có thể chỉ em cách phát âm từng âm không?
+      - Em muốn biết cách phát âm đúng từng từ.
+      - Làm sao để nhận biết mình phát âm sai?
+      - Em phát âm chưa rõ, cô giúp em sửa với.
+      - Cô ơi, phát âm tiếng Việt có quy tắc gì không?
+      - Em muốn luyện phát âm mỗi ngày, bắt đầu từ đâu?
+      - phát âm sao cho đúng
+      - phát âm chuẩn kiểu gì
+      - phát âm thế nào
+      - phát âm tiếng việt sao cho chuẩn
+      - phát âm tiếng việt thế nào
+      - phát âm tiếng việt chuẩn không
+      - phát âm tiếng việt khó không
+      - phát âm tiếng việt dễ không
+      - phát âm tiếng việt như nào
+      - phát âm tiếng việt như thế nào
+      - phát âm tiếng việt như thế nào cho đúng
+      - phát âm tiếng việt như thế nào cho chuẩn
+      - phát âm tiếng việt như thế nào cho hay
+      - phát âm tiếng việt như thế nào cho tốt
+      - phát âm tiếng việt như thế nào cho giỏi
+      - phát âm tiếng việt như thế nào cho chuyên nghiệp
+      - phát âm tiếng việt như thế nào cho tự nhiên
+      - phát âm tiếng việt như thế nào cho giống người việt
+      - phát âm tiếng việt như thế nào cho giống người bản xứ
+      - phát âm tiếng việt như thế nào cho giống người việt nam
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể nhé
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể ạ
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể cô ơi
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mn ơi
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ơi ạ
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nha
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nhé
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nè
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nhen
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nà
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nhe
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ui
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ạ
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nha
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhé
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nè
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhen
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nà
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhe
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ui
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ạ
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nha
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhé
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nè
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhen
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nà
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhe
+      - phát âm tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ui
+      - phát am
+      - phat am
+      - phat am dung
+      - phat am chuan
+      - phat am tieng viet
+      - phat am tieng viet dung
+      - phat am tieng viet chuan
+      - phat am tieng viet the nao
+      - phat am tieng viet sao cho dung
+      - phat am tieng viet sao cho chuan
+      - phat am tieng viet sao cho hay
+      - phat am tieng viet sao cho tot
+      - phat am tieng viet sao cho gioi
+      - phat am tieng viet sao cho chuyen nghiep
+      - phat am tieng viet sao cho tu nhien
+      - phat am tieng viet sao cho giong nguoi viet
+      - phat am tieng viet sao cho giong nguoi ban xu
+      - phat am tieng viet sao cho giong nguoi viet nam
+      - phat am tieng viet sao cho giong nguoi viet nam nhat
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the nhe
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the a
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the co oi
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the thay oi
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the ban oi
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the mn oi
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the moi nguoi oi
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the moi nguoi a
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the moi nguoi nha
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the moi nguoi nhe
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the moi nguoi nhen
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the moi nguoi na
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the moi nguoi nhe
+      - phat am tieng viet sao cho giong nguoi viet nam nhat co the moi nguoi ui
+  - intent: hoi_thanh_dieu
+    examples: |
+      - 6 thanh điệu là những thanh nào ạ?
+      - Tiếng Việt có mấy thanh điệu vậy cô?
+      - Các thanh điệu trong tiếng Việt gồm những gì?
+      - Cô kể cho em về các thanh điệu được không?
+      - Em muốn biết về thanh hỏi, thanh ngã, thanh nặng...
+      - Làm sao phân biệt các thanh điệu tiếng Việt?
+      - có mấy thanh điệu
+      - tiếng việt có bao nhiêu thanh điệu
+      - các thanh điệu là gì
+      - thanh điệu là gì
+      - kể tên các thanh điệu
+      - các thanh điệu gồm những gì
+      - các thanh điệu trong tv
+      - các thanh điệu trong tiếng việt
+      - các thanh điệu tiếng việt
+      - các thanh điệu tiếng việt là gì
+      - các thanh điệu tiếng việt gồm những gì
+      - các thanh điệu tiếng việt gồm những thanh nào
+      - các thanh điệu tiếng việt gồm những thanh gì
+      - các thanh điệu tiếng việt gồm những loại nào
+      - các thanh điệu tiếng việt gồm những loại gì
+      - các thanh điệu tiếng việt gồm những kiểu nào
+      - các thanh điệu tiếng việt gồm những kiểu gì
+      - các thanh điệu tiếng việt gồm những dạng nào
+      - các thanh điệu tiếng việt gồm những dạng gì
+      - các thanh điệu tiếng việt gồm những nhóm nào
+      - các thanh điệu tiếng việt gồm những nhóm gì
+      - các thanh điệu tiếng việt gồm những phân loại nào
+      - các thanh điệu tiếng việt gồm những phân loại gì
+      - các thanh điệu tiếng việt gồm những phân nhóm nào
+      - các thanh điệu tiếng việt gồm những phân nhóm gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nào
+      - các thanh điệu tiếng việt gồm những phân loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại gì
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm nào
+      - các thanh điệu tiếng việt gồm những phân nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm loại nhóm gì
+      - 6 thanh điệu là gì
+      - 6 thanh điệu gồm những gì
+      - 6 thanh điệu gồm những thanh nào
+      - 6 thanh điệu gồm những thanh gì
+      - 6 thanh điệu gồm những loại nào
+      - 6 thanh điệu gồm những loại gì
+      - 6 thanh điệu gồm những kiểu nào
+      - 6 thanh điệu gồm những kiểu gì
+      - 6 thanh điệu gồm những dạng nào
+      - 6 thanh điệu gồm những dạng gì
+      - 6 thanh điệu gồm những nhóm nào
+      - 6 thanh điệu gồm những nhóm gì
+      - 6 thanh điệu gồm những phân loại nào
+      - 6 thanh điệu gồm những phân loại gì
+      - 6 thanh điệu gồm những phân nhóm nào
+      - 6 thanh điệu gồm những phân nhóm gì
+      - 6 thanh điệu gồm những phân loại nhóm nào
+      - 6 thanh điệu gồm những phân loại nhóm gì
+      - 6 thanh điệu gồm những phân nhóm loại nào
+      - 6 thanh điệu gồm những phân nhóm loại gì
+      - 6 thanh điệu gồm những phân loại nhóm loại nào
+      - 6 thanh điệu gồm những phân loại nhóm loại gì
+      - 6 thanh điệu gồm những phân nhóm loại nhóm nào
+      - 6 thanh điệu gồm những phân nhóm loại nhóm gì
+      - 6 thanh điệu gồm những phân loại nhóm loại nhóm nào
+      - 6 thanh điệu gồm những phân loại nhóm loại nhóm gì
+      - 6 thanh điệu gồm những phân nhóm loại nhóm loại nào
+      - 6 thanh điệu gồm những phân nhóm loại nhóm loại gì
+      - 6 thanh điệu gồm những phân loại nhóm loại nhóm loại nào
+      - 6 thanh điệu gồm những phân loại nhóm loại nhóm loại gì
+      - 6 thanh điệu gồm những phân nhóm loại nhóm loại nhóm nào
+      - 6 thanh điệu gồm những phân nhóm loại nhóm loại nhóm gì
+  - intent: hoi_cach_nho
+    examples: |
+      - Em thấy khó quá, làm sao nhớ được?
+      - Em học mãi mà không nhớ, phải làm sao?
+      - Có cách nào giúp em nhớ lâu không cô?
+      - Em hay quên bài, cô có mẹo gì không?
+      - Làm sao để ghi nhớ kiến thức tiếng Việt?
+      - làm sao nhớ lâu
+      - làm sao nhớ bài
+      - làm sao nhớ kiến thức
+      - làm sao nhớ từ vựng
+      - làm sao nhớ ngữ pháp
+      - làm sao nhớ tiếng việt
+      - làm sao nhớ lâu tiếng việt
+      - làm sao nhớ lâu bài học
+      - làm sao nhớ lâu từ vựng
+      - làm sao nhớ lâu ngữ pháp
+      - làm sao nhớ lâu kiến thức
+      - làm sao nhớ lâu bài
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+      - làm sao nhớ lâu bài tiếng việt
+      - làm sao nhớ lâu bài học tiếng việt
+      - làm sao nhớ lâu từ vựng tiếng việt
+      - làm sao nhớ lâu ngữ pháp tiếng việt
+      - làm sao nhớ lâu kiến thức tiếng việt
+  - intent: hoi_xung_ho
+    examples: |
+      - Khi nào em nên dùng 'anh', 'chị', 'em'?
+      - Xưng hô trong tiếng Việt như thế nào?
+      - Em nên gọi người lớn tuổi hơn là gì?
+      - Cách xưng hô lịch sự trong tiếng Việt?
+      - Khi nói chuyện với bạn bè thì xưng hô ra sao?
+      - xưng hô sao cho đúng
+      - xưng hô thế nào
+      - xưng hô trong tv
+      - xưng hô trong tiếng việt
+      - xưng hô tiếng việt
+      - xưng hô tiếng việt sao cho đúng
+      - xưng hô tiếng việt thế nào
+      - xưng hô tiếng việt như nào
+      - xưng hô tiếng việt như thế nào
+      - xưng hô tiếng việt như thế nào cho đúng
+      - xưng hô tiếng việt như thế nào cho lịch sự
+      - xưng hô tiếng việt như thế nào cho hay
+      - xưng hô tiếng việt như thế nào cho tốt
+      - xưng hô tiếng việt như thế nào cho giỏi
+      - xưng hô tiếng việt như thế nào cho chuyên nghiệp
+      - xưng hô tiếng việt như thế nào cho tự nhiên
+      - xưng hô tiếng việt như thế nào cho giống người việt
+      - xưng hô tiếng việt như thế nào cho giống người bản xứ
+      - xưng hô tiếng việt như thế nào cho giống người việt nam
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể nhé
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể ạ
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể cô ơi
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mn ơi
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ơi ạ
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nha
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nhé
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nè
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nhen
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nà
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nhe
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ui
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ạ
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nha
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhé
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nè
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhen
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nà
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhe
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ui
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ạ
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nha
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhé
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nè
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhen
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nà
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhe
+      - xưng hô tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ui
+      - xung ho
+      - xung ho sao cho dung
+      - xung ho the nao
+      - xung ho trong tv
+      - xung ho trong tieng viet
+      - xung ho tieng viet
+      - xung ho tieng viet sao cho dung
+      - xung ho tieng viet the nao
+      - xung ho tieng viet nhu nao
+      - xung ho tieng viet nhu the nao
+      - xung ho tieng viet nhu the nao cho dung
+      - xung ho tieng viet nhu the nao cho lich su
+      - xung ho tieng viet nhu the nao cho hay
+      - xung ho tieng viet nhu the nao cho tot
+      - xung ho tieng viet nhu the nao cho gioi
+      - xung ho tieng viet nhu the nao cho chuyen nghiep
+      - xung ho tieng viet nhu the nao cho tu nhien
+      - xung ho tieng viet nhu the nao cho giong nguoi viet
+      - xung ho tieng viet nhu the nao cho giong nguoi ban xu
+      - xung ho tieng viet nhu the nao cho giong nguoi viet nam
+      - xung ho tieng viet nhu the nao cho giong nguoi viet nam nhat
+      - xung ho tieng viet nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: hoi_xung_ho_nguoi_la
+    examples: |
+      - Còn với người lạ thì sao ạ?
+      - Gặp người lạ em nên xưng hô thế nào?
+      - Em không biết tuổi thì gọi là gì?
+      - Khi gặp người mới quen nên xưng hô ra sao?
+      - Có quy tắc nào khi nói chuyện với người lạ không cô?
+      - xưng hô với người lạ sao cho đúng
+      - xưng hô với người lạ thế nào
+      - xưng hô với người lạ trong tv
+      - xưng hô với người lạ trong tiếng việt
+      - xưng hô với người lạ tiếng việt
+      - xưng hô với người lạ tiếng việt sao cho đúng
+      - xưng hô với người lạ tiếng việt thế nào
+      - xưng hô với người lạ tiếng việt như nào
+      - xưng hô với người lạ tiếng việt như thế nào
+      - xưng hô với người lạ tiếng việt như thế nào cho đúng
+      - xưng hô với người lạ tiếng việt như thế nào cho lịch sự
+      - xưng hô với người lạ tiếng việt như thế nào cho hay
+      - xưng hô với người lạ tiếng việt như thế nào cho tốt
+      - xưng hô với người lạ tiếng việt như thế nào cho giỏi
+      - xưng hô với người lạ tiếng việt như thế nào cho chuyên nghiệp
+      - xưng hô với người lạ tiếng việt như thế nào cho tự nhiên
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người bản xứ
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể nhé
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể ạ
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể cô ơi
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mn ơi
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ơi ạ
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nha
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nhé
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nè
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nhen
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nà
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ nhe
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ui
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ạ
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nha
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhé
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nè
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhen
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nà
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhe
+      - xưng hô với người lạ tiếng việt như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ui
+      - xung ho voi nguoi la
+      - xung ho voi nguoi la sao cho dung
+      - xung ho voi nguoi la the nao
+      - xung ho voi nguoi la trong tv
+      - xung ho voi nguoi la trong tieng viet
+      - xung ho voi nguoi la tieng viet
+      - xung ho voi nguoi la tieng viet sao cho dung
+      - xung ho voi nguoi la tieng viet the nao
+      - xung ho voi nguoi la tieng viet nhu nao
+      - xung ho voi nguoi la tieng viet nhu the nao
+      - xung ho voi nguoi la tieng viet nhu the nao cho dung
+      - xung ho voi nguoi la tieng viet nhu the nao cho lich su
+      - xung ho voi nguoi la tieng viet nhu the nao cho hay
+      - xung ho voi nguoi la tieng viet nhu the nao cho tot
+      - xung ho voi nguoi la tieng viet nhu the nao cho gioi
+      - xung ho voi nguoi la tieng viet nhu the nao cho chuyen nghiep
+      - xung ho voi nguoi la tieng viet nhu the nao cho tu nhien
+      - xung ho voi nguoi la tieng viet nhu the nao cho giong nguoi viet
+      - xung ho voi nguoi la tieng viet nhu the nao cho giong nguoi ban xu
+      - xung ho voi nguoi la tieng viet nhu the nao cho giong nguoi viet nam
+      - xung ho voi nguoi la tieng viet nhu the nao cho giong nguoi viet nam nhat
+      - xung ho voi nguoi la tieng viet nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: hoi_dong_tu
+    examples: |
+      - Tại sao tiếng Việt không chia động từ như tiếng Anh?
+      - Động từ tiếng Việt có chia thì không cô?
+      - Em thấy động từ tiếng Việt đơn giản quá.
+      - Tiếng Việt có thì như tiếng Anh không?
+      - Vì sao động từ tiếng Việt không thay đổi?
+      - động từ tiếng việt có chia thì không
+      - động từ tiếng việt có chia thì không nhỉ
+      - động từ tiếng việt có chia thì không ạ
+      - động từ tiếng việt có chia thì không cô
+      - động từ tiếng việt có chia thì không thầy
+      - động từ tiếng việt có chia thì không bạn
+      - động từ tiếng việt có chia thì không mn
+      - động từ tiếng việt có chia thì không mọi người
+      - động từ tiếng việt có chia thì không nhỉ cô
+      - động từ tiếng việt có chia thì không nhỉ thầy
+      - động từ tiếng việt có chia thì không nhỉ bạn
+      - động từ tiếng việt có chia thì không nhỉ mn
+      - động từ tiếng việt có chia thì không nhỉ mọi người
+      - động từ tiếng việt có chia thì không nhỉ cô ơi
+      - động từ tiếng việt có chia thì không nhỉ thầy ơi
+      - động từ tiếng việt có chia thì không nhỉ bạn ơi
+      - động từ tiếng việt có chia thì không nhỉ mn ơi
+      - động từ tiếng việt có chia thì không nhỉ mọi người ơi
+      - động từ tiếng việt có chia thì không nhỉ cô ạ
+      - động từ tiếng việt có chia thì không nhỉ thầy ạ
+      - động từ tiếng việt có chia thì không nhỉ bạn ạ
+      - động từ tiếng việt có chia thì không nhỉ mn ạ
+      - động từ tiếng việt có chia thì không nhỉ mọi người ạ
+      - động từ tiếng việt có chia thì không nhỉ cô nha
+      - động từ tiếng việt có chia thì không nhỉ thầy nha
+      - động từ tiếng việt có chia thì không nhỉ bạn nha
+      - động từ tiếng việt có chia thì không nhỉ mn nha
+      - động từ tiếng việt có chia thì không nhỉ mọi người nha
+      - động từ tiếng việt có chia thì không nhỉ cô nhé
+      - động từ tiếng việt có chia thì không nhỉ thầy nhé
+      - động từ tiếng việt có chia thì không nhỉ bạn nhé
+      - động từ tiếng việt có chia thì không nhỉ mn nhé
+      - động từ tiếng việt có chia thì không nhỉ mọi người nhé
+      - động từ tiếng việt có chia thì không nhỉ cô nè
+      - động từ tiếng việt có chia thì không nhỉ thầy nè
+      - động từ tiếng việt có chia thì không nhỉ bạn nè
+      - động từ tiếng việt có chia thì không nhỉ mn nè
+      - động từ tiếng việt có chia thì không nhỉ mọi người nè
+      - động từ tiếng việt có chia thì không nhỉ cô nhen
+      - động từ tiếng việt có chia thì không nhỉ thầy nhen
+      - động từ tiếng việt có chia thì không nhỉ bạn nhen
+      - động từ tiếng việt có chia thì không nhỉ mn nhen
+      - động từ tiếng việt có chia thì không nhỉ mọi người nhen
+      - động từ tiếng việt có chia thì không nhỉ cô nà
+      - động từ tiếng việt có chia thì không nhỉ thầy nà
+      - động từ tiếng việt có chia thì không nhỉ bạn nà
+      - động từ tiếng việt có chia thì không nhỉ mn nà
+      - động từ tiếng việt có chia thì không nhỉ mọi người nà
+      - động từ tiếng việt có chia thì không nhỉ cô nhe
+      - động từ tiếng việt có chia thì không nhỉ thầy nhe
+      - động từ tiếng việt có chia thì không nhỉ bạn nhe
+      - động từ tiếng việt có chia thì không nhỉ mn nhe
+      - động từ tiếng việt có chia thì không nhỉ mọi người nhe
+      - dong tu tieng viet co chia thi khong
+      - dong tu tieng viet co chia thi khong nhi
+      - dong tu tieng viet co chia thi khong a
+      - dong tu tieng viet co chia thi khong co
+      - dong tu tieng viet co chia thi khong thay
+      - dong tu tieng viet co chia thi khong ban
+      - dong tu tieng viet co chia thi khong mn
+      - dong tu tieng viet co chia thi khong moi nguoi
+      - dong tu tieng viet co chia thi khong nhi co
+      - dong tu tieng viet co chia thi khong nhi thay
+      - dong tu tieng viet co chia thi khong nhi ban
+      - dong tu tieng viet co chia thi khong nhi mn
+      - dong tu tieng viet co chia thi khong nhi moi nguoi
+      - dong tu tieng viet co chia thi khong nhi co oi
+      - dong tu tieng viet co chia thi khong nhi thay oi
+      - dong tu tieng viet co chia thi khong nhi ban oi
+      - dong tu tieng viet co chia thi khong nhi mn oi
+      - dong tu tieng viet co chia thi khong nhi moi nguoi oi
+      - dong tu tieng viet co chia thi khong nhi co a
+      - dong tu tieng viet co chia thi khong nhi thay a
+      - dong tu tieng viet co chia thi khong nhi ban a
+      - dong tu tieng viet co chia thi khong nhi mn a
+      - dong tu tieng viet co chia thi khong nhi moi nguoi a
+  - intent: xin_vi_du
+    examples: |
+      - Cho em ví dụ được không ạ?
+      - Cô cho em ví dụ về câu tiếng Việt đi ạ.
+      - Em muốn nghe ví dụ về cách dùng từ.
+      - Có ví dụ nào về chủ đề này không cô?
+      - Cô lấy ví dụ thực tế giúp em với.
+      - cho ví dụ
+      - cho ví dụ đi
+      - cho ví dụ với
+      - cho ví dụ nhé
+      - cho ví dụ nhe
+      - cho ví dụ nhen
+      - cho ví dụ nà
+      - cho ví dụ nha
+      - cho ví dụ ạ
+      - cho ví dụ cô ơi
+      - cho ví dụ thầy ơi
+      - cho ví dụ bạn ơi
+      - cho ví dụ mn ơi
+      - cho ví dụ mọi người ơi
+      - cho ví dụ đi cô
+      - cho ví dụ đi thầy
+      - cho ví dụ đi bạn
+      - cho ví dụ đi mn
+      - cho ví dụ đi mọi người
+      - cho ví dụ đi cô ơi
+      - cho ví dụ đi thầy ơi
+      - cho ví dụ đi bạn ơi
+      - cho ví dụ đi mn ơi
+      - cho ví dụ đi mọi người ơi
+      - cho ví dụ đi cô ạ
+      - cho ví dụ đi thầy ạ
+      - cho ví dụ đi bạn ạ
+      - cho ví dụ đi mn ạ
+      - cho ví dụ đi mọi người ạ
+      - cho ví dụ đi cô nha
+      - cho ví dụ đi thầy nha
+      - cho ví dụ đi bạn nha
+      - cho ví dụ đi mn nha
+      - cho ví dụ đi mọi người nha
+      - cho ví dụ đi cô nhé
+      - cho ví dụ đi thầy nhé
+      - cho ví dụ đi bạn nhé
+      - cho ví dụ đi mn nhé
+      - cho ví dụ đi mọi người nhé
+      - cho ví dụ đi cô nè
+      - cho ví dụ đi thầy nè
+      - cho ví dụ đi bạn nè
+      - cho ví dụ đi mn nè
+      - cho ví dụ đi mọi người nè
+      - cho ví dụ đi cô nhen
+      - cho ví dụ đi thầy nhen
+      - cho ví dụ đi bạn nhen
+      - cho ví dụ đi mn nhen
+      - cho ví dụ đi mọi người nhen
+      - cho ví dụ đi cô nà
+      - cho ví dụ đi thầy nà
+      - cho ví dụ đi bạn nà
+      - cho ví dụ đi mn nà
+      - cho ví dụ đi mọi người nà
+      - cho ví dụ đi cô nhe
+      - cho ví dụ đi thầy nhe
+      - cho ví dụ đi bạn nhe
+      - cho ví dụ đi mn nhe
+      - cho ví dụ đi mọi người nhe
+      - cho vi du
+      - cho vi du di
+      - cho vi du voi
+      - cho vi du nhe
+      - cho vi du nhen
+      - cho vi du na
+      - cho vi du nha
+      - cho vi du a
+      - cho vi du co oi
+      - cho vi du thay oi
+      - cho vi du ban oi
+      - cho vi du mn oi
+      - cho vi du moi nguoi oi
+      - cho vi du di co
+      - cho vi du di thay
+      - cho vi du di ban
+      - cho vi du di mn
+      - cho vi du di moi nguoi
+      - cho vi du di co oi
+      - cho vi du di thay oi
+      - cho vi du di ban oi
+      - cho vi du di mn oi
+      - cho vi du di moi nguoi oi
+  - intent: hoc_tu_vung
+    examples: |
+      - Em muốn học từ vựng nhiều hơn.
+      - Làm sao để mở rộng vốn từ vựng?
+      - Em cần học thêm nhiều từ mới.
+      - Cô gợi ý cách học từ vựng hiệu quả với.
+      - Em muốn nhớ được nhiều từ tiếng Việt.
+      - học từ vựng sao cho nhiều
+      - học từ vựng thế nào
+      - học từ vựng như nào
+      - học từ vựng như thế nào
+      - học từ vựng như thế nào cho nhiều
+      - học từ vựng như thế nào cho hiệu quả
+      - học từ vựng như thế nào cho tốt
+      - học từ vựng như thế nào cho giỏi
+      - học từ vựng như thế nào cho chuyên nghiệp
+      - học từ vựng như thế nào cho tự nhiên
+      - học từ vựng như thế nào cho giống người việt
+      - học từ vựng như thế nào cho giống người bản xứ
+      - học từ vựng như thế nào cho giống người việt nam
+      - học từ vựng như thế nào cho giống người việt nam nhất
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể nhé
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể ạ
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể cô ơi
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mn ơi
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ơi ạ
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ nha
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ nhé
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ nè
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ nhen
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ nà
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ nhe
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ ui
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ạ
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nha
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhé
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nè
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhen
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nà
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhe
+      - học từ vựng như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ui
+      - hoc tu vung
+      - hoc tu vung sao cho nhieu
+      - hoc tu vung the nao
+      - hoc tu vung nhu nao
+      - hoc tu vung nhu the nao
+      - hoc tu vung nhu the nao cho nhieu
+      - hoc tu vung nhu the nao cho hieu qua
+      - hoc tu vung nhu the nao cho tot
+      - hoc tu vung nhu the nao cho gioi
+      - hoc tu vung nhu the nao cho chuyen nghiep
+      - hoc tu vung nhu the nao cho tu nhien
+      - hoc tu vung nhu the nao cho giong nguoi viet
+      - hoc tu vung nhu the nao cho giong nguoi ban xu
+      - hoc tu vung nhu the nao cho giong nguoi viet nam
+      - hoc tu vung nhu the nao cho giong nguoi viet nam nhat
+      - hoc tu vung nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: hoi_nho_tu_vung
+    examples: |
+      - Làm sao để nhớ lâu được từ vựng?
+      - Em học từ vựng xong lại quên.
+      - Có bí quyết nào để nhớ từ lâu không cô?
+      - Làm sao để dùng từ vựng thường xuyên?
+      - Em muốn nhớ từ vựng tốt hơn.
+      - nhớ từ vựng lâu sao
+      - nhớ từ vựng lâu thế nào
+      - nhớ từ vựng lâu như nào
+      - nhớ từ vựng lâu như thế nào
+      - nhớ từ vựng lâu như thế nào cho tốt
+      - nhớ từ vựng lâu như thế nào cho giỏi
+      - nhớ từ vựng lâu như thế nào cho chuyên nghiệp
+      - nhớ từ vựng lâu như thế nào cho tự nhiên
+      - nhớ từ vựng lâu như thế nào cho giống người việt
+      - nhớ từ vựng lâu như thế nào cho giống người bản xứ
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể nhé
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể ạ
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể cô ơi
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mn ơi
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ơi ạ
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ nha
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ nhé
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ nè
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ nhen
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ nà
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ nhe
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ ui
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ạ
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nha
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhé
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nè
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhen
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nà
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi nhe
+      - nhớ từ vựng lâu như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi ui
+      - nho tu vung lau
+      - nho tu vung lau sao
+      - nho tu vung lau the nao
+      - nho tu vung lau nhu nao
+      - nho tu vung lau nhu the nao
+      - nho tu vung lau nhu the nao cho tot
+      - nho tu vung lau nhu the nao cho gioi
+      - nho tu vung lau nhu the nao cho chuyen nghiep
+      - nho tu vung lau nhu the nao cho tu nhien
+      - nho tu vung lau nhu the nao cho giong nguoi viet
+      - nho tu vung lau nhu the nao cho giong nguoi ban xu
+      - nho tu vung lau nhu the nao cho giong nguoi viet nam
+      - nho tu vung lau nhu the nao cho giong nguoi viet nam nhat
+      - nho tu vung lau nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: hoi_van_hoa
+    examples: |
+      - Văn hóa Việt Nam có gì đặc biệt?
+      - Cô kể cho em về văn hóa Việt Nam đi ạ.
+      - Em muốn biết điểm đặc trưng của văn hóa Việt.
+      - Văn hóa Việt Nam khác gì so với nước khác?
+      - Người Việt có phong tục gì đặc biệt không cô?
+      - văn hóa việt nam là gì
+      - văn hóa việt nam có gì hay
+      - văn hóa việt nam có gì lạ
+      - văn hóa việt nam có gì vui
+      - văn hóa việt nam có gì thú vị
+      - văn hóa việt nam có gì đặc biệt nhỉ
+      - văn hóa việt nam có gì đặc biệt vậy
+      - văn hóa việt nam có gì đặc biệt thế
+      - văn hóa việt nam có gì đặc biệt không
+      - văn hóa việt nam có gì đặc biệt không nhỉ
+      - văn hóa việt nam có gì đặc biệt không vậy
+      - văn hóa việt nam có gì đặc biệt không cô
+      - văn hóa việt nam có gì đặc biệt không thầy
+      - văn hóa việt nam có gì đặc biệt không bạn
+      - văn hóa việt nam có gì đặc biệt không mn
+      - văn hóa việt nam có gì đặc biệt không mọi người
+      - văn hóa việt nam có gì đặc biệt không mọi người nhỉ
+      - văn hóa việt nam có gì đặc biệt không mọi người vậy
+      - văn hóa việt nam có gì đặc biệt không mọi người ạ
+      - văn hóa việt nam có gì đặc biệt không mọi người nha
+      - văn hóa việt nam có gì đặc biệt không mọi người nhé
+      - văn hóa việt nam có gì đặc biệt không mọi người nè
+      - văn hóa việt nam có gì đặc biệt không mọi người nhen
+      - văn hóa việt nam có gì đặc biệt không mọi người nà
+      - văn hóa việt nam có gì đặc biệt không mọi người nhe
+      - văn hóa việt nam có gì đặc biệt không mọi người ui
+      - văn hóa việt nam có gì đặc biệt không mọi người ơi
+      - văn hóa việt nam có gì đặc biệt không mọi người ơi ạ
+      - văn hóa việt nam có gì đặc biệt không mọi người ạ ơi
+      - văn hóa việt nam có gì đặc biệt không mọi người ạ nha
+      - văn hóa việt nam có gì đặc biệt không mọi người ạ nhé
+      - văn hóa việt nam có gì đặc biệt không mọi người ạ nè
+      - văn hóa việt nam có gì đặc biệt không mọi người ạ nhen
+      - văn hóa việt nam có gì đặc biệt không mọi người ạ nà
+      - văn hóa việt nam có gì đặc biệt không mọi người ạ nhe
+      - văn hóa việt nam có gì đặc biệt không mọi người ạ ui
+      - van hoa viet nam la gi
+      - van hoa viet nam co gi hay
+      - van hoa viet nam co gi la
+      - van hoa viet nam co gi vui
+      - van hoa viet nam co gi thu vi
+      - van hoa viet nam co gi dac biet nhi
+      - van hoa viet nam co gi dac biet vay
+      - van hoa viet nam co gi dac biet the
+      - van hoa viet nam co gi dac biet khong
+      - van hoa viet nam co gi dac biet khong nhi
+      - van hoa viet nam co gi dac biet khong vay
+      - van hoa viet nam co gi dac biet khong co
+      - van hoa viet nam co gi dac biet khong thay
+      - van hoa viet nam co gi dac biet khong ban
+      - van hoa viet nam co gi dac biet khong mn
+      - van hoa viet nam co gi dac biet khong moi nguoi
+      - van hoa viet nam co gi dac biet khong moi nguoi nhi
+      - van hoa viet nam co gi dac biet khong moi nguoi vay
+      - van hoa viet nam co gi dac biet khong moi nguoi a
+      - van hoa viet nam co gi dac biet khong moi nguoi nha
+      - van hoa viet nam co gi dac biet khong moi nguoi nhe
+      - van hoa viet nam co gi dac biet khong moi nguoi ne
+      - van hoa viet nam co gi dac biet khong moi nguoi nhen
+      - van hoa viet nam co gi dac biet khong moi nguoi na
+      - van hoa viet nam co gi dac biet khong moi nguoi ui
+      - van hoa viet nam co gi dac biet khong moi nguoi oi
+  - intent: hoi_sach
+    examples: |
+      - Em nên đọc sách gì để cải thiện tiếng Việt?
+      - Cô gợi ý sách hay để học tiếng Việt với.
+      - Em muốn đọc sách để nâng cao tiếng Việt.
+      - Có sách nào giúp em học tiếng Việt tốt hơn không?
+      - Em nên bắt đầu đọc sách gì?
+      - nên đọc sách gì
+      - nên đọc sách gì để giỏi tiếng việt
+      - nên đọc sách gì để học tiếng việt
+      - nên đọc sách gì để nâng cao tiếng việt
+      - nên đọc sách gì để cải thiện tiếng việt
+      - nên đọc sách gì để học tốt tiếng việt
+      - nên đọc sách gì để học nhanh tiếng việt
+      - nên đọc sách gì để học hiệu quả tiếng việt
+      - nên đọc sách gì để học tiếng việt tốt
+      - nên đọc sách gì để học tiếng việt nhanh
+      - nên đọc sách gì để học tiếng việt hiệu quả
+      - nên đọc sách gì để học tiếng việt dễ
+      - nên đọc sách gì để học tiếng việt dễ hiểu
+      - nên đọc sách gì để học tiếng việt dễ nhớ
+      - nên đọc sách gì để học tiếng việt dễ thuộc
+      - nên đọc sách gì để học tiếng việt dễ áp dụng
+      - nên đọc sách gì để học tiếng việt dễ thực hành
+      - nên đọc sách gì để học tiếng việt dễ giao tiếp
+      - nên đọc sách gì để học tiếng việt dễ nói
+      - nên đọc sách gì để học tiếng việt dễ nghe
+      - nên đọc sách gì để học tiếng việt dễ đọc
+      - nên đọc sách gì để học tiếng việt dễ viết
+      - nên đọc sách gì để học tiếng việt dễ phát âm
+      - nên đọc sách gì để học tiếng việt dễ luyện tập
+      - nên đọc sách gì để học tiếng việt dễ luyện nghe
+      - nên đọc sách gì để học tiếng việt dễ luyện nói
+      - nên đọc sách gì để học tiếng việt dễ luyện đọc
+      - nên đọc sách gì để học tiếng việt dễ luyện viết
+      - nên đọc sách gì để học tiếng việt dễ luyện phát âm
+      - nen doc sach gi
+      - nen doc sach gi de gioi tieng viet
+      - nen doc sach gi de hoc tieng viet
+      - nen doc sach gi de nang cao tieng viet
+      - nen doc sach gi de cai thien tieng viet
+      - nen doc sach gi de hoc tot tieng viet
+      - nen doc sach gi de hoc nhanh tieng viet
+      - nen doc sach gi de hoc hieu qua tieng viet
+      - nen doc sach gi de hoc tieng viet tot
+      - nen doc sach gi de hoc tieng viet nhanh
+      - nen doc sach gi de hoc tieng viet hieu qua
+      - nen doc sach gi de hoc tieng viet de
+      - nen doc sach gi de hoc tieng viet de hieu
+      - nen doc sach gi de hoc tieng viet de nho
+      - nen doc sach gi de hoc tieng viet de thuoc
+      - nen doc sach gi de hoc tieng viet de ap dung
+      - nen doc sach gi de hoc tieng viet de thuc hanh
+      - nen doc sach gi de hoc tieng viet de giao tiep
+      - nen doc sach gi de hoc tieng viet de noi
+      - nen doc sach gi de hoc tieng viet de nghe
+      - nen doc sach gi de hoc tieng viet de doc
+      - nen doc sach gi de hoc tieng viet de viet
+      - nen doc sach gi de hoc tieng viet de phat am
+      - nen doc sach gi de hoc tieng viet de luyen tap
+      - nen doc sach gi de hoc tieng viet de luyen nghe
+      - nen doc sach gi de hoc tieng viet de luyen noi
+      - nen doc sach gi de hoc tieng viet de luyen doc
+      - nen doc sach gi de hoc tieng viet de luyen viet
+      - nen doc sach gi de hoc tieng viet de luyen phat am
+  - intent: chia_se_ngai_ngu
+    examples: |
+      - Em cảm thấy nói tiếng Việt còn ngại ngùng.
+      - Em sợ nói tiếng Việt sai.
+      - Em ngại giao tiếp bằng tiếng Việt.
+      - Làm sao để tự tin nói tiếng Việt?
+      - Em lo lắng khi nói chuyện với người Việt.
+      - ngại nói tiếng việt
+      - sợ nói tiếng việt
+      - ngại giao tiếp tiếng việt
+      - sợ giao tiếp tiếng việt
+      - ngại nói chuyện tiếng việt
+      - sợ nói chuyện tiếng việt
+      - ngại nói chuyện với người việt
+      - sợ nói chuyện với người việt
+      - ngại nói chuyện với người việt nam
+      - sợ nói chuyện với người việt nam
+      - ngại nói chuyện với người việt nam nhất
+      - sợ nói chuyện với người việt nam nhất
+      - ngại nói chuyện với người việt nam nhất có thể
+      - sợ nói chuyện với người việt nam nhất có thể
+      - ngại nói chuyện với người việt nam nhất có thể nhé
+      - sợ nói chuyện với người việt nam nhất có thể nhé
+      - ngại nói chuyện với người việt nam nhất có thể ạ
+      - sợ nói chuyện với người việt nam nhất có thể ạ
+      - ngại nói chuyện với người việt nam nhất có thể cô ơi
+      - sợ nói chuyện với người việt nam nhất có thể cô ơi
+      - ngại nói chuyện với người việt nam nhất có thể thầy ơi
+      - sợ nói chuyện với người việt nam nhất có thể thầy ơi
+      - ngại nói chuyện với người việt nam nhất có thể bạn ơi
+      - sợ nói chuyện với người việt nam nhất có thể bạn ơi
+      - ngại nói chuyện với người việt nam nhất có thể mn ơi
+      - sợ nói chuyện với người việt nam nhất có thể mn ơi
+      - ngại nói chuyện với người việt nam nhất có thể mọi người ơi
+      - sợ nói chuyện với người việt nam nhất có thể mọi người ơi
+      - ngại nói chuyện với người việt nam nhất có thể mọi người ạ
+      - sợ nói chuyện với người việt nam nhất có thể mọi người ạ
+      - ngại nói chuyện với người việt nam nhất có thể mọi người nha
+      - sợ nói chuyện với người việt nam nhất có thể mọi người nha
+      - ngại nói chuyện với người việt nam nhất có thể mọi người nhé
+      - sợ nói chuyện với người việt nam nhất có thể mọi người nhé
+      - ngại nói chuyện với người việt nam nhất có thể mọi người nè
+      - sợ nói chuyện với người việt nam nhất có thể mọi người nè
+      - ngại nói chuyện với người việt nam nhất có thể mọi người nhen
+      - sợ nói chuyện với người việt nam nhất có thể mọi người nhen
+      - ngại nói chuyện với người việt nam nhất có thể mọi người nà
+      - sợ nói chuyện với người việt nam nhất có thể mọi người nà
+      - ngại nói chuyện với người việt nam nhất có thể mọi người nhe
+      - sợ nói chuyện với người việt nam nhất có thể mọi người nhe
+      - ngai noi tieng viet
+      - so noi tieng viet
+      - ngai giao tiep tieng viet
+      - so giao tiep tieng viet
+      - ngai noi chuyen tieng viet
+      - so noi chuyen tieng viet
+      - ngai noi chuyen voi nguoi viet
+      - so noi chuyen voi nguoi viet
+      - ngai noi chuyen voi nguoi viet nam
+      - so noi chuyen voi nguoi viet nam
+      - ngai noi chuyen voi nguoi viet nam nhat
+      - so noi chuyen voi nguoi viet nam nhat
+      - ngai noi chuyen voi nguoi viet nam nhat co the
+      - so noi chuyen voi nguoi viet nam nhat co the
+      - ngai noi chuyen voi nguoi viet nam nhat co the nhe
+      - so noi chuyen voi nguoi viet nam nhat co the nhe
+      - ngai noi chuyen voi nguoi viet nam nhat co the a
+      - so noi chuyen voi nguoi viet nam nhat co the a
+      - ngai noi chuyen voi nguoi viet nam nhat co the co oi
+      - so noi chuyen voi nguoi viet nam nhat co the co oi
+      - ngai noi chuyen voi nguoi viet nam nhat co the thay oi
+      - so noi chuyen voi nguoi viet nam nhat co the thay oi
+      - ngai noi chuyen voi nguoi viet nam nhat co the ban oi
+      - so noi chuyen voi nguoi viet nam nhat co the ban oi
+  - intent: cam_on
+    examples: |
+      - Cảm ơn cô đã dạy em nhiều thứ hay!
+      - Em cảm ơn cô rất nhiều.
+      - Cảm ơn cô vì đã giúp em học tốt hơn.
+      - Nhờ cô mà em tiến bộ tiếng Việt.
+      - Em biết ơn cô lắm ạ.
+      - cảm ơn cô
+      - cảm ơn cô nhiều
+      - cảm ơn cô nhiều lắm
+      - cảm ơn cô rất nhiều
+      - cảm ơn cô nhiều nha
+      - cảm ơn cô nhiều nhé
+      - cảm ơn cô nhiều nè
+      - cảm ơn cô nhiều nhen
+      - cảm ơn cô nhiều nà
+      - cảm ơn cô nhiều nhe
+      - cảm ơn cô nhiều ui
+      - cảm ơn cô nhiều ơi
+      - cảm ơn cô nhiều ạ
+      - cảm ơn cô nhiều quá
+      - cảm ơn cô nhiều ghê
+      - cảm ơn cô nhiều ghê luôn
+      - cảm ơn cô nhiều ghê á
+      - cảm ơn cô nhiều ghê lắm
+      - cảm ơn cô nhiều ghê luôn á
+      - cảm ơn cô nhiều ghê luôn lắm
+      - cảm ơn cô nhiều ghê luôn lắm á
+      - cảm ơn cô nhiều ghê luôn lắm luôn
+      - cảm ơn cô nhiều ghê luôn lắm luôn á
+      - cảm ơn cô nhiều ghê luôn lắm luôn luôn
+      - cảm ơn cô nhiều ghê luôn lắm luôn luôn á
+      - cảm ơn cô nhiều ghê luôn lắm luôn luôn luôn
+      - cảm ơn cô nhiều ghê luôn lắm luôn luôn luôn á
+      - cảm ơn cô nhiều ghê luôn lắm luôn luôn luôn luôn
+      - cảm ơn cô nhiều ghê luôn lắm luôn luôn luôn luôn á
+      - cảm ơn cô nhiều ghê luôn lắm luôn luôn luôn luôn luôn
+      - cảm ơn cô nhiều ghê luôn lắm luôn luôn luôn luôn luôn á
+      - cảm ơn cô nhiều ghê luôn lắm luôn luôn luôn luôn luôn luôn
+      - cảm ơn cô nhiều ghê luôn lắm luôn luôn luôn luôn luôn luôn á
+      - cam on co
+      - cam on co nhieu
+      - cam on co rat nhieu
+      - cam on co nhieu nhe
+      - cam on co nhieu nha
+      - cam on co nhieu ne
+      - cam on co nhieu nhen
+      - cam on co nhieu na
+      - cam on co nhieu nhe
+      - cam on co nhieu ui
+      - cam on co nhieu oi
+      - cam on co nhieu a
+      - cam on co nhieu qua
+      - cam on co nhieu ghe
+      - cam on co nhieu ghe luon
+      - cam on co nhieu ghe a
+      - cam on co nhieu ghe lam
+      - cam on co nhieu ghe luon a
+      - cam on co nhieu ghe luon lam
+      - cam on co nhieu ghe luon lam a
+      - cam on co nhieu ghe luon lam luon
+      - cam on co nhieu ghe luon lam luon a
+      - cam on co nhieu ghe luon lam luon luon
+      - cam on co nhieu ghe luon lam luon luon a
+  - intent: hoi_nguyen_am_doi
+    examples: |
+      - Cô ơi, em khó phát âm các nguyên âm đôi.
+      - Em không phát âm được nguyên âm đôi.
+      - Nguyên âm đôi tiếng Việt phát âm thế nào?
+      - Em bị nhầm khi phát âm "ia", "ua", "ưa".
+      - Cô chỉ em cách phát âm nguyên âm đôi với.
+      - phát âm nguyên âm đôi sao
+      - phát âm nguyên âm đôi thế nào
+      - phát âm nguyên âm đôi như nào
+      - phát âm nguyên âm đôi như thế nào
+      - phát âm nguyên âm đôi như thế nào cho đúng
+      - phát âm nguyên âm đôi như thế nào cho chuẩn
+      - phát âm nguyên âm đôi như thế nào cho giỏi
+      - phát âm nguyên âm đôi như thế nào cho chuyên nghiệp
+      - phát âm nguyên âm đôi như thế nào cho tự nhiên
+      - phát âm nguyên âm đôi như thế nào cho giống người việt
+      - phát âm nguyên âm đôi như thế nào cho giống người bản xứ
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể nhé
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể ạ
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể cô ơi
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mn ơi
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ơi ạ
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ạ nha
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ạ nhé
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ạ nè
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ạ nhen
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ạ nà
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ạ nhe
+      - phát âm nguyên âm đôi như thế nào cho giống người việt nam nhất có thể mọi người ạ ui
+      - phat am nguyen am doi
+      - phat am nguyen am doi sao
+      - phat am nguyen am doi the nao
+      - phat am nguyen am doi nhu nao
+      - phat am nguyen am doi nhu the nao
+      - phat am nguyen am doi nhu the nao cho dung
+      - phat am nguyen am doi nhu the nao cho chuan
+      - phat am nguyen am doi nhu the nao cho gioi
+      - phat am nguyen am doi nhu the nao cho chuyen nghiep
+      - phat am nguyen am doi nhu the nao cho tu nhien
+      - phat am nguyen am doi nhu the nao cho giong nguoi viet
+      - phat am nguyen am doi nhu the nao cho giong nguoi ban xu
+      - phat am nguyen am doi nhu the nao cho giong nguoi viet nam
+      - phat am nguyen am doi nhu the nao cho giong nguoi viet nam nhat
+      - phat am nguyen am doi nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: hoi_nham_ua_ua
+    examples: |
+      - Em hay nhầm 'ua' với 'ưa'.
+      - Làm sao phân biệt "ua" và "ưa"?
+      - Em phát âm "ua" giống "ưa".
+      - Cô hướng dẫn em cách đọc "ua" và "ưa".
+      - Em không nghe rõ sự khác biệt giữa "ua" và "ưa".
+      - phân biệt ua với ưa
+      - phân biệt ua và ưa
+      - phân biệt phát âm ua với ưa
+      - phân biệt phát âm ua và ưa
+      - phát âm ua với ưa khác nhau không
+      - phát âm ua và ưa khác nhau không
+      - phát âm ua với ưa khác gì
+      - phát âm ua và ưa khác gì
+      - phát âm ua với ưa khác nhau như nào
+      - phát âm ua và ưa khác nhau như nào
+      - phát âm ua với ưa khác nhau như thế nào
+      - phát âm ua và ưa khác nhau như thế nào
+      - phát âm ua với ưa khác nhau như thế nào cho đúng
+      - phát âm ua và ưa khác nhau như thế nào cho đúng
+      - phát âm ua với ưa khác nhau như thế nào cho chuẩn
+      - phát âm ua và ưa khác nhau như thế nào cho chuẩn
+      - phát âm ua với ưa khác nhau như thế nào cho giỏi
+      - phát âm ua và ưa khác nhau như thế nào cho giỏi
+      - phát âm ua với ưa khác nhau như thế nào cho chuyên nghiệp
+      - phát âm ua và ưa khác nhau như thế nào cho chuyên nghiệp
+      - phát âm ua với ưa khác nhau như thế nào cho tự nhiên
+      - phát âm ua và ưa khác nhau như thế nào cho tự nhiên
+      - phát âm ua với ưa khác nhau như thế nào cho giống người việt
+      - phát âm ua và ưa khác nhau như thế nào cho giống người việt
+      - phát âm ua với ưa khác nhau như thế nào cho giống người bản xứ
+      - phát âm ua và ưa khác nhau như thế nào cho giống người bản xứ
+      - phát âm ua với ưa khác nhau như thế nào cho giống người việt nam
+      - phát âm ua và ưa khác nhau như thế nào cho giống người việt nam
+      - phát âm ua với ưa khác nhau như thế nào cho giống người việt nam nhất
+      - phát âm ua và ưa khác nhau như thế nào cho giống người việt nam nhất
+      - phát âm ua với ưa khác nhau như thế nào cho giống người việt nam nhất có thể
+      - phát âm ua và ưa khác nhau như thế nào cho giống người việt nam nhất có thể
+      - phan biet ua voi ua
+      - phan biet ua va ua
+      - phan biet phat am ua voi ua
+      - phan biet phat am ua va ua
+      - phat am ua voi ua khac nhau khong
+      - phat am ua va ua khac nhau khong
+      - phat am ua voi ua khac gi
+      - phat am ua va ua khac gi
+      - phat am ua voi ua khac nhau nhu nao
+      - phat am ua va ua khac nhau nhu nao
+      - phat am ua voi ua khac nhau nhu the nao
+      - phat am ua va ua khac nhau nhu the nao
+      - phat am ua voi ua khac nhau nhu the nao cho dung
+      - phat am ua va ua khac nhau nhu the nao cho dung
+      - phat am ua voi ua khac nhau nhu the nao cho chuan
+      - phat am ua va ua khac nhau nhu the nao cho chuan
+      - phat am ua voi ua khac nhau nhu the nao cho gioi
+      - phat am ua va ua khac nhau nhu the nao cho gioi
+      - phat am ua voi ua khac nhau nhu the nao cho chuyen nghiep
+      - phat am ua va ua khac nhau nhu the nao cho chuyen nghiep
+      - phat am ua voi ua khac nhau nhu the nao cho tu nhien
+      - phat am ua va ua khac nhau nhu the nao cho tu nhien
+      - phat am ua voi ua khac nhau nhu the nao cho giong nguoi viet
+      - phat am ua va ua khac nhau nhu the nao cho giong nguoi viet
+      - phat am ua voi ua khac nhau nhu the nao cho giong nguoi ban xu
+      - phat am ua va ua khac nhau nhu the nao cho giong nguoi ban xu
+      - phat am ua voi ua khac nhau nhu the nao cho giong nguoi viet nam
+      - phat am ua va ua khac nhau nhu the nao cho giong nguoi viet nam
+      - phat am ua voi ua khac nhau nhu the nao cho giong nguoi viet nam nhat
+      - phat am ua va ua khac nhau nhu the nao cho giong nguoi viet nam nhat
+      - phat am ua voi ua khac nhau nhu the nao cho giong nguoi viet nam nhat co the
+      - phat am ua va ua khac nhau nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: xac_nhan_hieu
+    examples: |
+      - À, em thấy khác rồi!
+      - Em đã hiểu rồi cô ạ.
+      - Em nhận ra sự khác biệt rồi.
+      - Cảm ơn cô, em đã phân biệt được.
+      - Em thấy rõ hơn rồi.
+  - intent: hoi_dau_hoi_nga
+    examples: |
+      - Cô ơi, em không phân biệt được dấu hỏi và dấu ngã.
+      - Làm sao để nhận biết dấu hỏi và dấu ngã?
+      - Em phát âm sai dấu hỏi với dấu ngã.
+      - Cô chỉ em cách phân biệt hai dấu này với.
+      - Em hay nhầm dấu hỏi và dấu ngã khi nói.
+      - phân biệt dấu hỏi với dấu ngã
+      - phân biệt dấu hỏi và dấu ngã
+      - phân biệt phát âm dấu hỏi với dấu ngã
+      - phân biệt phát âm dấu hỏi và dấu ngã
+      - phát âm dấu hỏi với dấu ngã khác nhau không
+      - phát âm dấu hỏi và dấu ngã khác nhau không
+      - phát âm dấu hỏi với dấu ngã khác gì
+      - phát âm dấu hỏi và dấu ngã khác gì
+      - phát âm dấu hỏi với dấu ngã khác nhau như nào
+      - phát âm dấu hỏi và dấu ngã khác nhau như nào
+      - phát âm dấu hỏi với dấu ngã khác nhau như thế nào
+      - phát âm dấu hỏi và dấu ngã khác nhau như thế nào
+      - phát âm dấu hỏi với dấu ngã khác nhau như thế nào cho đúng
+      - phát âm dấu hỏi và dấu ngã khác nhau như thế nào cho đúng
+      - phát âm dấu hỏi với dấu ngã khác nhau như thế nào cho chuẩn
+      - phát âm dấu hỏi và dấu ngã khác nhau như thế nào cho chuẩn
+      - phát âm dấu hỏi với dấu ngã khác nhau như thế nào cho giỏi
+      - phát âm dấu hỏi và dấu ngã khác nhau như thế nào cho giỏi
+      - phát âm dấu hỏi với dấu ngã khác nhau như thế nào cho chuyên nghiệp
+      - phát âm dấu hỏi và dấu ngã khác nhau như thế nào cho chuyên nghiệp
+      - phát âm dấu hỏi với dấu ngã khác nhau như thế nào cho tự nhiên
+      - phát âm dấu hỏi và dấu ngã khác nhau như thế nào cho tự nhiên
+      - phát âm dấu hỏi với dấu ngã khác nhau như thế nào cho giống người việt
+      - phát âm dấu hỏi và dấu ngã khác nhau như thế nào cho giống người việt
+      - phát âm dấu hỏi với dấu ngã khác nhau như thế nào cho giống người bản xứ
+      - phát âm dấu hỏi và dấu ngã khác nhau như thế nào cho giống người bản xứ
+      - phát âm dấu hỏi với dấu ngã khác nhau như thế nào cho giống người việt nam
+      - phát âm dấu hỏi và dấu ngã khác nhau như thế nào cho giống người việt nam
+      - phát âm dấu hỏi với dấu ngã khác nhau như thế nào cho giống người việt nam nhất
+      - phát âm dấu hỏi và dấu ngã khác nhau như thế nào cho giống người việt nam nhất
+      - phát âm dấu hỏi với dấu ngã khác nhau như thế nào cho giống người việt nam nhất có thể
+      - phát âm dấu hỏi và dấu ngã khác nhau như thế nào cho giống người việt nam nhất có thể
+      - phan biet dau hoi voi dau nga
+      - phan biet dau hoi va dau nga
+      - phan biet phat am dau hoi voi dau nga
+      - phan biet phat am dau hoi va dau nga
+      - phat am dau hoi voi dau nga khac nhau khong
+      - phat am dau hoi va dau nga khac nhau khong
+      - phat am dau hoi voi dau nga khac gi
+      - phat am dau hoi va dau nga khac gi
+      - phat am dau hoi voi dau nga khac nhau nhu nao
+      - phat am dau hoi va dau nga khac nhau nhu nao
+      - phat am dau hoi voi dau nga khac nhau nhu the nao
+      - phat am dau hoi va dau nga khac nhau nhu the nao
+      - phat am dau hoi voi dau nga khac nhau nhu the nao cho dung
+      - phat am dau hoi va dau nga khac nhau nhu the nao cho dung
+      - phat am dau hoi voi dau nga khac nhau nhu the nao cho chuan
+      - phat am dau hoi va dau nga khac nhau nhu the nao cho chuan
+      - phat am dau hoi voi dau nga khac nhau nhu the nao cho gioi
+      - phat am dau hoi va dau nga khac nhau nhu the nao cho gioi
+      - phat am dau hoi voi dau nga khac nhau nhu the nao cho chuyen nghiep
+      - phat am dau hoi va dau nga khac nhau nhu the nao cho chuyen nghiep
+      - phat am dau hoi voi dau nga khac nhau nhu the nao cho tu nhien
+      - phat am dau hoi va dau nga khac nhau nhu the nao cho tu nhien
+      - phat am dau hoi voi dau nga khac nhau nhu the nao cho giong nguoi viet
+      - phat am dau hoi va dau nga khac nhau nhu the nao cho giong nguoi viet
+      - phat am dau hoi voi dau nga khac nhau nhu the nao cho giong nguoi ban xu
+      - phat am dau hoi va dau nga khac nhau nhu the nao cho giong nguoi ban xu
+      - phat am dau hoi voi dau nga khac nhau nhu the nao cho giong nguoi viet nam
+      - phat am dau hoi va dau nga khac nhau nhu the nao cho giong nguoi viet nam
+      - phat am dau hoi voi dau nga khac nhau nhu the nao cho giong nguoi viet nam nhat
+      - phat am dau hoi va dau nga khac nhau nhu the nao cho giong nguoi viet nam nhat
+      - phat am dau hoi voi dau nga khac nhau nhu the nao cho giong nguoi viet nam nhat co the
+      - phat am dau hoi va dau nga khac nhau nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: than_kho
+    examples: |
+      - Khó quá cô ạ.
+      - Em thấy học tiếng Việt khó quá.
+      - Em học mãi mà không tiến bộ.
+      - Cô có cách nào giúp em dễ học hơn không?
+      - Em nản quá cô ơi.
+      - học tiếng việt khó quá
+      - học tiếng việt khó ghê
+      - học tiếng việt khó thật
+      - học tiếng việt khó lắm
+      - học tiếng việt khó nhỉ
+      - học tiếng việt khó vậy
+      - học tiếng việt khó thế
+      - học tiếng việt khó không chịu nổi
+      - học tiếng việt khó chịu
+      - học tiếng việt khó hiểu
+      - học tiếng việt khó nhớ
+      - học tiếng việt khó thuộc
+      - học tiếng việt khó áp dụng
+      - học tiếng việt khó thực hành
+      - học tiếng việt khó giao tiếp
+      - học tiếng việt khó nói
+      - học tiếng việt khó nghe
+      - học tiếng việt khó đọc
+      - học tiếng việt khó viết
+      - học tiếng việt khó phát âm
+      - học tiếng việt khó luyện tập
+      - học tiếng việt khó luyện nghe
+      - học tiếng việt khó luyện nói
+      - học tiếng việt khó luyện đọc
+      - học tiếng việt khó luyện viết
+      - học tiếng việt khó luyện phát âm
+      - học tieng viet kho qua
+      - hoc tieng viet kho ghe
+      - hoc tieng viet kho that
+      - hoc tieng viet kho lam
+      - hoc tieng viet kho nhi
+      - hoc tieng viet kho vay
+      - hoc tieng viet kho the
+      - hoc tieng viet kho khong chiu noi
+      - hoc tieng viet kho chiu
+      - hoc tieng viet kho hieu
+      - hoc tieng viet kho nho
+      - hoc tieng viet kho thuoc
+      - hoc tieng viet kho ap dung
+      - hoc tieng viet kho thuc hanh
+      - hoc tieng viet kho giao tiep
+      - hoc tieng viet kho noi
+      - hoc tieng viet kho nghe
+      - hoc tieng viet kho doc
+      - hoc tieng viet kho viet
+      - hoc tieng viet kho phat am
+      - hoc tieng viet kho luyen tap
+      - hoc tieng viet kho luyen nghe
+      - hoc tieng viet kho luyen noi
+      - hoc tieng viet kho luyen doc
+      - hoc tieng viet kho luyen viet
+      - hoc tieng viet kho luyen phat am
+  - intent: hoi_cau_phu_dinh
+    examples: |
+      - Làm sao để nói câu phủ định ạ?
+      - Câu phủ định trong tiếng Việt tạo thế nào?
+      - Em muốn biết cách nói "không" trong câu.
+      - Cô cho em ví dụ về câu phủ định.
+      - Khi nào dùng phủ định trong tiếng Việt?
+      - nói phủ định sao
+      - nói phủ định thế nào
+      - nói phủ định như nào
+      - nói phủ định như thế nào
+      - nói phủ định như thế nào cho đúng
+      - nói phủ định như thế nào cho chuẩn
+      - nói phủ định như thế nào cho giỏi
+      - nói phủ định như thế nào cho chuyên nghiệp
+      - nói phủ định như thế nào cho tự nhiên
+      - nói phủ định như thế nào cho giống người việt
+      - nói phủ định như thế nào cho giống người bản xứ
+      - nói phủ định như thế nào cho giống người việt nam
+      - nói phủ định như thế nào cho giống người việt nam nhất
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể nhé
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể ạ
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể cô ơi
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mn ơi
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ơi ạ
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ạ nha
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ạ nhé
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ạ nè
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ạ nhen
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ạ nà
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ạ nhe
+      - nói phủ định như thế nào cho giống người việt nam nhất có thể mọi người ạ ui
+      - noi phu dinh
+      - noi phu dinh sao
+      - noi phu dinh the nao
+      - noi phu dinh nhu nao
+      - noi phu dinh nhu the nao
+      - noi phu dinh nhu the nao cho dung
+      - noi phu dinh nhu the nao cho chuan
+      - noi phu dinh nhu the nao cho gioi
+      - noi phu dinh nhu the nao cho chuyen nghiep
+      - noi phu dinh nhu the nao cho tu nhien
+      - noi phu dinh nhu the nao cho giong nguoi viet
+      - noi phu dinh nhu the nao cho giong nguoi ban xu
+      - noi phu dinh nhu the nao cho giong nguoi viet nam
+      - noi phu dinh nhu the nao cho giong nguoi viet nam nhat
+      - noi phu dinh nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: hoi_ve_qua_khu
+    examples: |
+      - Còn trong quá khứ thì sao ạ?
+      - Nếu nói về quá khứ thì dùng từ gì?
+      - Câu quá khứ trong tiếng Việt như thế nào?
+      - Em muốn biết cách nói về việc đã xảy ra.
+      - Cô cho em ví dụ về câu quá khứ.
+      - nói về quá khứ sao
+      - nói về quá khứ thế nào
+      - nói về quá khứ như nào
+      - nói về quá khứ như thế nào
+      - nói về quá khứ như thế nào cho đúng
+      - nói về quá khứ như thế nào cho chuẩn
+      - nói về quá khứ như thế nào cho giỏi
+      - nói về quá khứ như thế nào cho chuyên nghiệp
+      - nói về quá khứ như thế nào cho tự nhiên
+      - nói về quá khứ như thế nào cho giống người việt
+      - nói về quá khứ như thế nào cho giống người bản xứ
+      - nói về quá khứ như thế nào cho giống người việt nam
+      - nói về quá khứ như thế nào cho giống người việt nam nhất
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể nhé
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể ạ
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể cô ơi
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mn ơi
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ơi ạ
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ạ nha
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ạ nhé
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ạ nè
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ạ nhen
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ạ nà
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ạ nhe
+      - nói về quá khứ như thế nào cho giống người việt nam nhất có thể mọi người ạ ui
+      - noi ve qua khu
+      - noi ve qua khu sao
+      - noi ve qua khu the nao
+      - noi ve qua khu nhu nao
+      - noi ve qua khu nhu the nao
+      - noi ve qua khu nhu the nao cho dung
+      - noi ve qua khu nhu the nao cho chuan
+      - noi ve qua khu nhu the nao cho gioi
+      - noi ve qua khu nhu the nao cho chuyen nghiep
+      - noi ve qua khu nhu the nao cho tu nhien
+      - noi ve qua khu nhu the nao cho giong nguoi viet
+      - noi ve qua khu nhu the nao cho giong nguoi ban xu
+      - noi ve qua khu nhu the nao cho giong nguoi viet nam
+      - noi ve qua khu nhu the nao cho giong nguoi viet nam nhat
+      - noi ve qua khu nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: tu_vung_do_an
+    examples: |
+      - Em muốn học từ vựng về đồ ăn.
+      - Cô dạy em các từ về món ăn đi ạ.
+      - Em muốn biết tên các món ăn bằng tiếng Việt.
+      - Có từ vựng nào về ẩm thực không cô?
+      - Em muốn học chủ đề đồ ăn.
+      - từ vựng về đồ ăn
+      - từ vựng về món ăn
+      - từ vựng về ẩm thực
+      - từ vựng về ăn uống
+      - từ vựng về thực phẩm
+      - từ vựng về món ăn việt nam
+      - từ vựng về món ăn truyền thống
+      - từ vựng về món ăn đường phố
+      - từ vựng về món ăn phổ biến
+      - từ vựng về món ăn đặc sản
+      - từ vựng về món ăn miền bắc
+      - từ vựng về món ăn miền trung
+      - từ vựng về món ăn miền nam
+      - từ vựng về món ăn ngon
+      - từ vựng về món ăn lạ
+      - từ vựng về món ăn mới
+      - từ vựng về món ăn dễ làm
+      - từ vựng về món ăn khó làm
+      - từ vựng về món ăn nhanh
+      - từ vựng về món ăn chay
+      - từ vựng về món ăn mặn
+      - từ vựng về món ăn ngọt
+      - từ vựng về món ăn cay
+      - từ vựng về món ăn nóng
+      - từ vựng về món ăn lạnh
+      - từ vựng về món ăn bổ dưỡng
+      - từ vựng về món ăn rẻ
+      - từ vựng về món ăn đắt
+      - từ vựng về món ăn phổ thông
+      - từ vựng về món ăn sang trọng
+      - tu vung ve do an
+      - tu vung ve mon an
+      - tu vung ve am thuc
+      - tu vung ve an uong
+      - tu vung ve thuc pham
+      - tu vung ve mon an viet nam
+      - tu vung ve mon an truyen thong
+      - tu vung ve mon an duong pho
+      - tu vung ve mon an pho bien
+      - tu vung ve mon an dac san
+      - tu vung ve mon an mien bac
+      - tu vung ve mon an mien trung
+      - tu vung ve mon an mien nam
+      - tu vung ve mon an ngon
+      - tu vung ve mon an la
+      - tu vung ve mon an moi
+      - tu vung ve mon an de lam
+      - tu vung ve mon an kho lam
+      - tu vung ve mon an nhanh
+      - tu vung ve mon an chay
+      - tu vung ve mon an man
+      - tu vung ve mon an ngot
+      - tu vung ve mon an cay
+      - tu vung ve mon an nong
+      - tu vung ve mon an lanh
+      - tu vung ve mon an bo duong
+      - tu vung ve mon an re
+      - tu vung ve mon an dat
+      - tu vung ve mon an pho thong
+      - tu vung ve mon an sang trong
+  - intent: hoi_meo_nho_nhanh
+    examples: |
+      - Làm sao để nhớ nhanh ạ?
+      - Có mẹo nào giúp em nhớ nhanh không cô?
+      - Em muốn học thuộc từ vựng nhanh hơn.
+      - Làm sao để ghi nhớ kiến thức nhanh?
+      - Cô chỉ em cách học nhanh với.
+      - nhớ nhanh sao
+      - nhớ nhanh thế nào
+      - nhớ nhanh như nào
+      - nhớ nhanh như thế nào
+      - nhớ nhanh như thế nào cho tốt
+      - nhớ nhanh như thế nào cho giỏi
+      - nhớ nhanh như thế nào cho chuyên nghiệp
+      - nhớ nhanh như thế nào cho tự nhiên
+      - nhớ nhanh như thế nào cho giống người việt
+      - nhớ nhanh như thế nào cho giống người bản xứ
+      - nhớ nhanh như thế nào cho giống người việt nam
+      - nhớ nhanh như thế nào cho giống người việt nam nhất
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể nhé
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể ạ
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể cô ơi
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mn ơi
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ơi ạ
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ạ ơi
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ạ nha
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ạ nhé
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ạ nè
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ạ nhen
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ạ nà
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ạ nhe
+      - nhớ nhanh như thế nào cho giống người việt nam nhất có thể mọi người ạ ui
+      - nho nhanh
+      - nho nhanh sao
+      - nho nhanh the nao
+      - nho nhanh nhu nao
+      - nho nhanh nhu the nao
+      - nho nhanh nhu the nao cho tot
+      - nho nhanh nhu the nao cho gioi
+      - nho nhanh nhu the nao cho chuyen nghiep
+      - nho nhanh nhu the nao cho tu nhien
+      - nho nhanh nhu the nao cho giong nguoi viet
+      - nho nhanh nhu the nao cho giong nguoi ban xu
+      - nho nhanh nhu the nao cho giong nguoi viet nam
+      - nho nhanh nhu the nao cho giong nguoi viet nam nhat
+      - nho nhanh nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: hoi_chao_hoi
+    examples: |
+      - Ở Việt Nam khi gặp nhau, người ta chào thế nào ạ?
+      - Cách chào hỏi ở Việt Nam ra sao?
+      - Người Việt thường chào nhau như thế nào?
+      - Em nên chào thế nào khi gặp người lớn?
+      - Có quy tắc chào hỏi nào không cô?
+      - chào hỏi ở việt nam sao
+      - chào hỏi ở việt nam thế nào
+      - chào hỏi ở việt nam như nào
+      - chào hỏi ở việt nam như thế nào
+      - chào hỏi ở việt nam như thế nào cho đúng
+      - chào hỏi ở việt nam như thế nào cho chuẩn
+      - chào hỏi ở việt nam như thế nào cho giỏi
+      - chào hỏi ở việt nam như thế nào cho chuyên nghiệp
+      - chào hỏi ở việt nam như thế nào cho tự nhiên
+      - chào hỏi ở việt nam như thế nào cho giống người việt
+      - chào hỏi ở việt nam như thế nào cho giống người bản xứ
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể nhé
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể ạ
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể cô ơi
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể mn ơi
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - chào hỏi ở việt nam như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - chao hoi o viet nam
+      - chao hoi o viet nam sao
+      - chao hoi o viet nam the nao
+      - chao hoi o viet nam nhu nao
+      - chao hoi o viet nam nhu the nao
+      - chao hoi o viet nam nhu the nao cho dung
+      - chao hoi o viet nam nhu the nao cho chuan
+      - chao hoi o viet nam nhu the nao cho gioi
+      - chao hoi o viet nam nhu the nao cho chuyen nghiep
+      - chao hoi o viet nam nhu the nao cho tu nhien
+      - chao hoi o viet nam nhu the nao cho giong nguoi viet
+      - chao hoi o viet nam nhu the nao cho giong nguoi ban xu
+      - chao hoi o viet nam nhu the nao cho giong nguoi viet nam
+      - chao hoi o viet nam nhu the nao cho giong nguoi viet nam nhat
+      - chao hoi o viet nam nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: hoi_quen_chao
+    examples: |
+      - Nếu em quên chào thì có sao không?
+      - Không chào có bị coi là bất lịch sự không?
+      - Em quên chào thì nên làm gì?
+      - Người Việt có quan trọng lời chào không?
+      - Nếu không chào thì có bị trách không cô?
+      - quên chào có sao không
+      - quên chào có bị gì không
+      - quên chào có bị trách không
+      - quên chào có bị phạt không
+      - quên chào có bị mắng không
+      - quên chào có bị la không
+      - quên chào có bị nhắc không
+      - quên chào có bị nhắc nhở không
+      - quên chào có bị phê bình không
+      - quên chào có bị nói không
+      - quên chào có bị để ý không
+      - quên chào có bị đánh giá không
+      - quên chào có bị coi là bất lịch sự không
+      - quên chào có bị coi là vô lễ không
+      - quên chào có bị coi là thiếu tôn trọng không
+      - quên chào có bị coi là không lễ phép không
+      - quên chào có bị coi là không lịch sự không
+      - quên chào có bị coi là không tôn trọng không
+      - quên chào có bị coi là không lễ phép không
+      - quên chào có bị coi là không lịch sự không
+      - quen chao co sao khong
+      - quen chao co bi gi khong
+      - quen chao co bi trach khong
+      - quen chao co bi phat khong
+      - quen chao co bi mang khong
+      - quen chao co bi la khong
+      - quen chao co bi nhac khong
+      - quen chao co bi nhac nho khong
+      - quen chao co bi phe binh khong
+      - quen chao co bi noi khong
+      - quen chao co bi de y khong
+      - quen chao co bi danh gia khong
+      - quen chao co bi coi la bat lich su khong
+      - quen chao co bi coi la vo le khong
+      - quen chao co bi coi la thieu ton trong khong
+      - quen chao co bi coi la khong le phep khong
+      - quen chao co bi coi la khong lich su khong
+      - quen chao co bi coi la khong ton trong khong
+      - quen chao co bi coi la khong le phep khong
+      - quen chao co bi coi la khong lich su khong
+  - intent: than_nghe_khong_kip
+    examples: |
+      - Em thấy người Việt nói nhanh, em nghe không kịp.
+      - Làm sao để nghe kịp khi người Việt nói?
+      - Em không hiểu khi người Việt nói nhanh.
+      - Cô có mẹo luyện nghe tiếng Việt không?
+      - Em muốn nghe tốt hơn khi nói chuyện với người Việt.
+      - người việt nói nhanh quá
+      - người việt nói nhanh ghê
+      - người việt nói nhanh thật
+      - người việt nói nhanh lắm
+      - người việt nói nhanh nhỉ
+      - người việt nói nhanh vậy
+      - người việt nói nhanh thế
+      - người việt nói nhanh không chịu nổi
+      - người việt nói nhanh chịu không nổi
+      - người việt nói nhanh không nghe kịp
+      - người việt nói nhanh không hiểu
+      - người việt nói nhanh không theo kịp
+      - người việt nói nhanh không bắt kịp
+      - người việt nói nhanh không nghe được
+      - người việt nói nhanh không hiểu được
+      - người việt nói nhanh không theo được
+      - người việt nói nhanh không bắt được
+      - người việt nói nhanh không nghe nổi
+      - người việt nói nhanh không hiểu nổi
+      - người việt nói nhanh không theo nổi
+      - người việt nói nhanh không bắt nổi
+      - nguoi viet noi nhanh qua
+      - nguoi viet noi nhanh ghe
+      - nguoi viet noi nhanh that
+      - nguoi viet noi nhanh lam
+      - nguoi viet noi nhanh nhi
+      - nguoi viet noi nhanh vay
+      - nguoi viet noi nhanh the
+      - nguoi viet noi nhanh khong chiu noi
+      - nguoi viet noi nhanh chiu khong noi
+      - nguoi viet noi nhanh khong nghe kip
+      - nguoi viet noi nhanh khong hieu
+      - nguoi viet noi nhanh khong theo kip
+      - nguoi viet noi nhanh khong bat kip
+      - nguoi viet noi nhanh khong nghe duoc
+      - nguoi viet noi nhanh khong hieu duoc
+      - nguoi viet noi nhanh khong theo duoc
+      - nguoi viet noi nhanh khong bat duoc
+      - nguoi viet noi nhanh khong nghe noi
+      - nguoi viet noi nhanh khong hieu noi
+      - nguoi viet noi nhanh khong theo noi
+      - nguoi viet noi nhanh khong bat noi
+  - intent: hoi_phu_de
+    examples: |
+      - Có nên bật phụ đề không ạ?
+      - Xem phim có nên dùng phụ đề không cô?
+      - Em nên luyện nghe có phụ đề hay không?
+      - Khi học tiếng Việt có nên xem phụ đề?
+      - Cô khuyên em nên dùng phụ đề không?
+      - có nên dùng phụ đề không
+      - có nên bật phụ đề không
+      - có nên xem phụ đề không
+      - có nên luyện nghe có phụ đề không
+      - có nên học tiếng việt có phụ đề không
+      - có nên học tiếng việt bật phụ đề không
+      - có nên học tiếng việt xem phụ đề không
+      - có nên học tiếng việt luyện nghe có phụ đề không
+      - có nên học tiếng việt luyện nghe bật phụ đề không
+      - có nên học tiếng việt luyện nghe xem phụ đề không
+      - có nên học tiếng việt luyện nghe luyện nghe có phụ đề không
+      - có nên học tiếng việt luyện nghe luyện nghe bật phụ đề không
+      - có nên học tiếng việt luyện nghe luyện nghe xem phụ đề không
+      - co nen dung phu de khong
+      - co nen bat phu de khong
+      - co nen xem phu de khong
+      - co nen luyen nghe co phu de khong
+      - co nen hoc tieng viet co phu de khong
+      - co nen hoc tieng viet bat phu de khong
+      - co nen hoc tieng viet xem phu de khong
+      - co nen hoc tieng viet luyen nghe co phu de khong
+      - co nen hoc tieng viet luyen nghe bat phu de khong
+      - co nen hoc tieng viet luyen nghe xem phu de khong
+      - co nen hoc tieng viet luyen nghe luyen nghe co phu de khong
+      - co nen hoc tieng viet luyen nghe luyen nghe bat phu de khong
+      - co nen hoc tieng viet luyen nghe luyen nghe xem phu de khong
+  - intent: hoi_anh_oi_chi_oi
+    examples: |
+      - Cô ơi, em thấy mọi người hay nói 'anh ơi', 'chị ơi'. Nghĩa là gì ạ?
+      - "Anh ơi", "chị ơi" dùng khi nào?
+      - Em nghe nhiều người gọi "anh ơi", "chị ơi".
+      - Ý nghĩa của "anh ơi", "chị ơi" là gì?
+      - Khi nào nên dùng "anh ơi", "chị ơi"?
+      - anh ơi là gì
+      - chị ơi là gì
+      - anh ơi chị ơi là gì
+      - anh ơi chị ơi dùng khi nào
+      - anh ơi chị ơi dùng sao
+      - anh ơi chị ơi dùng để làm gì
+      - anh ơi chị ơi dùng trong trường hợp nào
+      - anh ơi chị ơi dùng trong hoàn cảnh nào
+      - anh ơi chị ơi dùng trong tình huống nào
+      - anh ơi chị ơi dùng với ai
+      - anh ơi chị ơi dùng cho ai
+      - anh ơi chị ơi dùng ở đâu
+      - anh ơi chị ơi dùng lúc nào
+      - anh ơi chị ơi dùng thời điểm nào
+      - anh ơi chị ơi dùng dịp nào
+      - anh ơi chị ơi dùng dịp gì
+      - anh ơi chị ơi dùng dịp đặc biệt nào
+      - anh ơi chị ơi dùng dịp đặc biệt gì
+      - anh ơi chị ơi dùng dịp lễ nào
+      - anh ơi chị ơi dùng dịp lễ gì
+      - anh ơi chị ơi dùng dịp tết nào
+      - anh ơi chị ơi dùng dịp tết gì
+      - anh ơi chị ơi dùng dịp sinh nhật nào
+      - anh ơi chị ơi dùng dịp sinh nhật gì
+      - anh ơi chị ơi dùng dịp cưới nào
+      - anh ơi chị ơi dùng dịp cưới gì
+      - anh ơi chị ơi dùng dịp tang nào
+      - anh ơi chị ơi dùng dịp tang gì
+      - anh ơi chị ơi dùng dịp giỗ nào
+      - anh ơi chị ơi dùng dịp giỗ gì
+      - anh ơi chị ơi dùng dịp thôi nôi nào
+      - anh ơi chị ơi dùng dịp thôi nôi gì
+      - anh ơi chị ơi dùng dịp đầy tháng nào
+      - anh ơi chị ơi dùng dịp đầy tháng gì
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng nào
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng gì
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt nào
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt gì
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt nào không
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt gì không
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt nào vậy
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt gì vậy
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt nào nhỉ
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt gì nhỉ
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt nào nhé
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt gì nhé
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt nào nha
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt gì nha
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt nào nè
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt gì nè
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt nào nhen
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt gì nhen
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt nào nà
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt gì nà
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt nào nhe
+      - anh ơi chị ơi dùng dịp thôi nôi đầy tháng đặc biệt gì nhe
+      - anh oi la gi
+      - chi oi la gi
+      - anh oi chi oi la gi
+      - anh oi chi oi dung khi nao
+      - anh oi chi oi dung sao
+      - anh oi chi oi dung de lam gi
+      - anh oi chi oi dung trong truong hop nao
+      - anh oi chi oi dung trong hoan canh nao
+      - anh oi chi oi dung trong tinh huong nao
+      - anh oi chi oi dung voi ai
+      - anh oi chi oi dung cho ai
+      - anh oi chi oi dung o dau
+      - anh oi chi oi dung luc nao
+      - anh oi chi oi dung thoi diem nao
+      - anh oi chi oi dung dip nao
+      - anh oi chi oi dung dip gi
+      - anh ơi là gì
+      - chị ơi là gì
+      - anh oi chi oi
+      - anh ơi chị ơi
+      - anh oi
+      - chi oi
+      - a oi
+      - chi oi dung khi nao
+      - anh ơi dùng khi nào
+      - chi oi la gi
+      - anh oi la gi
+      - anh ơi chị ơi dùng sao
+      - anh ơi chị ơi nghia la gi
+      - anh ơi chị ơi nghia gi
+      - anh ơi chị ơi dung khi nao
+      - anh oi chi oi nghia gi
+      - anh ơi chị ơi dung sao
+      - anh oi chi oi dung khi nao
+      - anh ơi chị ơi sai chinh ta
+      - anh ơi chị ơi viet sai
+      - anh ơi chị ơi viet the nao
+      - a ơi
+      - c oi
+      - a oi chi oi dung sao
+      - a oi c oi
+      - a ơi c ơi
+      - a oi dung khi nao
+      - chi oi dung sao
+      - a oi nghia gi
+      - c oi nghia gi
+      - a oi la gi
+      - c oi la gi
+      - a oi viet sai
+      - c oi viet sai
+      - a oi viet the nao
+      - c oi viet the nao
+      - a oi chi oi viet sai
+      - a oi chi oi viet the nao
+      - a oi chi oi sai chinh ta
+      - a oi chi oi dung khi nao vay
+      - a oi chi oi dung sao vay
+      - a oi chi oi nghia la gi
+      - a oi chi oi nghia gi
+      - a oi chi oi la gi
+      - a oi chi oi la gi vay
+      - a oi chi oi la gi z
+      - a oi chi oi la gi zay
+      - a oi chi oi la gi dzay
+      - a oi chi oi la gi dzậy
+      - a oi chi oi la gi dậy
+      - a oi chi oi la gi dza
+      - a oi chi oi la gi dạ
+      - a oi chi oi la gi dạ cô
+      - a oi chi oi la gi cô
+      - a oi chi oi la gi ạ
+      - a oi chi oi la gi ạ cô
+      - a oi chi oi la gi ạ cô ơi
+      - a oi chi oi la gi ạ cô giáo
+      - a oi chi oi la gi ạ thầy
+      - a oi chi oi la gi ạ thầy ơi
+      - a oi chi oi la gi ạ thầy giáo
+      - a oi chi oi la gi ạ bạn
+      - a oi chi oi la gi ạ bạn ơi
+      - a oi chi oi la gi ạ bạn giáo
+      - a oi chi oi la gi ạ bạn cô
+      - a oi chi oi la gi ạ bạn thầy
+      - a oi chi oi la gi ạ bạn thầy ơi
+      - a oi chi oi la gi ạ bạn cô ơi
+      - a oi chi oi la gi ạ bạn giáo ơi
+      - a oi chi oi la gi ạ bạn giáo cô
+      - a oi chi oi la gi ạ bạn giáo thầy
+      - a oi chi oi la gi ạ bạn giáo thầy ơi
+      - a oi chi oi la gi ạ bạn giáo cô ơi
+      - a oi chi oi la gi ạ bạn giáo thầy giáo
+      - a oi chi oi la gi ạ bạn giáo cô giáo
+      - a oi chi oi la gi ạ bạn giáo thầy giáo ơi
+      - a oi chi oi la gi ạ bạn giáo cô giáo ơi
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ơi
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ cô
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ thầy
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn ơi
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn cô
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn thầy
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn thầy ơi
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn cô ơi
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo ơi
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo cô
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo thầy
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo thầy ơi
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo cô ơi
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo thầy giáo
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo cô giáo
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo thầy giáo ơi
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo cô giáo ơi
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo thầy giáo cô giáo
+      - a oi chi oi la gi ạ bạn giáo thầy giáo cô giáo ạ bạn giáo thầy giáo cô giáo ơi
+  - intent: hoi_ban_oi
+    examples: |
+      - Em có thể nói 'bạn ơi' không?
+      - "Bạn ơi" có lịch sự không cô?
+      - Khi nào nên gọi "bạn ơi"?
+      - Em dùng "bạn ơi" với ai?
+      - Có nên gọi người lạ là "bạn ơi" không?
+      - bạn ơi là gì
+      - bạn ơi dùng khi nào
+      - bạn ơi dùng sao
+      - bạn ơi dùng để làm gì
+      - bạn ơi dùng trong trường hợp nào
+      - bạn ơi dùng trong hoàn cảnh nào
+      - bạn ơi dùng trong tình huống nào
+      - bạn ơi dùng với ai
+      - bạn ơi dùng cho ai
+      - bạn ơi dùng ở đâu
+      - bạn ơi dùng lúc nào
+      - bạn ơi dùng thời điểm nào
+      - bạn ơi dùng dịp nào
+      - bạn ơi dùng dịp gì
+      - bạn ơi dùng dịp đặc biệt nào
+      - bạn ơi dùng dịp đặc biệt gì
+      - bạn ơi dùng dịp lễ nào
+      - bạn ơi dùng dịp lễ gì
+      - bạn ơi dùng dịp tết nào
+      - bạn ơi dùng dịp tết gì
+      - bạn ơi dùng dịp sinh nhật nào
+      - bạn ơi dùng dịp sinh nhật gì
+      - bạn ơi dùng dịp cưới nào
+      - bạn ơi dùng dịp cưới gì
+      - bạn ơi dùng dịp tang nào
+      - bạn ơi dùng dịp tang gì
+      - bạn ơi dùng dịp giỗ nào
+      - bạn ơi dùng dịp giỗ gì
+      - bạn ơi dùng dịp thôi nôi nào
+      - bạn ơi dùng dịp thôi nôi gì
+      - bạn ơi dùng dịp đầy tháng nào
+      - bạn ơi dùng dịp đầy tháng gì
+      - ban oi la gi
+      - ban oi dung khi nao
+      - ban oi dung sao
+      - ban oi dung de lam gi
+      - ban oi dung trong truong hop nao
+      - ban oi dung trong hoan canh nao
+      - ban oi dung trong tinh huong nao
+      - ban oi dung voi ai
+      - ban oi dung cho ai
+      - ban oi dung o dau
+      - ban oi dung luc nao
+      - ban oi dung thoi diem nao
+      - ban oi dung dip nao
+      - ban oi dung dip gi
+  - intent: hoi_gio_giac
+    examples: |
+      - Cô ơi, nói giờ giấc trong tiếng Việt thế nào ạ?
+      - Làm sao để nói giờ bằng tiếng Việt?
+      - Em muốn biết cách hỏi giờ.
+      - Cô chỉ em cách nói thời gian với.
+      - Nói giờ giấc trong tiếng Việt có khó không?
+      - nói giờ sao
+      - nói giờ thế nào
+      - nói giờ như nào
+      - nói giờ như thế nào
+      - nói giờ như thế nào cho đúng
+      - nói giờ như thế nào cho chuẩn
+      - nói giờ như thế nào cho giỏi
+      - nói giờ như thế nào cho chuyên nghiệp
+      - nói giờ như thế nào cho tự nhiên
+      - nói giờ như thế nào cho giống người việt
+      - nói giờ như thế nào cho giống người bản xứ
+      - nói giờ như thế nào cho giống người việt nam
+      - nói giờ như thế nào cho giống người việt nam nhất
+      - nói giờ như thế nào cho giống người việt nam nhất có thể
+      - nói giờ như thế nào cho giống người việt nam nhất có thể nhé
+      - nói giờ như thế nào cho giống người việt nam nhất có thể ạ
+      - nói giờ như thế nào cho giống người việt nam nhất có thể cô ơi
+      - nói giờ như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - nói giờ như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - nói giờ như thế nào cho giống người việt nam nhất có thể mn ơi
+      - nói giờ như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - nói giờ như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - nói giờ như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - nói giờ như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - nói giờ như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - nói giờ như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - nói giờ như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - nói giờ như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - nói giờ như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - noi gio
+      - noi gio sao
+      - noi gio the nao
+      - noi gio nhu nao
+      - noi gio nhu the nao
+      - noi gio nhu the nao cho dung
+      - noi gio nhu the nao cho chuan
+      - noi gio nhu the nao cho gioi
+      - noi gio nhu the nao cho chuyen nghiep
+      - noi gio nhu the nao cho tu nhien
+      - noi gio nhu the nao cho giong nguoi viet
+      - noi gio nhu the nao cho giong nguoi ban xu
+      - noi gio nhu the nao cho giong nguoi viet nam
+      - noi gio nhu the nao cho giong nguoi viet nam nhat
+      - noi gio nhu the nao cho giong nguoi viet nam nhat co the
+  - intent: hoi_noi_viet
+    examples: |
+      - Có khác nhau giữa nói và viết không ạ?
+      - Cô ơi, em khó phát âm chữ "tr" và "ch".
+      - Cô ơi, "r" và "d" có giống nhau không?
+      - Cô ơi, em không nhớ 6 thanh điệu.
+      - Em hay nhầm thanh hỏi với thanh ngã.
+      - Cô ơi, em phát âm sai "s" và "x".
+      - Khi nói tiếng Việt em nên chú ý gì?
+      - Làm sao để luyện nghe tốt hơn?
+      - Em muốn biết cách nói câu phủ định.
+      - Còn quá khứ thì sao ạ?
+      - Em muốn học từ vựng về thức ăn.
+      - Làm sao để nhớ từ lâu ạ?
+      - Cô ơi, xưng hô trong tiếng Việt phức tạp quá.
+      - Với người lạ em nên gọi thế nào?
+      - Em muốn biết cách nói giờ giấc.
+      - Khi viết có khác nói không ạ?
+      - Em thấy người Việt hay nói "ơi". Nghĩa là gì ạ?
+      - Em có thể nói "bạn ơi" không?
+      - Cô ơi, em sợ nói sai.
+      - Em nên đọc sách gì để luyện tiếng Việt?
+      - Cô ơi, em thấy có từ "cái" và "chiếc". Khác nhau thế nào ạ?
+      - Tại sao tiếng Việt không chia động từ như tiếng Anh?
+      - Em muốn học về chủ đề gia đình.
+      - Cô ơi, em nên luyện nói bao lâu mỗi ngày?
+      - Em muốn biết sự khác nhau giữa "nhà" và "ngôi nhà".
+      - Cô ơi, từ "làm ơn" dùng khi nào?
+      - Em hay quên dấu khi viết.
+      - Cô ơi, khác nhau giữa "đẹp" và "xinh" là gì?
+      - Em muốn biết cách hỏi đường bằng tiếng Việt.
+      - Cô ơi, tiếng Việt có nhiều phương ngữ không?
+      - Em nên học giọng vùng nào ạ?
+      - Em muốn biết cách nói cảm ơn và xin lỗi.
+      - Có cách nói thân mật hơn không ạ?
+      - Cô ơi, em thấy chữ "ng" khó đọc.
+      - Em muốn học số đếm.
+      - Cô ơi, số lớn hơn thì sao?
+      - nói và viết khác nhau không
+      - nói và viết khác gì
+      - nói và viết khác nhau như nào
+      - nói và viết khác nhau như thế nào
+      - nói và viết khác nhau như thế nào cho đúng
+      - nói và viết khác nhau như thế nào cho chuẩn
+      - nói và viết khác nhau như thế nào cho giỏi
+      - nói và viết khác nhau như thế nào cho chuyên nghiệp
+      - nói và viết khác nhau như thế nào cho tự nhiên
+      - nói và viết khác nhau như thế nào cho giống người việt
+      - nói và viết khác nhau như thế nào cho giống người bản xứ
+      - nói và viết khác nhau như thế nào cho giống người việt nam
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể nhé
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể ạ
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể cô ơi
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể thầy ơi
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể bạn ơi
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể mn ơi
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể mọi người ơi
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể mọi người ạ
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể mọi người nha
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể mọi người nhé
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể mọi người nè
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể mọi người nhen
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể mọi người nà
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể mọi người nhe
+      - nói và viết khác nhau như thế nào cho giống người việt nam nhất có thể mọi người ui
+      - noi va viet khac nhau khong
+      - noi va viet khac gi
+      - noi va viet khac nhau nhu nao
+      - noi va viet khac nhau nhu the nao
+      - noi va viet khac nhau nhu the nao cho dung
+      - noi va viet khac nhau nhu the nao cho chuan
+      - noi va viet khac nhau nhu the nao cho gioi
+      - noi va viet khac nhau nhu the nao cho chuyen nghiep
+      - noi va viet khac nhau nhu the nao cho tu nhien
+      - noi va viet khac nhau nhu the nao cho giong nguoi viet
+      - noi va viet khac nhau nhu the nao cho giong nguoi ban xu
+      - noi va viet khac nhau nhu the nao cho giong nguoi viet nam
+      - noi va viet khac nhau nhu the nao cho giong nguoi viet nam nhat
+      - noi va viet khac nhau nhu the nao cho giong nguoi viet nam nhat co the
