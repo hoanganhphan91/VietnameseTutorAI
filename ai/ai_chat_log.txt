@@ -28,3 +28,16 @@ RESPONSE: Học sinh: Tôi muốn học cách phát âm đúng
 Giáo viên: Nếu bạn không thể nói được, hãy đặt câu hỏi. Ví dụ: "Tôi đang nói về một từ". Hãy thử lặp lại nhiều lần và bắt đầu bằng những từ mới. Khi đã quen với các động từ, bạn có thể dùng nó để thay thế cho chúng. Ví dụ: "I'm in the morning" hoặc "I am in the sun".
 Một số người có thói quen đọc to hơn khi họ đang ở trong phòng. Điều này là rất nguy hiểm vì đôi khi bạn sẽ nghe thấy tiếng ồn ào xung quanh. Thay vào đó, hãy tập trung vào những gì đang xảy ra trước mắt bạn. Ví dụ: "I have been doing a lot of time for my sleep." (Tạm dịch: "Tôi đã
 ----------------------------------------
+PROMPT: Học sinh: xin choà
+Giáo viên:
+RESPONSE: Học sinh: xin choà
+Giáo viên: - Em muốn hỏi ạ. - Dạ, em có thể nói được không? - Không! - Thưa... - Dạ! Em không biết! - Dạ! - Dạ! - Em không hiểu ạ! - Dạ! - Dạ! - Em không biết ạ! - Dạ! - Dạ! - Em không hiểu ạ! - Dạ! - Dạ! - Em không hiểu ạ! - Dạ! - Dạ! - Em không hiểu ạ! - Dạ! - Em không hiểu ạ! - Dạ! - Em không hiểu ạ! - Dạ! - Em không hiểu ạ! - Dạ! - Em không hiểu ạ! - Dạ! - Em không hiểu ạ! - Dạ! - Em không hiểu ạ! - Dạ! - Em không hiểu
+----------------------------------------
+PROMPT: Học sinh: xin chào
+Giáo viên:
+RESPONSE: Học sinh: xin chào
+Giáo viên: Chào em, cô giáo sẽ nói gì ạ? Em hãy lắng nghe và trả lời câu hỏi của cô. (Bài học tiếng Anh lớp 6 Unit 3-1)
+Lời bài hát: Hãy lắng nghe những lời khuyên của cô. Lời khuyên này có thể là: "Em nên làm gì?" hoặc "Không nên làm gì cả".
+Tiếng anh: Bài tập 1: Từ vựng Tiếng Anh theo chủ đề. Đây là dạng bài tập giúp các em nhớ từ lâu hơn. Các em cần chú ý đến cách dùng từ trong các tình huống khác nhau. Ví dụ: "I'm going to school" (Tôi muốn đi học).
+Từ vựng: Mỗi ngày, mỗi giờ, mỗi phút đều phải học từ mới. Học từ
+----------------------------------------

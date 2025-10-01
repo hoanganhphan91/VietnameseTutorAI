@@ -14,6 +14,7 @@ lsof -ti:3000 | xargs kill -9 2>/dev/null || true
 lsof -ti:5000 | xargs kill -9 2>/dev/null || true  
 lsof -ti:5001 | xargs kill -9 2>/dev/null || true
 lsof -ti:5002 | xargs kill -9 2>/dev/null || true
+lsof -ti:5005 | xargs kill -9 2>/dev/null || true
 lsof -ti:8000 | xargs kill -9 2>/dev/null || true
 sleep 2
 
@@ -88,29 +89,26 @@ echo
 echo "[3/4] Setting up AI Service (PhoGPT)..."
 cd "$SCRIPT_DIR/ai"
 
+echo "Starting Rasa Chatbot service on port 5005..."
+cd "$SCRIPT_DIR/rasa"
+
 # Create virtual environment if not exists
-if [ ! -d "venv" ]; then
-    echo "Creating Python virtual environment for AI..."
-    python3 -m venv venv
+if [ ! -d ".venv" ]; then
+    echo "Creating Python virtual environment for Rasa..."
+    python3 -m venv .venv
 fi
 
 # Activate and install requirements
-source venv/bin/activate
-echo "Installing AI dependencies..."
+source .venv/bin/activate
+echo "Installing Rasa dependencies..."
 pip install --upgrade pip
-pip install flask flask-cors requests
-
-# Create models directory (not needed for rule-based AI)
-# mkdir -p "$SCRIPT_DIR/models"
-
-# Start AI service in background
-echo "Starting Vietnamese AI Tutor service on port 5002..."
-nohup python app.py > ai.log 2>&1 &
-AI_PID=$!
-echo "AI Service PID: $AI_PID"
-sleep 3
-
+pip install rasa
 echo
+# Start Rasa server in background
+nohup rasa run --enable-api --cors '*' --debug > rasa.log 2>&1 &
+RASA_PID=$!
+echo "Rasa Chatbot PID: $RASA_PID"
+sleep 3
 echo "[4/4] Setting up Frontend (NextJS)..."
 cd "$SCRIPT_DIR/frontend"
 
@@ -124,7 +122,7 @@ fi
 echo "Creating environment configuration..."
 cat > .env.local << EOF
 NEXT_PUBLIC_API_URL=http://localhost:8000
-NEXT_PUBLIC_AI_URL=http://localhost:5002
+NEXT_PUBLIC_AI_URL=http://localhost:5005
 EOF
 
 # Start frontend in background
@@ -141,12 +139,13 @@ echo
 echo "🌐 Frontend:     http://localhost:3000"
 echo "🔧 Backend:      http://localhost:8000"
 echo "🤖 AI Service:   http://localhost:5002"
+echo "🤖 AI Service:   http://localhost:5005 (Rasa Chatbot)"
 echo "🎤 Whisper STT:  http://localhost:5001"
 echo
 echo "Process IDs:"
 echo "Backend:  $BACKEND_PID"
 echo "Whisper:  $WHISPER_PID"
-echo "AI:       $AI_PID"
+echo "Rasa:     $RASA_PID"
 echo "Frontend: $FRONTEND_PID"
 echo
 echo "📝 View logs: Use Ctrl+C to stop all services"
@@ -169,10 +168,10 @@ else
     echo "❌ Whisper STT failed to start"
 fi
 
-if curl -s http://localhost:5002 >/dev/null; then
-    echo "✅ AI Service is running"
+if curl -s http://localhost:5005 >/dev/null; then
+    echo "✅ Rasa Chatbot is running"
 else
-    echo "❌ AI Service failed to start"
+    echo "❌ Rasa Chatbot failed to start"
 fi
 
 if curl -s http://localhost:3000 >/dev/null; then
@@ -188,10 +187,10 @@ echo "Press Ctrl+C to stop all services..."
 cleanup() {
     echo
     echo "Stopping all services..."
-    kill $BACKEND_PID $WHISPER_PID $AI_PID $FRONTEND_PID 2>/dev/null
+    kill $BACKEND_PID $WHISPER_PID $RASA_PID $FRONTEND_PID 2>/dev/null
     lsof -ti:3000 | xargs kill -9 2>/dev/null || true
     lsof -ti:5001 | xargs kill -9 2>/dev/null || true  
-    lsof -ti:5002 | xargs kill -9 2>/dev/null || true
+    lsof -ti:5005 | xargs kill -9 2>/dev/null || true
     lsof -ti:8000 | xargs kill -9 2>/dev/null || true
     echo "All services stopped."
     exit 0

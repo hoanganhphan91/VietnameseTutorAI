@@ -127,11 +127,14 @@ export default function Home() {
         };
         setConversation((prev) => [...prev, userMessage]);
 
-        const aiRes = await fetch("http://localhost:5002/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: data.transcription }),
-        });
+          const aiRes = await fetch("http://localhost:5005/webhooks/rest/webhook", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              sender: 'user',
+              message: data.transcription
+            }),
+          });
         const aiData = await aiRes.json();
         const aiMessage: Message = {
           type: "ai",
@@ -162,15 +165,22 @@ export default function Home() {
     setConversation((prev) => [...prev, userMessage]);
 
     try {
-      const res = await fetch("http://localhost:5002/chat", {
+      const res = await fetch("http://localhost:5005/webhooks/rest/webhook", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({
+          sender: 'user',
+          message
+        }),
       });
       const data = await res.json();
+      let answer = "Xin lỗi, không có phản hồi.";
+      if (Array.isArray(data) && data.length > 0 && data[0].text) {
+        answer = data[0].text;
+      }
       const aiMessage: Message = {
         type: "ai",
-        content: data.response || "Xin lỗi, không có phản hồi.",
+        content: answer,
         timestamp: new Date(),
       };
       setConversation((prev) => [...prev, aiMessage]);

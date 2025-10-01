@@ -61,23 +61,20 @@ services:
     volumes:
       - redis_data:/data
 
-  # AI Service - PhoGPT-4B
-  ai:
+
+  # Rasa Chatbot Service (replaces AI)
+  rasa:
     build:
-      context: ./ai
+      context: ./rasa
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
-    environment:
-      - MODEL_NAME=vinai/PhoGPT-4B-Chat
-      - DEVICE=cpu
+      - "5005:5005"
     volumes:
-      - ./models:/models
-      - ./ai:/app
+      - ./rasa:/app
     deploy:
       resources:
         limits:
-          memory: 6G
+          memory: 2G
 
 volumes:
   mysql_data:

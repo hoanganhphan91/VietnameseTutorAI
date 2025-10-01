@@ -1,3 +1,5 @@
+# Rasa cache
+rasa/.rasa/cache/
 # Dependencies
 node_modules/
 */node_modules/
@@ -72,10 +74,25 @@ build/
 .next/
 out/
 
-# AI model cache
+
+
+# Rasa model & training artifacts
 models/
+*.tar.gz
+.tracker_store/
+.event_broker/
+*.pkl
+*.lock
+*.npy
+*.h5
+*.pt
 *.bin
+*.ckpt
 *.safetensors
+*.log
+*.tmp
+*.out
+checkpoint/
 
 # Temporary files
 tmp/
