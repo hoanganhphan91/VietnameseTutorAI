@@ -1,100 +1,100 @@
 version: "3.1"
 
 intents:
-  - ask_1
-  - ask_2
-  - ask_3
-  - ask_4
-  - ask_5
-  - ask_6
-  - ask_7
-  - ask_8
-  - ask_9
-  - ask_10
-  - ask_11
-  - ask_12
-  - ask_13
-  - ask_14
-  - ask_15
-  - ask_16
-  - ask_17
-  - ask_18
-  - ask_19
-  - ask_20
-  - ask_21
-  - ask_22
-  - ask_23
-  - ask_24
-  - ask_25
-  - ask_26
-  - ask_27
-  - ask_28
-  - ask_29
-  - ask_30
-  - ask_31
+  - chao_giao_vien
+  - hoi_phat_am
+  - hoi_thanh_dieu
+  - hoi_cach_nho
+  - hoi_xung_ho
+  - hoi_xung_ho_nguoi_la
+  - hoi_dong_tu
+  - xin_vi_du
+  - hoc_tu_vung
+  - hoi_nho_tu_vung
+  - hoi_van_hoa
+  - hoi_sach
+  - chia_se_ngai_ngu
+  - cam_on
+  - hoi_nguyen_am_doi
+  - hoi_nham_ua_ua
+  - xac_nhan_hieu
+  - hoi_dau_hoi_nga
+  - than_kho
+  - hoi_cau_phu_dinh
+  - hoi_ve_qua_khu
+  - tu_vung_do_an
+  - hoi_meo_nho_nhanh
+  - hoi_chao_hoi
+  - hoi_quen_chao
+  - than_nghe_khong_kip
+  - hoi_phu_de
+  - hoi_anh_oi_chi_oi
+  - hoi_ban_oi
+  - hoi_gio_giac
+  - hoi_noi_viet
 
 responses:
-  utter_answer_1:
+  utter_chao_giao_vien:
     - text: "Xin chào em! Hôm nay chúng ta sẽ học những kiến thức gì về tiếng Việt nhỉ?"
-  utter_answer_2:
+  utter_hoi_phat_am:
     - text: "Tốt lắm em! Phát âm là nền tảng của tiếng Việt. Tiếng Việt có 6 thanh điệu, em biết chưa? Chúng ta bắt đầu với thanh ngang - giọng bằng phẳng như \"ba\"."
-  utter_answer_3:
+  utter_hoi_thanh_dieu:
     - text: "Em nghe cô kể nhé: thanh ngang (ba), thanh huyền (bà), thanh sắc (bá), thanh hỏi (bả), thanh ngã (bã), và thanh nặng (bạ). Mỗi thanh có một giai điệu riêng."
-  utter_answer_4:
+  utter_hoi_cach_nho:
     - text: "Đừng lo em! Cô sẽ dạy em từng bước. Mỗi ngày chỉ cần luyện 15 phút là đủ. Hãy bắt đầu với ba từ đơn giản: \"má\" (mẹ), \"mà\" (nhưng), \"mạ\" (lúa non)."
-  utter_answer_5:
+  utter_hoi_xung_ho:
     - text: "Câu hỏi hay lắm! Đây là cách xưng hô quan trọng trong tiếng Việt. \"Anh\" dành cho nam giới lớn tuổi hơn, \"chị\" cho nữ giới lớn tuổi hơn, \"em\" cho người trẻ hơn mình."
-  utter_answer_6:
+  utter_hoi_xung_ho_nguoi_la:
     - text: "Với người lạ, em hãy quan sát tuổi tác. Nếu không chắc thì dùng \"anh/chị\" là an toàn nhất. Việt Nam ta rất coi trọng sự lịch sự trong xưng hô."
-  utter_answer_7:
+  utter_hoi_dong_tu:
     - text: "Đó là đặc điểm thú vị của tiếng Việt! Thay vì chia động từ, chúng ta dùng các từ chỉ thời gian: \"đã\" (quá khứ), \"đang\" (hiện tại), \"sẽ\" (tương lai)."
-  utter_answer_8:
+  utter_xin_vi_du:
     - text: "Tất nhiên rồi! \"Tôi ăn cơm\" (hiện tại), \"Tôi đã ăn cơm\" (quá khứ), \"Tôi sẽ ăn cơm\" (tương lai). Thấy đơn giản chưa em?"
-  utter_answer_9:
+  utter_hoc_tu_vung:
     - text: "Học từ vựng hiệu quả nhất là học theo chủ đề em ạ. Ví dụ: gia đình, thức ăn, quần áo. Mỗi ngày học 5-8 từ mới và tạo câu với những từ đó."
-  utter_answer_10:
+  utter_hoi_nho_tu_vung:
     - text: "Bí quyết là phải sử dụng thường xuyên. Em nên viết nhật ký bằng tiếng Việt, xem phim Việt có phụ đề, nghe nhạc Việt. Như vậy từ vựng sẽ \"thấm\" vào đầu tự nhiên."
-  utter_answer_11:
+  utter_hoi_van_hoa:
     - text: "Người Việt rất trọng tình, trọng nghĩa. Gia đình là trung tâm, tôn trọng người lớn tuổi là truyền thống. Khi ăn cơm, mọi người ngồi quây quần bên nhau - đó là hạnh phúc giản dị."
-  utter_answer_12:
+  utter_hoi_sach:
     - text: "Bắt đầu với truyện cổ tích, rồi đến truyện ngắn của Nam Cao, Ngô Tất Tố. Sau đó có thể đọc báo Tuổi Trẻ, VnExpress. Từ dễ đến khó, từ ngắn đến dài."
-  utter_answer_13:
+  utter_chia_se_ngai_ngu:
     - text: "Đó là cảm giác bình thường em à! Đừng sợ sai, cứ thử nói. Người Việt rất hiền, họ sẽ giúp em sửa lỗi một cách tử tế. Chỉ bằng cách nói nhiều, em mới tiến bộ được."
-  utter_answer_14:
+  utter_cam_on:
     - text: "Không có gì em! Học ngôn ngữ là hành trình thú vị. Cô tin rằng với sự kiên trì, em sẽ nói tiếng Việt rất tự nhiên. Hãy luyện tập đều đặn và đừng bao giờ bỏ cuộc nhé!"
-  utter_answer_15:
+  utter_hoi_nguyen_am_doi:
     - text: "Đúng rồi em. Nguyên âm đôi trong tiếng Việt có \"ia\", \"ua\", \"ưa\". Ví dụ: \"kia\", \"mua\", \"chưa\"."
-  utter_answer_16:
+  utter_hoi_nham_ua_ua:
     - text: "\"Ua\" thì môi tròn, \"ưa\" thì môi mở rộng. Hãy thử đọc \"cua\" và \"cưa\"."
-  utter_answer_17:
+  utter_xac_nhan_hieu:
     - text: "Rất tốt! Luyện nhiều lần sẽ quen thôi."
-  utter_answer_18:
+  utter_hoi_dau_hoi_nga:
     - text: "Thanh hỏi thì giọng đi xuống rồi lên nhẹ, ví dụ: \"bảo\". Thanh ngã thì giọng ngắt, có độ gãy, ví dụ: \"bão\"."
-  utter_answer_19:
+  utter_than_kho:
     - text: "Không sao, em nghe nhiều, bắt chước nhiều thì sẽ cảm nhận được sự khác biệt."
-  utter_answer_20:
+  utter_hoi_cau_phu_dinh:
     - text: "Rất đơn giản, chỉ cần thêm \"không\" trước động từ. Ví dụ: \"Tôi không đi học\"."
-  utter_answer_21:
+  utter_hoi_ve_qua_khu:
     - text: "Em chỉ cần thêm \"đã\": \"Tôi đã không đi học hôm qua\"."
-  utter_answer_22:
+  utter_tu_vung_do_an:
     - text: "Tốt lắm! Một số từ cơ bản: \"cơm\", \"phở\", \"trái cây\"."
-  utter_answer_23:
+  utter_hoi_meo_nho_nhanh:
     - text: "Em hãy tự đặt câu. Ví dụ: \"Em ăn cơm\", \"Em thích phở\", \"Em mua trái cây\"."
-  utter_answer_24:
+  utter_hoi_chao_hoi:
     - text: "Người Việt coi trọng lời chào. Ví dụ: \"Cháu chào bác ạ!\", \"Em chào chị ạ!\"."
-  utter_answer_25:
+  utter_hoi_quen_chao:
     - text: "Người Việt có thể thấy chưa lịch sự, nhưng họ sẽ thông cảm. Em nên tập chào để thể hiện sự tôn trọng."
-  utter_answer_26:
+  utter_than_nghe_khong_kip:
     - text: "Đó là bình thường. Em hãy tập nghe nhạc, xem phim để quen tốc độ."
-  utter_answer_27:
+  utter_hoi_phu_de:
     - text: "Có, nhưng em nên nghe trước rồi mới xem phụ đề để kiểm tra."
-  utter_answer_28:
+  utter_hoi_anh_oi_chi_oi:
     - text: "\"Ơi\" dùng để gọi ai đó một cách thân mật, tạo sự chú ý. Ví dụ: \"Anh ơi, cho em hỏi!\", \"Chị ơi, mua giúp em cái này.\""
-  utter_answer_29:
+  utter_hoi_ban_oi:
     - text: "Hoàn toàn được. \"Bạn ơi\" dùng khi mình không biết tên người kia."
-  utter_answer_30:
+  utter_hoi_gio_giac:
     - text: "Rất dễ. Ví dụ: \"Bây giờ là 7 giờ sáng\", \"Tôi học lúc 8 giờ\", \"Chúng ta gặp nhau lúc 3 giờ chiều\"."
-  utter_answer_31:
+  utter_hoi_noi_viet:
     - text: "Nói thường ngắn gọn hơn. Ví dụ: thay vì \"Bây giờ là 7 giờ sáng\", người ta chỉ nói \"7 giờ sáng\"."
 
 session_config:
