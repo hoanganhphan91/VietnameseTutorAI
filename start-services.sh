@@ -99,7 +99,7 @@ if [ ! -d ".venv" ]; then
 fi
 
 # Activate and install requirements
-source .venv/bin/activate
+source venv/bin/activate
 echo "Installing Rasa dependencies..."
 pip install --upgrade pip
 pip install rasa
